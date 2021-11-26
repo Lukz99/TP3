@@ -9,7 +9,7 @@
 using namespace std;
 
 class Edificio {
-private:
+protected:
     string nombre = "";
     char nombreClave;
     int piedra, madera, metal, maxima_cantidad, construidos = 0;

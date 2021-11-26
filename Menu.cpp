@@ -317,19 +317,21 @@ void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
 void Menu::procesarOpcion(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios){
     switch(opcionElegida){
         case 1:
-            construirEdificio(construibles,casilleros,cantidadConstruibles,materiales,edificios,cantidadEdificios,cantidadMateriales,cantFilas,cantColumnas);
+            construirEdificio(construibles,cantidadConstruibles,materiales,edificios,cantidadEdificios,cantidadMateriales,cantFilas,cantColumnas); // se borró parametro casilleros
             break;
         case 2:
             listarConstruidos(edificios,cantidadEdificios);
             break;
         case 3:
-            listarEdificios(edificios,cantidadEdificios);
+            //
+
             break;
         case 4:
             demolerEdificio(casilleros,construibles,cantidadConstruibles,materiales,cantidadMateriales,edificios,cantidadEdificios,cantFilas,cantColumnas);
             break;
         case 5:
-            mostrarMapa(casilleros,cantFilas,cantColumnas);
+            //
+
             break;
         case 6:
             consultarCoordenada(casilleros,cantFilas,cantColumnas,construibles,cantidadConstruibles,transitables,cantidadTransitables);
@@ -347,6 +349,26 @@ void Menu::procesarOpcion(Casillero*** casilleros,int cantFilas, int cantColumna
             guardarMateriales(materiales,cantidadMateriales);
             guardarMapa(casilleros,cantFilas,cantColumnas);
             guardarUbicaciones(construibles,cantidadConstruibles);
+            break;
+    }
+}
+
+void Menu::procesarOpcion1(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
+    switch (opcionElegida) {
+        case 1:
+            //modificarEdificio();
+            break;
+        case 2:
+            listarEdificios(edificios,cantidadEdificios);
+            break;
+        case 3:
+            mostrarMapa(casilleros,cantFilas,cantColumnas);
+            break;
+        case 4:
+            comenzarPartida();
+            break;
+        case 5:
+            guardarEdificios(edificios,cantidadEdificios);
             break;
     }
 }

@@ -20,9 +20,13 @@ public:
     void opcionValida();
     int getOpcion();
     void procesarOpcion(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios);
+
+    void procesarOpcion1(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas);
+
     void mostrarMapa(Casillero***,int,int);
     static void listarMateriales(Material**,int);
     static void listarEdificios(Edificio**,int);
+
     static void listarConstruidos(Edificio**, int);
 
     void recolectarRecursos(CasilleroConstruible**,int,Material**,int);
@@ -48,6 +52,7 @@ public:
     void guardarMateriales(Material**,int);
     void guardarUbicaciones(CasilleroConstruible**,int);
     void guardarMapa(Casillero***,int,int);
+    void guardarEdificios(Edificio**, int);
 
 
     int posicionConstruible(int,int,CasilleroConstruible**,int);
@@ -56,8 +61,14 @@ public:
     int posicionEdificio(string, Edificio**, int );
     bool haySuperposicion(CasilleroConstruible**,int);
 
+    void comenzarPartida();
 
 };
+
+template < typename Tipo >
+static void listarEdificios(Edificio**,int){
+
+}
 
 
 #endif //UNTITLED_MENU_H

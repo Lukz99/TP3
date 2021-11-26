@@ -17,7 +17,7 @@ int main() {
     Menu menu(11);
 
     int opcion = 0;
-    //asdasdasdazd
+
     menu.mostrarMenu();
     menu.setOpcion();
     menu.opcionValida();
