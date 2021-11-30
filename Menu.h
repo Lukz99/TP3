@@ -19,9 +19,8 @@ public:
     void setOpcion();
     void opcionValida();
     int getOpcion();
-    void procesarOpcion(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios);
-
-    void procesarOpcion1(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas);
+    void menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios);
+    void menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas);
 
     void mostrarMapa(Casillero***,int,int);
     static void listarMateriales(Material**,int);

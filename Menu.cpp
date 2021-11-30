@@ -314,7 +314,7 @@ void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
     arcMapa.close();
 }
 
-void Menu::procesarOpcion(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios){
+void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios){
     switch(opcionElegida){
         case 1:
             construirEdificio(construibles,cantidadConstruibles,materiales,edificios,cantidadEdificios,cantidadMateriales,cantFilas,cantColumnas); // se borró parametro casilleros
@@ -323,29 +323,36 @@ void Menu::procesarOpcion(Casillero*** casilleros,int cantFilas, int cantColumna
             listarConstruidos(edificios,cantidadEdificios);
             break;
         case 3:
-            //
-
-            break;
-        case 4:
             demolerEdificio(casilleros,construibles,cantidadConstruibles,materiales,cantidadMateriales,edificios,cantidadEdificios,cantFilas,cantColumnas);
             break;
+        case 4:
+            //atacarEdificio();
+            break;
         case 5:
-            //
-
+            //repararEdificio();
             break;
         case 6:
-            consultarCoordenada(casilleros,cantFilas,cantColumnas,construibles,cantidadConstruibles,transitables,cantidadTransitables);
+            //comprarBombachas();
             break;
         case 7:
-            listarMateriales(materiales,cantidadMateriales);
+            consultarCoordenada(casilleros,cantFilas,cantColumnas,construibles,cantidadConstruibles,transitables,cantidadTransitables);
             break;
         case 8:
-            recolectarRecursos(construibles,cantidadConstruibles,materiales,cantidadMateriales);
+            mostrarObjetivos();
             break;
         case 9:
-            lluviaRecursos(transitables,cantidadTransitables,casilleros);
+            listarMateriales(materiales,cantidadMateriales);
             break;
         case 10:
+            recolectarRecursos(construibles,cantidadConstruibles,materiales,cantidadMateriales);
+            break;
+        case 11:
+            moverse();
+            break;
+        case 12:
+            finalizarTurno();
+            break;
+        case 13:
             guardarMateriales(materiales,cantidadMateriales);
             guardarMapa(casilleros,cantFilas,cantColumnas);
             guardarUbicaciones(construibles,cantidadConstruibles);
@@ -353,10 +360,12 @@ void Menu::procesarOpcion(Casillero*** casilleros,int cantFilas, int cantColumna
     }
 }
 
-void Menu::procesarOpcion1(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
+void Menu::menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
+    modificacionRealizada = false;
     switch (opcionElegida) {
         case 1:
             //modificarEdificio();
+            modificacionRealizada = true;
             break;
         case 2:
             listarEdificios(edificios,cantidadEdificios);
@@ -365,10 +374,13 @@ void Menu::procesarOpcion1(Casillero*** casilleros, Edificio** edificios, int ca
             mostrarMapa(casilleros,cantFilas,cantColumnas);
             break;
         case 4:
-            comenzarPartida();
+            //designarObjetivos();
+            //lluviaRecursos(transitables,cantidadTransitables,casilleros);
+            menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios);
             break;
         case 5:
-            guardarEdificios(edificios,cantidadEdificios);
+            if (modificacionRealizada)
+                guardarEdificios(edificios,cantidadEdificios);
             break;
     }
 }

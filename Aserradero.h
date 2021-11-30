@@ -7,12 +7,12 @@ class Aserradero : public Edificio {
     //Atributos
 private:
 
-    int produccion;
+    int produccion = 25;
     string tipoProduccion = "madera";
 
     //Metodos
 public:
-    Aserradero(string nombre, int madera, int piedra, int metal, int construidos, int produccion);
+    Aserradero(string nombre, int madera, int piedra, int metal, int construidos);
 };
 
 

@@ -12,7 +12,7 @@ class Edificio {
 protected:
     string nombre = "";
     char nombreClave;
-    int piedra, madera, metal, maxima_cantidad, construidos = 0;
+    int piedra, madera, metal, maxima_cantidad, construidosPrimerJugador = 0, construidosSegundoJugador = 0;
 public:
     Edificio();
     Edificio(string,int,int,int,int);
