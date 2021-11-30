@@ -18,7 +18,7 @@ int main() {
 
     int opcion = 0;
 
-    menu.mostrarMenu();
+    menu.mostrarMenuPrincipal();
     menu.setOpcion();
     menu.opcionValida();
     opcion = menu.getOpcion();

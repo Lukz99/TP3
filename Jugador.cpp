@@ -4,11 +4,11 @@
 
 #include "Jugador.h"
 
-Jugador::Jugador(int numeroTurno) {
+Jugador::Jugador(int numeroJugador) {
     if (numeroTurno == 1)
-        nombreJugador = 'J';
+        nombreJugador = "Jugador 1";
     else
-        nombreJugador = 'U';
+        nombreJugador = "Jugador 2";
 }
 
 Jugador::~Jugador() = default;

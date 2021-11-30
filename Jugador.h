@@ -10,16 +10,18 @@ using namespace std
 
 class Jugador {
 private:
-    char nombreJugador;
-    int energia = 50;
-    int cantidadBombas;
+    string nombreJugador;
+    Material *materiales;
     string objetivos[3];
+    int energia = 50;
 public:
     Jugador(int);
     ~Jugador();
     void restarEnergia(int);
     void restaurarEnergia()
     int obtenerEnergia();
+    bool objetivoPrincipalCumplido();
+    bool objetivosSecundariosCumplidos();
 };
 
 

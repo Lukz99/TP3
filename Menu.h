@@ -10,12 +10,12 @@
 
 class Menu {
 private:
-    int cantidadOpciones;
     int opcionElegida;
 public:
     Menu(int);
     ~Menu();
-    void mostrarMenu();
+    void mostrarMenuJugador();
+    void mostrarMenuPrincipal();
     void setOpcion();
     void opcionValida();
     int getOpcion();

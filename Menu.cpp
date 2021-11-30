@@ -4,31 +4,52 @@
 #include<stdlib.h>
 #include<time.h>
 #include <fstream>
+#include "Jugador.h"
 
 
 using namespace std;
 
 Menu::Menu(int cantOpciones) {
-    cantidadOpciones = cantOpciones;
     srand(time(nullptr));
 }
 
 Menu::~Menu() = default;
 
-void Menu::mostrarMenu() {
-    cout << "\n\t\t\t.: BIENVENIDO :." << endl
-         << "\nPara continuar, ingrese el numero correspondiente a la opcion que desea seleccionar:" << endl
+void designarTurnos(){
+    int primerTurno = rand() % (1);
+    if (primerTurno == 0)
+        primerJugador = new Jugador(primerTurno);
+    else
+        segundoJugador = new Jugador(primerTurno);
+}
+
+void Menu::mostrarMenuPrincipal() {
+    cout << "\n\t\t\t|----------------------------------|" << endl
+         << "\n\t\t\t|         .: BIENVENIDO :.         |" << endl
+         << "\n\t\t\t|----------------------------------|" << endl
+         << "\nPara continuar, ingrese el numero correspondiente a la opcion que desea seleccionar: " << endl
+         << "\n1. Modificar edificio por nombre." << endl
+         << "2. Listar todos los edificios." << endl
+         << "3. Mostrar mapa." << endl
+         << "4. Comenzar partida." << endl
+         << "5. Guardar y salir." << endl;
+}
+
+void Menu::mostrarMenuJugador() {
+    //cout << "\n\t\t\t.: TURNO DE: "<< primerJugador->nombreJugador
+    cout << "\nPara continuar, ingrese el numero correspondiente a la opcion que desea seleccionar:" << endl
          << "\n1. Construir un edificio por nombre." << endl
-         << "2. Listar los edificios construidos." << endl
-         << "3. Listar todos los edificios." << endl
-         << "4. Demoler edificio por coordenada." << endl
-         << "5. Mostrar mapa." << endl
-         << "6. Consultar coordenada." << endl
-         << "7. Mostrar inventario. "<< endl
-         << "8. Recolectar los recursos producidos." << endl
-         << "9. Lluvia de recursos." << endl
-         << "10. Guardar." << endl
-         << "11. Salir." << endl;
+         << "2. Listar edificios construidos por jugador." << endl
+         << "3. Demoler un edificio por coordenada." << endl
+         << "4. Atacar por coordenada." << endl
+         << "5. Reparar edificio por coordenada." << endl
+         << "6. Comprar bombas." << endl
+         << "7. Consultar coordenada. "<< endl
+         << "8. Mostrar inventario." << endl
+         << "9. Mostrar objetivos." << endl
+         << "10. Recolectar recursos producidos." << endl
+         << "11. Movilizarse." << endl
+         << "12. Guardar y salir." << endl;
 }
 
 void Menu::setOpcion() {
