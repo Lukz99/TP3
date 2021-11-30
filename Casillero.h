@@ -1,7 +1,3 @@
-//
-// Created by juamp on 1/11/2021.
-//
-
 #ifndef UNTITLED_CASILLERO_H
 #define UNTITLED_CASILLERO_H
 
