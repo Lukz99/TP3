@@ -45,6 +45,17 @@ void Edificio::setNombreClave(){
 string Edificio::getNombre() {
     return nombre;
 }
+
+int Edificio::getPiedra(){
+    return cantidadPiedra;
+}
+int Edificio::getMadera() {
+    return cantidadMadera;
+}
+int Edificio::getMetal() {
+    return cantidadMetal;
+}
+
 char Edificio::getNombreClave() {
     return nombreClave;
 }

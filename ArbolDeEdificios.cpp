@@ -23,18 +23,40 @@ void ArbolDeEdificios::insertarNodo(NodoArbol* &arbol,string nomEdificio,int can
     }
 }
 
-bool ArbolDeEdificios::modificarNodo(NodoArbol* arbol,string nomEdificio, int nuevaCantPiedra, int nuevaCantMadera, int nuevaCantMetal){
+bool ArbolDeEdificios::nodoEnArbol(NodoArbol* arbol,string nomEdificio){
     if(arbol == nullptr)
-        return true;
-
-    else if(arbol->nombreEdificio == nomEdificio) {
-        arbol->recetaEdificio->modificarReceta(nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
         return false;
+    else if(arbol->nombreEdificio == nomEdificio)
+        return true;
+    else if(nomEdificio[0]<arbol->nombreEdificio[0])
+        return nodoEnArbol(arbol->izquierdo,nomEdificio);
+    else
+        return nodoEnArbol(arbol->derecho,nomEdificio);
+}
+
+bool ArbolDeEdificios::modificarNodo(NodoArbol* arbol,string nomEdificio, int nuevaCantPiedra, int nuevaCantMadera, int nuevaCantMetal){
+    if(arbol->nombreEdificio == nomEdificio) {
+        arbol->recetaEdificio->modificarReceta(nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
     }
     else if(nomEdificio[0]<arbol->nombreEdificio[0])
-        return modificarNodo(arbol->izquierdo,nomEdificio,nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
+        modificarNodo(arbol->izquierdo,nomEdificio,nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
     else
-        return modificarNodo(arbol->derecho,nomEdificio,nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
+        modificarNodo(arbol->derecho,nomEdificio,nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
+}
+
+int ArbolDeEdificios::extraerMaterial(NodoArbol* arbol,string nomEdificio,string nomMaterial) {
+    if (arbol->nombreEdificio == nomEdificio) {
+        if (nomMaterial == "piedra")
+            arbol->recetaEdificio->getPiedra();
+        else if (nomMaterial == "madera")
+            arbol->recetaEdificio->getMadera();
+        else
+            arbol->recetaEdificio->getMetal();
+    }
+    else if (nomEdificio[0] < arbol->nombreEdificio[0])
+        return extraerMaterial(arbol->izquierdo,nomEdificio,nomMaterial);
+    else
+        return extraerMaterial(arbol->derecho, nomEdificio, nomMaterial);
 }
 
 void ArbolDeEdificios::recorridoInOrden(NodoArbol* arbol){

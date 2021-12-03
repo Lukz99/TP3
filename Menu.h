@@ -26,7 +26,7 @@ public:
     static void listarConstruidos(Edificio**, int);
 
     void recolectarRecursos(CasilleroConstruible**,int,Material**,int);
-
+    bool realizarOperacion(string);
     //consultar coordenada
     void consultarCoordenada(Casillero*** casilleros,int,int, CasilleroConstruible**,int, CasilleroTransitable**,int);
     void leerCoordenadas(int&,int&,int,int);

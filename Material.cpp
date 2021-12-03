@@ -1,35 +1,40 @@
 #include "Material.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 Material::Material() = default;
 
 Material::Material(string n, int c){
-    nombre = n;
-    cantidad = c;
+    nombreMaterial = n;
+    cantidadMaterial = c;
     setNombreClave();
 }
 
 Material::~Material() = default;
 
 void Material::cargarDatos(string n,int c){
-    nombre = n;
-    cantidad = c;
+    nombreMaterial = n;
+    cantidadMaterial = c;
     setNombreClave();
 }
 
 void Material::setNombreClave() {
-    if (nombre == "piedra")
+    if (nombreMaterial == "piedra")
         nombreClave = 'S';
-    if (nombre == "madera")
+    if (nombreMaterial == "madera")
         nombreClave = 'W';
-    if (nombre == "metal")
+    if (nombreMaterial == "metal")
         nombreClave = 'I';
 }
 
-string Material::getNombre() {
-    return nombre;
+void Material::mostrarMaterial() {
+    cout << "\n->" << nombreMaterial << "\nCantidad: " << cantidadMaterial << endl;
+}
+
+string Material::obtenerNombre() {
+    return nombreMaterial;
 }
 
 char Material::getNombreClave(){
@@ -37,13 +42,13 @@ char Material::getNombreClave(){
 }
 
 int Material::getCantidad() {
-    return cantidad;
+    return cantidadMaterial;
 }
 
 void Material::sumar(int adicional){
-    cantidad += adicional;
+    cantidadMaterial += adicional;
 }
 
 void Material::restar(int utilizado){
-    cantidad -= utilizado;
+    cantidadMaterial -= utilizado;
 }

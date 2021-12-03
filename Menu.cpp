@@ -5,6 +5,7 @@
 #include<time.h>
 #include <fstream>
 #include "Jugador.h"
+#include "ArbolDeEdificios.h"
 
 
 using namespace std;
@@ -382,7 +383,56 @@ void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,C
     }
 }
 
-void Menu::menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
+void Menu::modificarEdificio(ArbolDeEdificios arbol){
+
+    string nombreEdificio;
+    int cantPiedra, cantMadera, cantMetal;
+    string respuesta;
+
+    do{
+    cout << "Ingrese el nombre del edificio a modificar: " << endl;
+    cin >> nombreEdificio;
+    }while(!arbol.nodoEnArbol(arbol.raiz,nombreEdificio));
+
+    if(nombreEdificio == "obelisco"){
+        cout << "Este edificio no es modificable." << endl;
+    }
+
+    if(realizarOperacion("piedra")){
+        cout << "Ingrese la nueva cantidad de piedra: " << endl;
+        cin >> cantPiedra;
+    }
+    else
+        cantPiedra = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"piedra");
+    if(realizarOperacion("madera")) {
+        cout << "Ingrese la nueva cantidad de madera: " << endl;
+        cin >> cantMadera;
+    }
+    else
+        cantMadera = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"madera");
+    if(realizarOperacion("metal")) {
+        cout << "Ingrese la nueva cantidad de metal: " << endl;
+        cin >> cantMetal;
+    }
+    else
+        cantMetal = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"metal");
+
+    arbol.modificarNodo(arbol.raiz, nombreEdificio, cantPiedra, cantMadera, cantMetal);
+}
+
+bool Menu::realizarOperacion(string nombreMaterial){
+    string respuesta;
+    cout << "Desea modificar la cantidad de "<< nombreMaterial << "(s/n)?: " << endl;
+    cin >> respuesta;
+    while (respuesta != "S" && respuesta != "s" && respuesta != "N" && respuesta != "n"){
+        cout << "Respuesta invalida, debe ingresar s/n";
+        cin >> respuesta;
+    }
+    return (respuesta == "S" || respuesta == "s");
+}
+
+
+void Menu::menuPrincipal(ArbolDeEdificios arbol,Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
     bool modificacionRealizada = false;
     switch (opcionElegida) {
         case 1:
@@ -390,7 +440,7 @@ void Menu::menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cant
             modificacionRealizada = true;
             break;
         case 2:
-            //listarEdificios(edificios,cantidadEdificios);
+            arbol.recorridoInOrden(arbol.raiz);
             break;
         case 3:
             mostrarMapa(casilleros,cantFilas,cantColumnas);
