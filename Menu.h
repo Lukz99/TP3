@@ -3,6 +3,7 @@
 #include "CasilleroInaccesible.h"
 #include "CasilleroTransitable.h"
 #include "CasilleroConstruible.h"
+#include "ArbolDeEdificios.h"
 
 class Menu {
 private:
@@ -17,7 +18,7 @@ public:
     void opcionValida();
     int getOpcion();
     void menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios);
-    void menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas);
+    void menuPrincipal(ArbolDeEdificios, Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas);
 
     void mostrarMapa(Casillero***,int,int);
     static void listarMateriales(Material**,int);
@@ -57,6 +58,8 @@ public:
     bool haySuperposicion(CasilleroConstruible**,int);
 
     void comenzarPartida();
+
+    void modificarEdificio(ArbolDeEdificios);
 
 };
 

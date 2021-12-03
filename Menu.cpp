@@ -85,7 +85,7 @@ void Menu::mostrarMapa(Casillero*** casilleros, int cantFilas, int cantColumnas)
 
 void Menu::listarMateriales(Material** materiales, int cantidadMateriales){
     for (int i=0; i<cantidadMateriales;i++){
-        cout << "\n->MATERIAL: " << materiales[i]->getNombre() << endl
+        cout << "\n->MATERIAL: " << materiales[i]->obtenerNombre() << endl
              << "Cantidad: " << materiales[i]->getCantidad() << endl;
     }
 }
@@ -123,9 +123,9 @@ void Menu::consultarCoordenada(Casillero*** casilleros, int maxFilas, int maxCol
     if(tipoCasilla == 'C'){
         cout << "Ha encontrado un casillero transitable." << endl;
         int posicion = posicionTransitable(x,y,transitables,cantidadTransitables);
-        if (transitables[posicion]->getMaterial()->getNombre() != "") {
+        if (transitables[posicion]->getMaterial()->obtenerNombre() != "") {
             cout << "Hay " << transitables[posicion]->getMaterial()->getCantidad()
-                 << " de " << transitables[posicion]->getMaterial()->getNombre() << " en este casillero." << endl;
+                 << " de " << transitables[posicion]->getMaterial()->obtenerNombre() << " en este casillero." << endl;
         }
         else
             cout << "No hay materiales en este casillero." << endl;
@@ -195,7 +195,7 @@ void Menu::recolectarRecursos(CasilleroConstruible** construibles, int cantidadC
 
 int Menu::buscarMaterial(string material, Material** materiales, int cantidadMateriales){
     for (int i=0;i<cantidadMateriales;i++){
-        if (material == materiales[i]->getNombre()) return i;
+        if (material == materiales[i]->obtenerNombre()) return i;
     }
     return -1;
 }
@@ -215,7 +215,7 @@ void Menu::lluviaRecursos(CasilleroTransitable** transitables, int cantidadTrans
 void Menu::generamientos(string material, int cantidadMaterial, CasilleroTransitable** transitables, int cantidadTransitables, Casillero*** casilleros){
     for (int i = 0; i < cantidadMaterial; i++) {
         int casilleroGenerador = rand() % (cantidadTransitables);
-        while(transitables[casilleroGenerador]->getMaterial()->getNombre() != "")
+        while(transitables[casilleroGenerador]->getMaterial()->obtenerNombre() != "")
             casilleroGenerador = rand() % cantidadTransitables;
         transitables[casilleroGenerador]->generarMaterial(material, 1, casilleros);
     }
@@ -310,7 +310,7 @@ void Menu::devolverMateriales(Material** materiales, int cantidadMateriales, Edi
 void Menu::guardarMateriales(Material** materiales, int cantidadMateriales){
     ofstream arcMateriales("materiales.txt");
     for (int i=0;i<cantidadMateriales;i++)
-        arcMateriales << materiales[i]->getNombre() << " " << materiales[i]->getCantidad() << endl;
+        arcMateriales << materiales[i]->obtenerNombre() << " " << materiales[i]->getCantidad() << endl;
     arcMateriales.close();
 }
 
@@ -386,7 +386,7 @@ void Menu::menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cant
     bool modificacionRealizada = false;
     switch (opcionElegida) {
         case 1:
-            //modificarEdificio();
+            modificarEdificio(arbol);
             modificacionRealizada = true;
             break;
         case 2:
