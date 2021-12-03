@@ -7,6 +7,8 @@ using namespace std;
 
 int main() {
 
+    cout << "holis" << endl;
+/*
     DatosLeidos d1;
 
     d1.leerArchivo("mapa.txt");
@@ -29,5 +31,5 @@ int main() {
         menu.setOpcion();
         menu.opcionValida();
         opcion = menu.getOpcion();
-    }
+    }*/
 }

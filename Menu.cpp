@@ -338,7 +338,7 @@ void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
 void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios){
     switch(opcionElegida){
         case 1:
-            construirEdificio(construibles,cantidadConstruibles,materiales,edificios,cantidadEdificios,cantidadMateriales,cantFilas,cantColumnas); // se borró parametro casilleros
+            //construirEdificio(construibles,cantidadConstruibles,materiales,edificios,cantidadEdificios,cantidadMateriales,cantFilas,cantColumnas); // se borró parametro casilleros
             break;
         case 2:
             listarConstruidos(edificios,cantidadEdificios);

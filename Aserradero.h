@@ -6,9 +6,8 @@
 class Aserradero : public Edificio {
     //Atributos
 private:
-
-    int produccion = 25;
-    string tipoProduccion = "madera";
+    string nombreMaterialGenerable = "madera";
+    int cantidadMaterialGenerable = 25;
 
     //Metodos
 public:
