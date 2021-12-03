@@ -14,10 +14,10 @@ void DatosLeidos::leerArchivo(string nombre_archivo) {
     else {
         if (nombre_archivo == "materiales.txt")
             setMateriales(archivo);
-        if (nombre_archivo == "edificios.txt")
-            setEdificios(archivo);
+        //if (nombre_archivo == "edificios.txt")
+        //    setEdificios(archivo);
         if (nombre_archivo == "ubicaciones.txt")
-            registrarUbicaciones(archivo);
+            //registrarUbicaciones(archivo);
         if (nombre_archivo == "mapa.txt") {
             setDimensiones(archivo);
             generarMapa();
@@ -54,7 +54,7 @@ void DatosLeidos::cargarMateriales(string material, int cantidad){
 }
 
 //--------------------LECTURA EDIFICIOS--------------------
-
+/*
 void DatosLeidos::setEdificios(ifstream &arcEdificios) {
     string edificio, piedra, madera, metal, maximo, nombreAdicional;
 
@@ -84,7 +84,7 @@ void DatosLeidos::cargarEdificios(string edificio, int piedra, int madera, int m
     edificios = copiaEdificios;
     cantidadEdificios++;
 }
-
+*/
 
 //--------------------LECTURA MAPA--------------------
 
@@ -166,7 +166,7 @@ void DatosLeidos::separarCasilleros() {
 }
 
 //--------------------LECTURA UBICACIONES--------------------
-
+/*
 void DatosLeidos::registrarUbicaciones(ifstream& arcUbicaciones){
     string edificio, basura, x, y;
     int contador = 0;
@@ -195,7 +195,7 @@ void DatosLeidos::registrarUbicaciones(ifstream& arcUbicaciones){
         contador++;
     }
 }
-
+*/
 int DatosLeidos::posicionEdificio(string edificio) {
     for (int i = 0; i < cantidadEdificios; i++){
         string nombre = edificios[i]->getNombre();

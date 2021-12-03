@@ -5,7 +5,7 @@
 #include "Jugador.h"
 
 Jugador::Jugador(int numeroJugador) {
-    if (numeroTurno == 1)
+    if (numeroJugador == 1)
         nombreJugador = "Jugador 1";
     else
         nombreJugador = "Jugador 2";

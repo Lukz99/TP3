@@ -10,22 +10,32 @@ Edificio::Edificio() = default;
 
 Edificio::~Edificio() = default;
 
-Edificio::Edificio(string nom, int pie, int mad, int met, int max) {
-    nombre = nom;
-    piedra = pie;
-    madera = mad;
-    metal = met;
-    maxima_cantidad = max;
+Edificio::Edificio(int pie, int mad, int met, int max) {
+    cantidadPiedra = pie;
+    cantidadMadera = mad;
+    cantidadMetal = met;
+    maximoPermitido = max;
     setNombreClave();
 }
 
 void Edificio::cargarDatos(string nom, int pie, int mad, int met, int max) {
     nombre = nom;
-    piedra = pie;
-    madera = mad;
-    metal = met;
-    maxima_cantidad = max;
+    cantidadPiedra = pie;
+    cantidadMadera = mad;
+    cantidadMetal = met;
+    maximoPermitido = max;
     setNombreClave();
+}
+
+void Edificio::mostrarReceta(){
+    cout << "\n" << "| Piedra: "<< cantidadPiedra << " | Madera:  " << cantidadMadera
+         << " | Metal: " << cantidadMetal << " | Permitidos: " << maximoPermitido << " |" << endl;
+}
+
+void Edificio::modificarReceta(int nuevaCantPiedra,int nuevaCantMadera, int nuevaCantMetal){
+    cantidadPiedra = nuevaCantPiedra;
+    cantidadMadera = nuevaCantMadera;
+    cantidadMetal = nuevaCantMetal;
 }
 
 void Edificio::setNombreClave(){
@@ -38,18 +48,7 @@ string Edificio::getNombre() {
 char Edificio::getNombreClave() {
     return nombreClave;
 }
-int Edificio::getMadera(){
-    return madera;
-}
-int Edificio::getPiedra(){
-    return piedra;
-}
-int Edificio::getMetal(){
-    return metal;
-}
-int Edificio::getMaximaCantidad(){
-    return maxima_cantidad;
-}
+
 int Edificio::getCostruidos() {
     return construidos;
 }
@@ -65,8 +64,8 @@ void Edificio::restarEdificio(){
 void Edificio::demolicion(){
     nombre = "";
     nombreClave = ' ';
-    piedra = 0;
-    madera = 0;
-    metal = 0;
-    maxima_cantidad = 0;
+    cantidadPiedra = 0;
+    cantidadMadera = 0;
+    cantidadMetal = 0;
+    maximoPermitido = 0;
 }

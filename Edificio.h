@@ -12,11 +12,16 @@ class Edificio {
 protected:
     string nombre = "";
     char nombreClave;
-    int piedra, madera, metal, maxima_cantidad, construidosPrimerJugador = 0, construidosSegundoJugador = 0;
+    int cantidadPiedra, cantidadMadera, cantidadMetal, maximoPermitido, construidos = 0;
 public:
     Edificio();
-    Edificio(string,int,int,int,int);
+    Edificio(int,int,int,int);
     ~Edificio();
+
+    //_---------------------------
+    void mostrarReceta();
+    void modificarReceta(int,int,int);
+    //--------------------------------
     void cargarDatos(string,int,int,int,int);
     void setNombreClave();
     string getNombre();

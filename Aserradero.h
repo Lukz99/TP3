@@ -1,7 +1,7 @@
 #ifndef TP3_ASERRADERO_H
 #define TP3_ASERRADERO_H
 
-#include "edificio.h"
+#include "Edificio.h"
 
 class Aserradero : public Edificio {
     //Atributos
@@ -11,7 +11,7 @@ private:
 
     //Metodos
 public:
-    Aserradero(string nombre, int madera, int piedra, int metal, int construidos);
+    Aserradero(int,int,int,int);
 };
 
 

@@ -1,7 +1,3 @@
-//
-// Created by juamp on 5/11/2021.
-//
-
 #ifndef UNTITLED_MENU_H
 #define UNTITLED_MENU_H
 #include "CasilleroInaccesible.h"
@@ -11,6 +7,7 @@
 class Menu {
 private:
     int opcionElegida;
+    int cantidadOpciones;
 public:
     Menu(int);
     ~Menu();
@@ -25,7 +22,6 @@ public:
     void mostrarMapa(Casillero***,int,int);
     static void listarMateriales(Material**,int);
     static void listarEdificios(Edificio**,int);
-
     static void listarConstruidos(Edificio**, int);
 
     void recolectarRecursos(CasilleroConstruible**,int,Material**,int);

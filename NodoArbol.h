@@ -1,6 +1,9 @@
 #ifndef NODOARBOL_H
 #define NODOARBOL_H
+#include <string>
+#include "Edificio.h"
 
+using namespace std;
 
 class NodoArbol {
 public:
@@ -11,9 +14,9 @@ public:
     NodoArbol* izquierdo;
     //metodos
     NodoArbol(string,int,int,int,int);
-    ~NodoArbol();
     void cargarReceta(int,int,int,int);
     Edificio* obtenerReceta();
+    ~NodoArbol();
 };
 
 
