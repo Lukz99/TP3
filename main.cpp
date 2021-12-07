@@ -9,8 +9,18 @@
 using namespace std;
 
 int main() {
+    int contador = 0;
 
-    DatosLeidos d1;
+    //----------------------PRUEBA ARBOL----------------------
+    /*
+    DiccionarioDeEdificios A;
+    A.procesarDatoANodo("aserradero", 100, 32, 31, 2);
+    A.procesarDatoANodo("escuela", 32, 12, 31, 5);
+    A.recorridoInOrden(A.obtenerNodoRaiz());
+    A.mostrarArbol(A.obtenerNodoRaiz(), contador);
+    */
+    //------------------PRUEBA LISTA MATERIALES-----------------
+    /*DatosLeidos d1;
     Jugador J1;
     Jugador J2;
 
@@ -18,33 +28,28 @@ int main() {
     J1.mostrarMateriales();
     cout << "-----------------" << endl;
     J2.mostrarMateriales();
+*/
+    //------------------PRUEBA LECTURA DE EDIFICIOS---------------
+/*    DatosLeidos d1;
+    Jugador J1;
+    Jugador J2;
+    DiccionarioDeEdificios* diccionario = new DiccionarioDeEdificios();
+    d1.leerArchivo("edificios.txt",J1,J2, diccionario);
+    diccionario->mostrarArbol(diccionario->obtenerNodoRaiz(),contador);
+    diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
+*/
 
-    /*cout << "holis" << endl;
+    DatosLeidos d1;
+    Jugador J1;
+    Jugador J2;
+    DiccionarioDeEdificios* diccionario = new DiccionarioDeEdificios();
 
-    ArbolDeEdificios A;
+    d1.leerArchivo("mapa.txt",J1,J2,diccionario);
+    cout << "aaa" << endl;
+    for ( int i=0;i<d1.cantInaccesibles();i++)
+        cout << d1.getInaccesibles()[i]->getTerreno() << endl;
 
-    A.insertarNodo(A.raiz,"escuela",20,10,50,21);
-    A.insertarNodo(A.raiz,"obelisco",200,100,500,1);
-
-    A.recorridoInOrden(A.raiz);
-
-    int y = 0;
-
-    A.mostrarArbol(A.raiz,y);
-    cout << "---------------------------------" << endl;
-
-    A.modificarNodo(A.raiz, "obelisco", 100, 20, 1);
-
-    A.recorridoInOrden(A.raiz);
-
-    cout << "---------------------------------" << endl;
-
-    ListaMateriales *P = new ListaMateriales();
-
-    P->insertarNodo("madera", 23);
-    P->insertarNodo("piedra", 12);
-    P->modificarNodo("piedra", 10, false);
-    P->imprimirLista();
+    /*
 
     Menu m(9);
 

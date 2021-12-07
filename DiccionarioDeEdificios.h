@@ -6,17 +6,18 @@
 using namespace std;
 
 class DiccionarioDeEdificios {
-public:
-    //atributo
+private:
     NodoArbol* raiz;
-    //metodos
+    void insertarNodo(NodoArbol *&arbol,string nombreEdificio,int cantidadPiedra,int cantidadMadera,int cantidadMetal,int maximoPermitido);
+public:
     DiccionarioDeEdificios();
-    void insertarNodo(NodoArbol*&,string,int,int,int,int);
+    void procesarDatoANodo(string nombreEdificio,int cantidadPiedra,int cantidadMadera,int cantidadMetal,int maximoPermitido);
     void mostrarArbol(NodoArbol*,int);
     bool nodoEnArbol(NodoArbol*,string);
     bool modificarNodo(NodoArbol*,string,int,int,int);
     int extraerMaterial(NodoArbol*,string,string);
     void recorridoInOrden(NodoArbol*);
+    NodoArbol* obtenerNodoRaiz();
 };
 
 #endif //DICCIONARIODEEDIFICIOS_H

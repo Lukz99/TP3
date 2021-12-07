@@ -392,7 +392,7 @@ void Menu::modificarEdificio(DiccionarioDeEdificios arbol){
     do{
     cout << "Ingrese el nombre del edificio a modificar: " << endl;
     cin >> nombreEdificio;
-    }while(!arbol.nodoEnArbol(arbol.raiz,nombreEdificio));
+    }while(!arbol.nodoEnArbol(arbol.obtenerNodoRaiz(),nombreEdificio));
 
     if(nombreEdificio == "obelisco"){
         cout << "Este edificio no es modificable." << endl;
@@ -403,21 +403,21 @@ void Menu::modificarEdificio(DiccionarioDeEdificios arbol){
         cin >> cantPiedra;
     }
     else
-        cantPiedra = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"piedra");
+        cantPiedra = arbol.extraerMaterial(arbol.obtenerNodoRaiz(),nombreEdificio,"piedra");
     if(realizarOperacion("madera")) {
         cout << "Ingrese la nueva cantidad de madera: " << endl;
         cin >> cantMadera;
     }
     else
-        cantMadera = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"madera");
+        cantMadera = arbol.extraerMaterial(arbol.obtenerNodoRaiz(),nombreEdificio,"madera");
     if(realizarOperacion("metal")) {
         cout << "Ingrese la nueva cantidad de metal: " << endl;
         cin >> cantMetal;
     }
     else
-        cantMetal = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"metal");
+        cantMetal = arbol.extraerMaterial(arbol.obtenerNodoRaiz(),nombreEdificio,"metal");
 
-    arbol.modificarNodo(arbol.raiz, nombreEdificio, cantPiedra, cantMadera, cantMetal);
+    arbol.modificarNodo(arbol.obtenerNodoRaiz(), nombreEdificio, cantPiedra, cantMadera, cantMetal);
 }
 
 bool Menu::realizarOperacion(string nombreMaterial){
@@ -440,7 +440,7 @@ void Menu::menuPrincipal(DiccionarioDeEdificios arbol,Casillero*** casilleros, E
             modificacionRealizada = true;
             break;
         case 2:
-            arbol.recorridoInOrden(arbol.raiz);
+            arbol.recorridoInOrden(arbol.obtenerNodoRaiz());
             break;
         case 3:
             mostrarMapa(casilleros,cantFilas,cantColumnas);

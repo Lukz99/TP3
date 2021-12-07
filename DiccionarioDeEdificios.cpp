@@ -8,6 +8,10 @@ DiccionarioDeEdificios::DiccionarioDeEdificios(){
     raiz = nullptr;
 };
 
+void DiccionarioDeEdificios::procesarDatoANodo(string nombreEdificio, int cantidadPiedra,int cantidadMadera, int cantidadMetal, int maximoPermitido) {
+    insertarNodo(raiz,nombreEdificio,cantidadPiedra,cantidadMadera,cantidadMetal,maximoPermitido);
+}
+
 void DiccionarioDeEdificios::insertarNodo(NodoArbol* &arbol,string nomEdificio,int cantPiedra,int cantMadera, int cantMetal, int maxPermitido){
     if(arbol == nullptr) {
         NodoArbol *nodoNuevo = new NodoArbol(nomEdificio, cantPiedra, cantMadera, cantMetal, maxPermitido);
@@ -80,4 +84,8 @@ void DiccionarioDeEdificios::mostrarArbol(NodoArbol* arbol,int contador){
         cout << arbol->nombreEdificio[0] << endl;
         mostrarArbol(arbol->izquierdo,contador+1);
     }
+}
+
+NodoArbol* DiccionarioDeEdificios::obtenerNodoRaiz(){
+    return raiz;
 }

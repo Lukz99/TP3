@@ -7,17 +7,13 @@
 #include "CasilleroTransitable.h"
 #include "CasilleroInaccesible.h"
 #include "Jugador.h"
+#include "DiccionarioDeEdificios.h"
 
 using namespace std;
 
 class DatosLeidos {
 private:
     //ATRIBUTOS
-
-    //->Materiales y edificios
-    Material **materiales;
-    Edificio **edificios;
-    int cantidadMateriales = 0, cantidadEdificios = 0;
 
     //->Matriz polimorfica
     Casillero ***casilleros;
@@ -31,23 +27,8 @@ private:
 
     //METODOS
 
-    //PRE: -
-    //POS: Lee materiales.txt y carga sus datos
-    void setMateriales(ifstream&);
-
     void cargarListaMateriales(ifstream& archivoMateriales,Jugador primerJugador,Jugador segundoJugador);
-
-    //PRE: Recibe los datos que se van extrayendo del txt
-    //POS: Redimensiona el arreglo de materiales leidos para ir añadiendo datos nuevos
-    void cargarMateriales(string,int);
-
-    //PRE: -
-    //POS: Lee edificios.txt y carga sus datos
-    void setEdificios(ifstream &);
-
-    //PRE: Recibe los datos que se van extrayendo del txt
-    //POS: Redimensiona el arreglo de edficios leidos para ir añadiendo datos nuevos
-    void cargarEdificios(string,int,int,int,int);
+    void cargarDiccionarioDeEdificios(ifstream& archivoEdificios,DiccionarioDeEdificios *diccionarioPartida);
 
     //PRE: -
     //POS: Carga atributos fila y columna con las dimensiones que llevara el mapa
@@ -69,18 +50,6 @@ private:
     //POS: Lee los edificios a construir y las carga al casillero construible que corresponda segun coordenadas
     void registrarUbicaciones(ifstream&);
 
-    //PRE: Recibe el nombre de un edificio
-    //POS: Devuelve su posicion en el arreglo de edificios para asi extrar sus datos, de lo contrario devuelve -1
-    int posicionEdificio(string);
-
-    //PRE: Recibe las coordenadas de un edificio
-    //POS: Devuelve la posicion del casillero construible que cumpla con dichos datos, de lo contrario devuelve -1
-    int posicionConstruible(int, int);
-
-    //PRE: -
-    //POS: Verifica si hay un edificio construido en el casillero
-    bool haySuperposicion(int);
-
 public:
     //Constructor sin parametros
     DatosLeidos();
@@ -89,13 +58,9 @@ public:
 
     //PRE: Recibe el nombre de un archivo
     //POS: Lo abre y llama a la funcion designada para cada tipo de archivo
-    void leerArchivo(string nombreArchivo,Jugador primerJugador,Jugador segundoJugador );
+    void leerArchivo(string nombreArchivo,Jugador primerJugador,Jugador segundoJugador,DiccionarioDeEdificios *diccionarioPartida );
 
     //Getters
-    Edificio** getEdficios();
-    Material** getMateriales();
-    int getCantidadEdificios();
-    int getCantidadMateriales();
 
     Casillero*** getCasilleros();
     int getCantidadFilas();
