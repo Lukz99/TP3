@@ -1,7 +1,3 @@
-//
-// Created by juamp on 30/11/2021.
-//
-
 #ifndef TP3_JUGADOR_H
 #define TP3_JUGADOR_H
 #include <string>
