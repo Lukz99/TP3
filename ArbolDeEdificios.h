@@ -1,11 +1,11 @@
-#ifndef ARBOLDEEDIFICIOS_H
-#define ARBOLDEEDIFICIOS_H
+#ifndef DICCIONARIODEEDIFICIOS_H
+#define DICCIONARIODEEDIFICIOS_H
 #include "NodoArbol.h"
 #include <string>
 
 using namespace std;
 
-class ArbolDeEdificios {
+class DiccionarioDeEdificios {
 public:
     //atributo
     NodoArbol* raiz;
@@ -19,4 +19,4 @@ public:
     void recorridoInOrden(NodoArbol*);
 };
 
-#endif //ARBOLDEEDIFICIOS_H
+#endif //DICCIONARIODEEDIFICIOS_H
