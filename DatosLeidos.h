@@ -6,6 +6,7 @@
 #include "CasilleroConstruible.h"
 #include "CasilleroTransitable.h"
 #include "CasilleroInaccesible.h"
+#include "Jugador.h"
 
 using namespace std;
 
@@ -33,6 +34,8 @@ private:
     //PRE: -
     //POS: Lee materiales.txt y carga sus datos
     void setMateriales(ifstream&);
+
+    void cargarListaMateriales(ifstream& archivoMateriales,Jugador primerJugador,Jugador segundoJugador);
 
     //PRE: Recibe los datos que se van extrayendo del txt
     //POS: Redimensiona el arreglo de materiales leidos para ir añadiendo datos nuevos
@@ -86,7 +89,7 @@ public:
 
     //PRE: Recibe el nombre de un archivo
     //POS: Lo abre y llama a la funcion designada para cada tipo de archivo
-    void leerArchivo(string );
+    void leerArchivo(string nombreArchivo,Jugador primerJugador,Jugador segundoJugador );
 
     //Getters
     Edificio** getEdficios();

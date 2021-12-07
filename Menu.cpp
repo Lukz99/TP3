@@ -5,7 +5,7 @@
 #include<time.h>
 #include <fstream>
 #include "Jugador.h"
-#include "ArbolDeEdificios.h"
+#include "DiccionarioDeEdificios.h"
 
 
 using namespace std;
@@ -383,7 +383,7 @@ void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,C
     }
 }
 
-void Menu::modificarEdificio(ArbolDeEdificios arbol){
+void Menu::modificarEdificio(DiccionarioDeEdificios arbol){
 
     string nombreEdificio;
     int cantPiedra, cantMadera, cantMetal;
@@ -432,7 +432,7 @@ bool Menu::realizarOperacion(string nombreMaterial){
 }
 
 
-void Menu::menuPrincipal(ArbolDeEdificios arbol,Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
+void Menu::menuPrincipal(DiccionarioDeEdificios arbol,Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
     bool modificacionRealizada = false;
     switch (opcionElegida) {
         case 1:

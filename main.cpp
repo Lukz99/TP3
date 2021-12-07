@@ -2,15 +2,24 @@
 #include "Material.h"
 #include "DatosLeidos.h"
 #include "Menu.h"
-#include "ArbolDeEdificios.h"
-#include "PilaEdificios.h"
-
+#include "DiccionarioDeEdificios.h"
+#include "ListaMateriales.h"
+#include "Jugador.h"
 
 using namespace std;
 
 int main() {
 
-    cout << "holis" << endl;
+    DatosLeidos d1;
+    Jugador J1;
+    Jugador J2;
+
+    d1.leerArchivo("materiales.txt",J1,J2);
+    J1.mostrarMateriales();
+    cout << "-----------------" << endl;
+    J2.mostrarMateriales();
+
+    /*cout << "holis" << endl;
 
     ArbolDeEdificios A;
 
@@ -30,12 +39,12 @@ int main() {
 
     cout << "---------------------------------" << endl;
 
-    PilaEdificios *P = new PilaEdificios();
+    ListaMateriales *P = new ListaMateriales();
 
     P->insertarNodo("madera", 23);
     P->insertarNodo("piedra", 12);
     P->modificarNodo("piedra", 10, false);
-    P->imprimirPila();
+    P->imprimirLista();
 
     Menu m(9);
 
@@ -44,9 +53,6 @@ int main() {
     A.recorridoInOrden(A.raiz);
 
 
-
-
-/*
     DatosLeidos d1;
 
     d1.leerArchivo("mapa.txt");

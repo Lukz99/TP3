@@ -1,30 +1,26 @@
-//
-// Created by ekizu on 3/12/2021.
-//
+#include "ListaMateriales.h"
 
-#include "PilaEdificios.h"
-
-PilaEdificios::PilaEdificios() {
+ListaMateriales::ListaMateriales() {
     nodoInicial = nullptr;
 }
 
-void PilaEdificios::insertarNodo(string nombreMaterial,int cantidadMaterial){
-    NodoPila *nodoNuevo = new NodoPila(nombreMaterial,cantidadMaterial);
+void ListaMateriales::insertarNodo(string nombreMaterial,int cantidadMaterial){
+    NodoLista *nodoNuevo = new NodoLista(nombreMaterial,cantidadMaterial);
     nodoNuevo->insertarNodoSiguiente(nodoInicial);
     nodoInicial = nodoNuevo;
 }
 
-void PilaEdificios::imprimirPila(){
-    NodoPila *nodoEnRecorrido = nodoInicial;
+void ListaMateriales::imprimirLista(){
+    NodoLista *nodoEnRecorrido = nodoInicial;
     while(nodoEnRecorrido != nullptr) {
         nodoEnRecorrido->obtenerMaterial()->mostrarMaterial();
         nodoEnRecorrido = nodoEnRecorrido->obtenerNodoSiguiente();
     }
 }
 
-void PilaEdificios::modificarNodo(string nombreMaterial,int cantidadOperativa, bool realizarSuma){
+void ListaMateriales::modificarNodo(string nombreMaterial,int cantidadOperativa, bool realizarSuma){
     bool nodoEncontrado = false;
-    NodoPila* nodoEnRecorrido = nodoInicial;
+    NodoLista* nodoEnRecorrido = nodoInicial;
     while(nodoEnRecorrido != nullptr || !nodoEncontrado){
         if(nodoEnRecorrido->obtenerMaterial()->obtenerNombre() == nombreMaterial){
             if (realizarSuma)
@@ -37,4 +33,4 @@ void PilaEdificios::modificarNodo(string nombreMaterial,int cantidadOperativa, b
     }
 }
 
-PilaEdificios::~PilaEdificios() {}
+ListaMateriales::~ListaMateriales(){}

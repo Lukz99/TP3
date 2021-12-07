@@ -4,11 +4,11 @@
 
 using namespace std;
 
-ArbolDeEdificios::ArbolDeEdificios(){
+DiccionarioDeEdificios::DiccionarioDeEdificios(){
     raiz = nullptr;
 };
 
-void ArbolDeEdificios::insertarNodo(NodoArbol* &arbol,string nomEdificio,int cantPiedra,int cantMadera, int cantMetal, int maxPermitido){
+void DiccionarioDeEdificios::insertarNodo(NodoArbol* &arbol,string nomEdificio,int cantPiedra,int cantMadera, int cantMetal, int maxPermitido){
     if(arbol == nullptr) {
         NodoArbol *nodoNuevo = new NodoArbol(nomEdificio, cantPiedra, cantMadera, cantMetal, maxPermitido);
         arbol = nodoNuevo;
@@ -23,7 +23,7 @@ void ArbolDeEdificios::insertarNodo(NodoArbol* &arbol,string nomEdificio,int can
     }
 }
 
-bool ArbolDeEdificios::nodoEnArbol(NodoArbol* arbol,string nomEdificio){
+bool DiccionarioDeEdificios::nodoEnArbol(NodoArbol* arbol,string nomEdificio){
     if(arbol == nullptr)
         return false;
     else if(arbol->nombreEdificio == nomEdificio)
@@ -34,7 +34,7 @@ bool ArbolDeEdificios::nodoEnArbol(NodoArbol* arbol,string nomEdificio){
         return nodoEnArbol(arbol->derecho,nomEdificio);
 }
 
-bool ArbolDeEdificios::modificarNodo(NodoArbol* arbol,string nomEdificio, int nuevaCantPiedra, int nuevaCantMadera, int nuevaCantMetal){
+bool DiccionarioDeEdificios::modificarNodo(NodoArbol* arbol,string nomEdificio, int nuevaCantPiedra, int nuevaCantMadera, int nuevaCantMetal){
     if(arbol->nombreEdificio == nomEdificio) {
         arbol->recetaEdificio->modificarReceta(nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
     }
@@ -44,7 +44,7 @@ bool ArbolDeEdificios::modificarNodo(NodoArbol* arbol,string nomEdificio, int nu
         modificarNodo(arbol->derecho,nomEdificio,nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
 }
 
-int ArbolDeEdificios::extraerMaterial(NodoArbol* arbol,string nomEdificio,string nomMaterial) {
+int DiccionarioDeEdificios::extraerMaterial(NodoArbol* arbol,string nomEdificio,string nomMaterial) {
     if (arbol->nombreEdificio == nomEdificio) {
         if (nomMaterial == "piedra")
             arbol->recetaEdificio->getPiedra();
@@ -59,7 +59,7 @@ int ArbolDeEdificios::extraerMaterial(NodoArbol* arbol,string nomEdificio,string
         return extraerMaterial(arbol->derecho, nomEdificio, nomMaterial);
 }
 
-void ArbolDeEdificios::recorridoInOrden(NodoArbol* arbol){
+void DiccionarioDeEdificios::recorridoInOrden(NodoArbol* arbol){
     if(arbol == nullptr)
         return;
     else{
@@ -70,7 +70,7 @@ void ArbolDeEdificios::recorridoInOrden(NodoArbol* arbol){
     }
 }
 
-void ArbolDeEdificios::mostrarArbol(NodoArbol* arbol,int contador){
+void DiccionarioDeEdificios::mostrarArbol(NodoArbol* arbol,int contador){
     if(arbol == nullptr)
         return;
     else{

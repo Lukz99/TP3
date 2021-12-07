@@ -6,19 +6,19 @@
 DatosLeidos::DatosLeidos() = default;
 
 //LECTURA DE DATOS
-void DatosLeidos::leerArchivo(string nombre_archivo) {
-    ifstream archivo(nombre_archivo);
+void DatosLeidos::leerArchivo(string nombreArchivo,Jugador primerJugador,Jugador segundoJugador) {
+    ifstream archivo(nombreArchivo);
 
     if (archivo.fail())
-        cout << "No se pudo abrir el archivo " << nombre_archivo << endl;
+        cout << "No se pudo abrir el archivo " << nombreArchivo << endl;
     else {
-        if (nombre_archivo == "materiales.txt")
-            setMateriales(archivo);
+        if (nombreArchivo == "materiales.txt")
+            cargarListaMateriales(archivo,primerJugador,segundoJugador);
         //if (nombre_archivo == "edificios.txt")
         //    setEdificios(archivo);
-        if (nombre_archivo == "ubicaciones.txt")
+        if (nombreArchivo == "ubicaciones.txt")
             //registrarUbicaciones(archivo);
-        if (nombre_archivo == "mapa.txt") {
+        if (nombreArchivo == "mapa.txt") {
             setDimensiones(archivo);
             generarMapa();
             setMapa(archivo);
@@ -26,6 +26,17 @@ void DatosLeidos::leerArchivo(string nombre_archivo) {
         }
     }
     archivo.close();
+}
+
+void DatosLeidos::cargarListaMateriales(ifstream &archivo,Jugador primerJugador,Jugador segundoJugador){
+    string material, cantidadPrimerJugador, cantidadSegundoJugador;
+
+    while(archivo >> material) {
+        archivo >> cantidadPrimerJugador;
+        archivo >> cantidadSegundoJugador;
+        primerJugador.cargarMaterial(material,stoi(cantidadPrimerJugador));
+        segundoJugador.cargarMaterial(material,stoi(cantidadSegundoJugador));
+    }
 }
 
 //--------------------LECTURA MATERIALES--------------------

@@ -10,7 +10,7 @@ public:
     //atributo
     NodoArbol* raiz;
     //metodos
-    ArbolDeEdificios();
+    DiccionarioDeEdificios();
     void insertarNodo(NodoArbol*&,string,int,int,int,int);
     void mostrarArbol(NodoArbol*,int);
     bool nodoEnArbol(NodoArbol*,string);

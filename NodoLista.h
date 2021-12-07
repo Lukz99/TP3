@@ -6,16 +6,16 @@
 #define INC_3MOSQUETEROS_NODOPILA_H
 #include "Material.h"
 
-class NodoPila {
+class NodoLista {
 private:
     Material *materialJugador;
-    NodoPila* siguiente;
+    NodoLista* siguiente;
 public:
-    NodoPila(string,int);
-    ~NodoPila();
-    void insertarNodoSiguiente(NodoPila*);
+    NodoLista(string nombreMaterial,int cantidadMaterial);
+    ~NodoLista();
+    void insertarNodoSiguiente(NodoLista*);
     Material* obtenerMaterial();
-    NodoPila* obtenerNodoSiguiente();
+    NodoLista* obtenerNodoSiguiente();
 };
 
 

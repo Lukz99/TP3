@@ -13,6 +13,7 @@ public:
     NodoArbol* derecho;
     NodoArbol* izquierdo;
     //metodos
+    NodoArbol();
     NodoArbol(string,int,int,int,int);
     void cargarReceta(int,int,int,int);
     Edificio* obtenerReceta();

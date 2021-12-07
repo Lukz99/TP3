@@ -1,8 +1,5 @@
-//
-// Created by juamp on 30/11/2021.
-//
-
 #include "Jugador.h"
+#include "ListaMateriales.h"
 
 Jugador::Jugador(int numeroJugador) {
     if (numeroJugador == 1)
@@ -11,7 +8,19 @@ Jugador::Jugador(int numeroJugador) {
         nombreJugador = "Jugador 2";
 }
 
-Jugador::~Jugador() = default;
+Jugador::Jugador(){
+    listaMateriales = new ListaMateriales();
+};
+
+Jugador::~Jugador(){};
+
+void Jugador::cargarMaterial(string nombreMaterial, int cantidadMaterial) {
+    listaMateriales->insertarNodo(nombreMaterial,cantidadMaterial);
+}
+
+void Jugador::mostrarMateriales(){
+    listaMateriales->imprimirLista();
+}
 
 void Jugador::restaurarEnergia() {
     energia += 20;
