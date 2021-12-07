@@ -30,19 +30,14 @@ int main() {
     J2.mostrarMateriales();
 */
     //------------------PRUEBA LECTURA DE EDIFICIOS---------------
-/*    DatosLeidos d1;
+    DatosLeidos d1;
     Jugador J1;
     Jugador J2;
     DiccionarioDeEdificios* diccionario = new DiccionarioDeEdificios();
     d1.leerArchivo("edificios.txt",J1,J2, diccionario);
     diccionario->mostrarArbol(diccionario->obtenerNodoRaiz(),contador);
     diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
-*/
 
-    DatosLeidos d1;
-    Jugador J1;
-    Jugador J2;
-    DiccionarioDeEdificios* diccionario = new DiccionarioDeEdificios();
 
     d1.leerArchivo("mapa.txt",J1,J2,diccionario);
     cout << "aaa" << endl;

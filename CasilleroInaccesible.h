@@ -1,12 +1,8 @@
-//
-// Created by juamp on 3/11/2021.
-//
-
 #ifndef UNTITLED_CASILLEROINACCESIBLE_H
 #define UNTITLED_CASILLEROINACCESIBLE_H
 #include "Casillero.h"
 
-class CasilleroInaccesible : public Casillero{
+class CasilleroInaccesible : public Casillero {
 private:
     int fila, columna;
 public:
