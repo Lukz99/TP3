@@ -1,4 +1,4 @@
-#include "ArbolDeEdificios.h"
+#include "DiccionarioDeEdificios.h"
 #include <iostream>
 #include "NodoArbol.h"
 
