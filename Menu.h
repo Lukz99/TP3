@@ -1,16 +1,14 @@
-//
-// Created by juamp on 5/11/2021.
-//
-
 #ifndef UNTITLED_MENU_H
 #define UNTITLED_MENU_H
 #include "CasilleroInaccesible.h"
 #include "CasilleroTransitable.h"
 #include "CasilleroConstruible.h"
+#include "ArbolDeEdificios.h"
 
 class Menu {
 private:
     int opcionElegida;
+    int cantidadOpciones;
 public:
     Menu(int);
     ~Menu();
@@ -20,16 +18,15 @@ public:
     void opcionValida();
     int getOpcion();
     void menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios);
-    void menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas);
+    void menuPrincipal(ArbolDeEdificios, Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas);
 
     void mostrarMapa(Casillero***,int,int);
     static void listarMateriales(Material**,int);
     static void listarEdificios(Edificio**,int);
-
     static void listarConstruidos(Edificio**, int);
 
     void recolectarRecursos(CasilleroConstruible**,int,Material**,int);
-
+    bool realizarOperacion(string);
     //consultar coordenada
     void consultarCoordenada(Casillero*** casilleros,int,int, CasilleroConstruible**,int, CasilleroTransitable**,int);
     void leerCoordenadas(int&,int&,int,int);
@@ -61,6 +58,8 @@ public:
     bool haySuperposicion(CasilleroConstruible**,int);
 
     void comenzarPartida();
+
+    void modificarEdificio(ArbolDeEdificios);
 
 };
 

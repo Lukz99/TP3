@@ -5,6 +5,7 @@
 #include<time.h>
 #include <fstream>
 #include "Jugador.h"
+#include "ArbolDeEdificios.h"
 
 
 using namespace std;
@@ -15,13 +16,14 @@ Menu::Menu(int cantOpciones) {
 
 Menu::~Menu() = default;
 
+/*
 void designarTurnos(){
     int primerTurno = rand() % (1);
     if (primerTurno == 0)
         primerJugador = new Jugador(primerTurno);
     else
         segundoJugador = new Jugador(primerTurno);
-}
+}*/
 
 void Menu::mostrarMenuPrincipal() {
     cout << "\n\t\t\t|----------------------------------|" << endl
@@ -84,11 +86,11 @@ void Menu::mostrarMapa(Casillero*** casilleros, int cantFilas, int cantColumnas)
 
 void Menu::listarMateriales(Material** materiales, int cantidadMateriales){
     for (int i=0; i<cantidadMateriales;i++){
-        cout << "\n->MATERIAL: " << materiales[i]->getNombre() << endl
+        cout << "\n->MATERIAL: " << materiales[i]->obtenerNombre() << endl
              << "Cantidad: " << materiales[i]->getCantidad() << endl;
     }
 }
-
+/*
 void Menu::listarEdificios(Edificio ** edificios, int cantidadEdificios) {
     for (int i=0;i<cantidadEdificios;i++){
         cout << "\n->EDIFICIO: " << edificios[i]->getNombre() << endl
@@ -104,7 +106,7 @@ void Menu::listarConstruidos(Edificio** edificios, int cantidadEdificios){
     for (int i=0;i<cantidadEdificios;i++)
         cout << "\n->" << edificios[i]->getNombre() << ": " << edificios[i]->getCostruidos() << endl;
 }
-
+*/
 void Menu::consultarCoordenada(Casillero*** casilleros, int maxFilas, int maxColumnas, CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables) {
     int x, y;
     char tipoCasilla;
@@ -122,9 +124,9 @@ void Menu::consultarCoordenada(Casillero*** casilleros, int maxFilas, int maxCol
     if(tipoCasilla == 'C'){
         cout << "Ha encontrado un casillero transitable." << endl;
         int posicion = posicionTransitable(x,y,transitables,cantidadTransitables);
-        if (transitables[posicion]->getMaterial()->getNombre() != "") {
+        if (transitables[posicion]->getMaterial()->obtenerNombre() != "") {
             cout << "Hay " << transitables[posicion]->getMaterial()->getCantidad()
-                 << " de " << transitables[posicion]->getMaterial()->getNombre() << " en este casillero." << endl;
+                 << " de " << transitables[posicion]->getMaterial()->obtenerNombre() << " en este casillero." << endl;
         }
         else
             cout << "No hay materiales en este casillero." << endl;
@@ -194,7 +196,7 @@ void Menu::recolectarRecursos(CasilleroConstruible** construibles, int cantidadC
 
 int Menu::buscarMaterial(string material, Material** materiales, int cantidadMateriales){
     for (int i=0;i<cantidadMateriales;i++){
-        if (material == materiales[i]->getNombre()) return i;
+        if (material == materiales[i]->obtenerNombre()) return i;
     }
     return -1;
 }
@@ -214,12 +216,12 @@ void Menu::lluviaRecursos(CasilleroTransitable** transitables, int cantidadTrans
 void Menu::generamientos(string material, int cantidadMaterial, CasilleroTransitable** transitables, int cantidadTransitables, Casillero*** casilleros){
     for (int i = 0; i < cantidadMaterial; i++) {
         int casilleroGenerador = rand() % (cantidadTransitables);
-        while(transitables[casilleroGenerador]->getMaterial()->getNombre() != "")
+        while(transitables[casilleroGenerador]->getMaterial()->obtenerNombre() != "")
             casilleroGenerador = rand() % cantidadTransitables;
         transitables[casilleroGenerador]->generarMaterial(material, 1, casilleros);
     }
 }
-
+/*
 void Menu::construirEdificio(CasilleroConstruible** construibles, Casillero*** casilleros, int cantidadConstruibles, Material** materiales, Edificio** edificios, int cantidadEdificios, int cantidadMateriales, int maxFilas,int maxColumnas){
     string nombreEdificio;
     int x,y, posConstruible;
@@ -250,7 +252,7 @@ void Menu::construirEdificio(CasilleroConstruible** construibles, Casillero*** c
     else
         cout << "El edificio ingresado no existe." << endl;
 }
-
+*/
 int Menu::posicionEdificio(string edificio, Edificio** edificios, int cantidadEdificios) {
     for (int i = 0; i < cantidadEdificios; i++){
         string edificioBase = edificios[i]->getNombre();
@@ -262,7 +264,7 @@ int Menu::posicionEdificio(string edificio, Edificio** edificios, int cantidadEd
 bool Menu::haySuperposicion(CasilleroConstruible** construibles,int posConstruible){
     return construibles[posConstruible]->getEdificio()->getNombre() != "";
 }
-
+/*
 bool Menu::materialesSuficientes(Material** materiales, Edificio** edificios, int cantidadMateriales, int posicionEdificio){
     int posPiedra = buscarMaterial("piedra",materiales,cantidadMateriales);
     int posMadera =buscarMaterial("madera",materiales,cantidadMateriales);
@@ -305,11 +307,11 @@ void Menu::devolverMateriales(Material** materiales, int cantidadMateriales, Edi
     materiales[posMadera]->sumar(edificios[posEdificio]->getMadera() / 2);
     materiales[posMetal]->sumar(edificios[posEdificio]->getMadera() / 2);
 }
-
+*/
 void Menu::guardarMateriales(Material** materiales, int cantidadMateriales){
     ofstream arcMateriales("materiales.txt");
     for (int i=0;i<cantidadMateriales;i++)
-        arcMateriales << materiales[i]->getNombre() << " " << materiales[i]->getCantidad() << endl;
+        arcMateriales << materiales[i]->obtenerNombre() << " " << materiales[i]->getCantidad() << endl;
     arcMateriales.close();
 }
 
@@ -338,13 +340,13 @@ void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
 void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios){
     switch(opcionElegida){
         case 1:
-            construirEdificio(construibles,cantidadConstruibles,materiales,edificios,cantidadEdificios,cantidadMateriales,cantFilas,cantColumnas); // se borró parametro casilleros
+            //construirEdificio(construibles,cantidadConstruibles,materiales,edificios,cantidadEdificios,cantidadMateriales,cantFilas,cantColumnas); // se borró parametro casilleros
             break;
         case 2:
-            listarConstruidos(edificios,cantidadEdificios);
+            //listarConstruidos(edificios,cantidadEdificios);
             break;
         case 3:
-            demolerEdificio(casilleros,construibles,cantidadConstruibles,materiales,cantidadMateriales,edificios,cantidadEdificios,cantFilas,cantColumnas);
+            //demolerEdificio(casilleros,construibles,cantidadConstruibles,materiales,cantidadMateriales,edificios,cantidadEdificios,cantFilas,cantColumnas);
             break;
         case 4:
             //atacarEdificio();
@@ -359,7 +361,7 @@ void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,C
             consultarCoordenada(casilleros,cantFilas,cantColumnas,construibles,cantidadConstruibles,transitables,cantidadTransitables);
             break;
         case 8:
-            mostrarObjetivos();
+            //mostrarObjetivos();
             break;
         case 9:
             listarMateriales(materiales,cantidadMateriales);
@@ -368,10 +370,10 @@ void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,C
             recolectarRecursos(construibles,cantidadConstruibles,materiales,cantidadMateriales);
             break;
         case 11:
-            moverse();
+            //moverse();
             break;
         case 12:
-            finalizarTurno();
+            //finalizarTurno();
             break;
         case 13:
             guardarMateriales(materiales,cantidadMateriales);
@@ -381,15 +383,64 @@ void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,C
     }
 }
 
-void Menu::menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
-    modificacionRealizada = false;
+void Menu::modificarEdificio(ArbolDeEdificios arbol){
+
+    string nombreEdificio;
+    int cantPiedra, cantMadera, cantMetal;
+    string respuesta;
+
+    do{
+    cout << "Ingrese el nombre del edificio a modificar: " << endl;
+    cin >> nombreEdificio;
+    }while(!arbol.nodoEnArbol(arbol.raiz,nombreEdificio));
+
+    if(nombreEdificio == "obelisco"){
+        cout << "Este edificio no es modificable." << endl;
+    }
+
+    if(realizarOperacion("piedra")){
+        cout << "Ingrese la nueva cantidad de piedra: " << endl;
+        cin >> cantPiedra;
+    }
+    else
+        cantPiedra = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"piedra");
+    if(realizarOperacion("madera")) {
+        cout << "Ingrese la nueva cantidad de madera: " << endl;
+        cin >> cantMadera;
+    }
+    else
+        cantMadera = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"madera");
+    if(realizarOperacion("metal")) {
+        cout << "Ingrese la nueva cantidad de metal: " << endl;
+        cin >> cantMetal;
+    }
+    else
+        cantMetal = arbol.extraerMaterial(arbol.raiz,nombreEdificio,"metal");
+
+    arbol.modificarNodo(arbol.raiz, nombreEdificio, cantPiedra, cantMadera, cantMetal);
+}
+
+bool Menu::realizarOperacion(string nombreMaterial){
+    string respuesta;
+    cout << "Desea modificar la cantidad de "<< nombreMaterial << "(s/n)?: " << endl;
+    cin >> respuesta;
+    while (respuesta != "S" && respuesta != "s" && respuesta != "N" && respuesta != "n"){
+        cout << "Respuesta invalida, debe ingresar s/n";
+        cin >> respuesta;
+    }
+    return (respuesta == "S" || respuesta == "s");
+}
+
+
+void Menu::menuPrincipal(ArbolDeEdificios arbol,Casillero*** casilleros, Edificio** edificios, int cantidadEdificios, int cantFilas, int cantColumnas) {
+    bool modificacionRealizada = false;
     switch (opcionElegida) {
         case 1:
-            //modificarEdificio();
+            modificarEdificio(arbol);
             modificacionRealizada = true;
             break;
         case 2:
-            listarEdificios(edificios,cantidadEdificios);
+            arbol.recorridoInOrden(arbol.raiz);
             break;
         case 3:
             mostrarMapa(casilleros,cantFilas,cantColumnas);
@@ -397,11 +448,11 @@ void Menu::menuPrincipal(Casillero*** casilleros, Edificio** edificios, int cant
         case 4:
             //designarObjetivos();
             //lluviaRecursos(transitables,cantidadTransitables,casilleros);
-            menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios);
+            //menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables, Material** materiales, int cantidadMateriales, Edificio** edificios,int cantidadEdificios);
             break;
         case 5:
             if (modificacionRealizada)
-                guardarEdificios(edificios,cantidadEdificios);
+                //guardarEdificios(edificios,cantidadEdificios);
             break;
     }
 }

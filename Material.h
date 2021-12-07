@@ -6,16 +6,17 @@ using namespace std;
 
 class Material {
 private:
-    string nombre = "";
+    string nombreMaterial = "";
     char nombreClave;
-    int cantidad;
+    int cantidadMaterial;
 public:
     Material();
     Material(string,int);
     void cargarDatos(string,int);
     ~Material();
+    void mostrarMaterial();
     void setNombreClave();
-    string getNombre();
+    string obtenerNombre();
     char getNombreClave();
     int getCantidad();
     void sumar(int);

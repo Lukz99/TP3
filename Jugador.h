@@ -5,8 +5,9 @@
 #ifndef TP3_JUGADOR_H
 #define TP3_JUGADOR_H
 #include <string>
+#include "Material.h"
 
-using namespace std
+using namespace std;
 
 class Jugador {
 private:
@@ -18,7 +19,7 @@ public:
     Jugador(int);
     ~Jugador();
     void restarEnergia(int);
-    void restaurarEnergia()
+    void restaurarEnergia();
     int obtenerEnergia();
     bool objetivoPrincipalCumplido();
     bool objetivosSecundariosCumplidos();
