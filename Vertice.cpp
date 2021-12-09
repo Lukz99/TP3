@@ -50,6 +50,10 @@ Vertice* Vertice::buscarVerticePorPosicion(Vertice* verticeInicial,int posFila,i
     return auxiliar;
 }
 
+bool Vertice::edificioConstruido() {
+    return construible->getEdificio() != nullptr;
+}
+
 CasilleroConstruible* Vertice::obtenerCasilleroConstruible(){
     return construible;
 }

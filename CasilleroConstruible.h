@@ -7,8 +7,6 @@ class CasilleroConstruible : public Casillero {
 private:
     Edificio *edificiacion;
 
-    void setEdificacion();
-
 public:
     CasilleroConstruible(char tipoTerreno);
     ~CasilleroConstruible();

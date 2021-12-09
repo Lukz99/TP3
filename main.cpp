@@ -57,6 +57,9 @@ int main() {
 
     system("pause");
 
+    grafo.crearMatrizDeCostos();
+    grafo.definirCostos("Jugador 1");
+
     /*
 
     Menu m(9);

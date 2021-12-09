@@ -17,6 +17,7 @@ public:
     Jugador(int);
     ~Jugador();
 
+    string obtenerNombreJugador();
     void cargarMaterial(string nombreMaterial,int cantidadMaterial);
     void mostrarMateriales();
     void restarEnergia(int);

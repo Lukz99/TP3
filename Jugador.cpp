@@ -14,6 +14,10 @@ Jugador::Jugador(){
 
 Jugador::~Jugador(){};
 
+string Jugador::obtenerNombreJugador(){
+    return nombreJugador;
+}
+
 void Jugador::cargarMaterial(string nombreMaterial, int cantidadMaterial) {
     listaMateriales->insertarNodo(nombreMaterial,cantidadMaterial);
 }

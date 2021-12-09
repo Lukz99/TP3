@@ -23,6 +23,7 @@ private:
 public:
     Vertice();
     Vertice(char tipoTerreno, int x, int y);
+    bool edificioConstruido();
     Vertice* buscarVerticePorPosicion(Vertice* verticeInicial,int posFila,int posColumna);
     void direccionarVerticeSuperior(Vertice* verticeSuperior);
     void direccionarVerticeDerecho(Vertice* verticeDerecho);

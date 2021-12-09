@@ -4,11 +4,7 @@
 using namespace std;
 
 CasilleroConstruible::CasilleroConstruible(char terreno) : Casillero(terreno){
-    setEdificacion();
-}
-
-void CasilleroConstruible::setEdificacion(){
-    edificiacion = new Edificio();
+    edificiacion = nullptr;
 }
 
 CasilleroConstruible::~CasilleroConstruible(){
