@@ -22,9 +22,7 @@ void Grafo::crearMatrizDeCostos() {
     //inicializarNuevoVertice(matrizAuxiliar);
 }
 
-0 0 0 25
-0 0 5 0
-0 0 0 0
+
 
 void Grafo::definirCostos(string nombreJugador) {
     Vertice *verticeActual;
