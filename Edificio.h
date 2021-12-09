@@ -1,7 +1,3 @@
-//
-// Created by juamp on 4/11/2021.
-//
-
 #ifndef UNTITLED_EDIFICIO_H
 #define UNTITLED_EDIFICIO_H
 #include <string>

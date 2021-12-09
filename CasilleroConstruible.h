@@ -1,7 +1,3 @@
-//
-// Created by juamp on 3/11/2021.
-//
-
 #ifndef UNTITLED_CASILLEROCONSTRUIBLE_H
 #define UNTITLED_CASILLEROCONSTRUIBLE_H
 #include "Casillero.h"
