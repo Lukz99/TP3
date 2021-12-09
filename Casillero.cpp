@@ -1,7 +1,3 @@
-//
-// Created by juamp on 1/11/2021.
-//
-
 #include "Casillero.h"
 #include <iostream>
 
