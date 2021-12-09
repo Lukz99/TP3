@@ -106,7 +106,7 @@ void Menu::listarConstruidos(Edificio** edificios, int cantidadEdificios){
     for (int i=0;i<cantidadEdificios;i++)
         cout << "\n->" << edificios[i]->getNombre() << ": " << edificios[i]->getCostruidos() << endl;
 }
-*/
+
 void Menu::consultarCoordenada(Casillero*** casilleros, int maxFilas, int maxColumnas, CasilleroConstruible** construibles, int cantidadConstruibles, CasilleroTransitable** transitables, int cantidadTransitables) {
     int x, y;
     char tipoCasilla;
@@ -168,7 +168,7 @@ int Menu::posicionTransitable(int x, int y, CasilleroTransitable** transitables,
     return -1;
 }
 
-
+*/
 void Menu::recolectarRecursos(CasilleroConstruible** construibles, int cantidadConstruibles, Material** materiales, int cantidadMateriales){
     int posicionMaterial, acumuladorPiedra = 0, acumuladorMadera = 0, acumuladorMetal = 0;
     for (int i = 0; i< cantidadConstruibles; i++)
@@ -314,7 +314,7 @@ void Menu::guardarMateriales(Material** materiales, int cantidadMateriales){
         arcMateriales << materiales[i]->obtenerNombre() << " " << materiales[i]->getCantidad() << endl;
     arcMateriales.close();
 }
-
+/*
 void Menu::guardarUbicaciones(CasilleroConstruible** construibles, int cantidadConstruibles){
     ofstream arcUbicaciones("ubicaciones.txt");
     for (int i=0; i<cantidadConstruibles;i++)
@@ -323,7 +323,7 @@ void Menu::guardarUbicaciones(CasilleroConstruible** construibles, int cantidadC
                            << construibles[i]->getFila() << "," << construibles[i]->getColumna() << ")" << endl;
         }
     arcUbicaciones.close();
-}
+}*/
 
 void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
     ofstream arcMapa("mapa.txt");
@@ -358,7 +358,7 @@ void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,C
             //comprarBombachas();
             break;
         case 7:
-            consultarCoordenada(casilleros,cantFilas,cantColumnas,construibles,cantidadConstruibles,transitables,cantidadTransitables);
+            //consultarCoordenada(casilleros,cantFilas,cantColumnas,construibles,cantidadConstruibles,transitables,cantidadTransitables);
             break;
         case 8:
             //mostrarObjetivos();
@@ -378,7 +378,7 @@ void Menu::menuJugador(Casillero*** casilleros,int cantFilas, int cantColumnas,C
         case 13:
             guardarMateriales(materiales,cantidadMateriales);
             guardarMapa(casilleros,cantFilas,cantColumnas);
-            guardarUbicaciones(construibles,cantidadConstruibles);
+            //guardarUbicaciones(construibles,cantidadConstruibles);
             break;
     }
 }

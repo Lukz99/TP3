@@ -3,10 +3,8 @@
 #include "Casillero.h"
 
 class CasilleroInaccesible : public Casillero {
-private:
-    int fila, columna;
 public:
-    CasilleroInaccesible(char,int,int);
+    CasilleroInaccesible(char tipoTerreno);
     void mostrar() override;
     void modificar(char) override;
     char getTerreno() override;

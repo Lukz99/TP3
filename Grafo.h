@@ -4,13 +4,20 @@
 #include "Casillero.h"
 
 class Grafo {
-    // Atributos
 private:
-    Vertice* vertice;
-
-
-    // Metodos
+    Vertice *vertices;
+    int cantidadVertices;
+    int ** matrizDeAdyacencia;
 public:
-
-
+    Grafo();
+    void cargarListaVertices(Casillero*** casilleros,int,int);
+    void ingresarVertice(char,int,int);
+    void ingresarVerticeSuperior(Vertice*,int,int);
+    void ingresarVerticeIzquierdo(Vertice*,int,int);
+    void ingresarArista(Vertice*,Vertice*,int);
+    void mostrarVertices();
+    Vertice* getVertice(char);
+    void mostrarVerticesAdyacentes(int x, int y);
 };
+
+#endif //TP3_GRAFO_H

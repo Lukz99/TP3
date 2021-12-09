@@ -5,6 +5,7 @@
 #include "DiccionarioDeEdificios.h"
 #include "ListaMateriales.h"
 #include "Jugador.h"
+#include "Grafo.h"
 
 using namespace std;
 
@@ -40,9 +41,21 @@ int main() {
 
 
     d1.leerArchivo("mapa.txt",J1,J2,diccionario);
-    cout << "aaa" << endl;
-    for ( int i=0;i<d1.cantInaccesibles();i++)
-        cout << d1.getInaccesibles()[i]->getTerreno() << endl;
+    Grafo grafo;
+
+    grafo.cargarListaVertices(d1.getCasilleros(),d1.getCantidadFilas(),d1.getCantidadColumnas());
+
+    system("pause");
+    cout << "-------------\n";
+
+    grafo.mostrarVertices();
+
+    system("pause");
+    cout << "-------------\n";
+
+    grafo.mostrarVerticesAdyacentes(2,6);
+
+    system("pause");
 
     /*
 

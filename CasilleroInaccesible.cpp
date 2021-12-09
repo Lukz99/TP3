@@ -7,10 +7,7 @@
 
 using namespace std;
 
-CasilleroInaccesible::CasilleroInaccesible(char terreno, int x, int y) : Casillero(terreno){
-    fila = x;
-    columna = y;
-}
+CasilleroInaccesible::CasilleroInaccesible(char terreno) : Casillero(terreno){}
 
 void CasilleroInaccesible::mostrar() {
     cout << getTerreno();

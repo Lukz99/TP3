@@ -8,7 +8,7 @@ private:
     int fila, columna;
     Material *material;
 public:
-    CasilleroTransitable(char ,int ,int );
+    CasilleroTransitable(char tipoTerreno);
 
     ~CasilleroTransitable();
 

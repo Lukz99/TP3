@@ -103,15 +103,15 @@ void DatosLeidos::setMapa(ifstream &arcMapa) {
 
     while (arcMapa >> terreno) {
         if (terreno == 'C' || terreno == 'M' || terreno == 'B') {
-            casilleros[conteoFilas][conteoColumnas] = new CasilleroTransitable(terreno, conteoFilas, conteoColumnas);
+            casilleros[conteoFilas][conteoColumnas] = new CasilleroTransitable(terreno);
             cantidadTransitables++;
         }
         else if (terreno == 'T') {
-            casilleros[conteoFilas][conteoColumnas] = new CasilleroConstruible(terreno, conteoFilas, conteoColumnas);
+            casilleros[conteoFilas][conteoColumnas] = new CasilleroConstruible(terreno);
             cantidadConstruibles++;
         }
         else{ // terreno == 'L'
-            casilleros[conteoFilas][conteoColumnas] = new CasilleroInaccesible(terreno,conteoFilas,conteoColumnas);
+            casilleros[conteoFilas][conteoColumnas] = new CasilleroInaccesible(terreno);
             cantidadInaccesibles++;
         }
         conteoColumnas++;
@@ -137,15 +137,15 @@ void DatosLeidos::separarCasilleros() {
         for (int j=0;j<cantidadColumnas;j++) {
             char terreno = casilleros[i][j]->getTerreno();
             if (terreno == 'T') {
-                construibles[conteoConstruibles] = new CasilleroConstruible(terreno, i, j);
+                construibles[conteoConstruibles] = new CasilleroConstruible(terreno);
                 conteoConstruibles++;
             }
             if (terreno == 'C' || terreno == 'M' || terreno == 'B') {
-                transitables[conteoTransitables] = new CasilleroTransitable(terreno, i, j);
+                transitables[conteoTransitables] = new CasilleroTransitable(terreno);
                 conteoTransitables++;
             }
             if (terreno == 'L') {
-                inaccesibles[conteoInaccesibles] = new CasilleroInaccesible(terreno, i, j);
+                inaccesibles[conteoInaccesibles] = new CasilleroInaccesible(terreno);
                 conteoInaccesibles++;
             }
         }

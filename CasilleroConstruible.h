@@ -9,13 +9,12 @@
 
 class CasilleroConstruible : public Casillero {
 private:
-    int fila,columna;
     Edificio *edificiacion;
 
     void setEdificacion();
 
 public:
-    CasilleroConstruible(char,int,int);
+    CasilleroConstruible(char tipoTerreno);
     ~CasilleroConstruible();
 
     void mostrar() override;

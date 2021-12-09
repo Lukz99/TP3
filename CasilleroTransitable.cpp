@@ -4,9 +4,7 @@
 
 using namespace std;
 
-CasilleroTransitable::CasilleroTransitable(char terreno, int x, int y) : Casillero(terreno){
-    fila = x;
-    columna = y;
+CasilleroTransitable::CasilleroTransitable(char terreno) : Casillero(terreno){
     setMaterial();
 }
 
