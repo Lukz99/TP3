@@ -1,5 +1,5 @@
-#ifndef UNTITLED_EDIFICIO_H
-#define UNTITLED_EDIFICIO_H
+#ifndef EDIFICIO_H
+#define EDIFICIO_H
 #include <string>
 
 using namespace std;
@@ -33,4 +33,4 @@ public:
     void demolicion();
 };
 
-#endif //UNTITLED_EDIFICIO_H
+#endif //EDIFICIO_H

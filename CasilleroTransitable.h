@@ -1,5 +1,5 @@
-#ifndef UNTITLED_CASILLEROTRANSITABLE_H
-#define UNTITLED_CASILLEROTRANSITABLE_H
+#ifndef CASILLEROTRANSITABLE_H
+#define CASILLEROTRANSITABLE_H
 #include "Casillero.h"
 #include "Material.h"
 
@@ -28,4 +28,4 @@ public:
     Material* getMaterial();
 };
 
-#endif //UNTITLED_CASILLEROTRANSITABLE_H
+#endif //CASILLEROTRANSITABLE_H

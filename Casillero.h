@@ -1,5 +1,5 @@
-#ifndef UNTITLED_CASILLERO_H
-#define UNTITLED_CASILLERO_H
+#ifndef CASILLERO_H
+#define CASILLERO_H
 
 class Casillero {
 protected:
@@ -15,4 +15,4 @@ public:
     virtual char getInicial() = 0;
 };
 
-#endif //UNTITLED_CASILLERO_H
+#endif //CASILLERO_H

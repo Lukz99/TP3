@@ -1,5 +1,5 @@
-#ifndef UNTITLED_CASILLEROINACCESIBLE_H
-#define UNTITLED_CASILLEROINACCESIBLE_H
+#ifndef CASILLEROINACCESIBLE_H
+#define CASILLEROINACCESIBLE_H
 #include "Casillero.h"
 
 class CasilleroInaccesible : public Casillero {
@@ -11,4 +11,4 @@ public:
     char getInicial() override;
 };
 
-#endif //UNTITLED_CASILLEROINACCESIBLE_H
+#endif //CASILLEROINACCESIBLE_H
