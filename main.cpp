@@ -12,53 +12,23 @@ using namespace std;
 int main() {
     int contador = 0;
 
-    //----------------------PRUEBA ARBOL----------------------
-    /*
-    DiccionarioDeEdificios A;
-    A.procesarDatoANodo("aserradero", 100, 32, 31, 2);
-    A.procesarDatoANodo("escuela", 32, 12, 31, 5);
-    A.recorridoInOrden(A.obtenerNodoRaiz());
-    A.mostrarArbol(A.obtenerNodoRaiz(), contador);
-    */
-    //------------------PRUEBA LISTA MATERIALES-----------------
-    /*DatosLeidos d1;
-    Jugador J1;
-    Jugador J2;
-
-    d1.leerArchivo("materiales.txt",J1,J2);
-    J1.mostrarMateriales();
-    cout << "-----------------" << endl;
-    J2.mostrarMateriales();
-*/
-    //------------------PRUEBA LECTURA DE EDIFICIOS---------------
     DatosLeidos d1;
+    Grafo grafo;
     Jugador J1;
     Jugador J2;
+
     DiccionarioDeEdificios* diccionario = new DiccionarioDeEdificios();
-    d1.leerArchivo("edificios.txt",J1,J2, diccionario);
-    diccionario->mostrarArbol(diccionario->obtenerNodoRaiz(),contador);
-    diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
-
-
-    d1.leerArchivo("mapa.txt",J1,J2,diccionario);
-    Grafo grafo;
+    d1.crearMapa();
+    d1.cargarDiccionarioDeEdificios(diccionario);
+    d1.cargarListaMateriales(J1,J2);
 
     grafo.cargarListaVertices(d1.getCasilleros(),d1.getCantidadFilas(),d1.getCantidadColumnas());
+    d1.registrarUbicaciones(grafo.obtenerListaVertices());
 
-    system("pause");
-    cout << "-------------\n";
-
-    grafo.mostrarVertices();
-
-    system("pause");
-    cout << "-------------\n";
-
-    grafo.mostrarVerticesAdyacentes(2,6);
-
-    system("pause");
-
-    grafo.crearMatrizDeCostos();
-    grafo.definirCostos("Jugador 1");
+    grafo.crearMatrizDeCostos(d1.getCantidadFilas(),d1.getCantidadColumnas(),J1.obtenerNombreJugador());
+    //J1.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
+    //grafo.crearMatrizDeCostos(d1.getCantidadFilas(),d1.getCantidadColumnas(),J2.obtenerNombreJugador());
+    //J2.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
 
     /*
 

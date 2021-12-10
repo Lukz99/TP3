@@ -8,6 +8,7 @@ private:
     string nombreMaterialGenerable = "andycoins";
     int cantidadMaterialGenerable = 50;
 public:
+    MinaOro();
     MinaOro(int,int,int,int);
 };
 

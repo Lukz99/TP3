@@ -10,6 +10,7 @@ class Jugador {
 private:
     string nombreJugador;
     ListaMateriales *listaMateriales;
+    int **matrizDeCostosJugador;
     string objetivos[3];
     int energia = 50;
 public:
@@ -19,6 +20,7 @@ public:
 
     string obtenerNombreJugador();
     void cargarMaterial(string nombreMaterial,int cantidadMaterial);
+    void recibirMatrizDeCostos(int **matrizDeCostos);
     void mostrarMateriales();
     void restarEnergia(int);
     void restaurarEnergia();

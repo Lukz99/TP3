@@ -11,6 +11,7 @@ private:
     string nombreMaterialGenerable = "metal";
     int cantidadMaterialGenerable = 40;
 public:
+    Fabrica();
     Fabrica(int,int,int,int);
 };
 

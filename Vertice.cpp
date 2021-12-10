@@ -97,3 +97,6 @@ Vertice* Vertice::obtenerVerticeIzquierdo() {
 char Vertice::obtenerCasilla(){
     return tipoCasilla;
 }
+void Vertice::construirEdificio(string nombreEdificio,Casillero*** casilleros){
+    construible->construirEdificio(nombreEdificio,casilleros);
+}

@@ -10,6 +10,7 @@ Edificio::Edificio() = default;
 
 Edificio::~Edificio() = default;
 
+
 Edificio::Edificio(int pie, int mad, int met, int max) {
     cantidadPiedra = pie;
     cantidadMadera = mad;
@@ -19,7 +20,7 @@ Edificio::Edificio(int pie, int mad, int met, int max) {
 }
 
 void Edificio::cargarDatos(string nom, int pie, int mad, int met, int max) {
-    nombre = nom;
+    nombreEdificio = nom;
     cantidadPiedra = pie;
     cantidadMadera = mad;
     cantidadMetal = met;
@@ -39,11 +40,11 @@ void Edificio::modificarReceta(int nuevaCantPiedra,int nuevaCantMadera, int nuev
 }
 
 void Edificio::setNombreClave(){
-    nombreClave = (char)toupper(nombre[0]);
+    nombreClave = (char)toupper(nombreEdificio[0]);
 }
 
 string Edificio::getNombre() {
-    return nombre;
+    return nombreEdificio;
 }
 
 int Edificio::getPiedra(){
@@ -73,7 +74,7 @@ void Edificio::restarEdificio(){
     construidos--;
 }
 void Edificio::demolicion(){
-    nombre = "";
+    nombreEdificio = "";
     nombreClave = ' ';
     cantidadPiedra = 0;
     cantidadMadera = 0;

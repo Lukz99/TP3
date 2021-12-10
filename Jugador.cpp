@@ -22,6 +22,10 @@ void Jugador::cargarMaterial(string nombreMaterial, int cantidadMaterial) {
     listaMateriales->insertarNodo(nombreMaterial,cantidadMaterial);
 }
 
+void Jugador::recibirMatrizDeCostos(int **matrizDeCostos) {
+    matrizDeCostosJugador = matrizDeCostos;
+}
+
 void Jugador::mostrarMateriales(){
     listaMateriales->imprimirLista();
 }

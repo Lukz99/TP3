@@ -1,5 +1,12 @@
 #include "CasilleroConstruible.h"
 #include <iostream>
+#include "Aserradero.h"
+#include "Escuela.h"
+#include "Fabrica.h"
+#include "Mina.h"
+#include "MinaOro.h"
+#include "PlantaElectrica.h"
+#include "Obelisco.h"
 
 using namespace std;
 
@@ -27,6 +34,33 @@ char CasilleroConstruible::getInicial(){
 void CasilleroConstruible::mostrar() {
     cout << getTerreno();
 }
+
+void CasilleroConstruible::construirEdificio(string nombreEdificio, Casillero*** casilleros){
+    switch (nombreEdificio[0]) {
+        case 'a':
+            edificiacion = new Aserradero();
+            break;
+        case 'e':
+            edificiacion = new Escuela();
+            break;
+        case 'f':
+            edificiacion = new Fabrica();
+            break;
+        case 'm':
+            if (nombreEdificio == "mina oro")
+                edificiacion = new MinaOro();
+            else
+                edificiacion = new Mina();
+            break;
+        case 'o':
+            edificiacion = new Obelisco();
+            break;
+        case 'p':
+            edificiacion = new PlantaElectrica();
+            break;
+    }
+}
+
 /*
 void CasilleroConstruible::construirEdificio(string nombre, int piedra, int madera, int metal, int maximo, Casillero*** casilleros) {
     edificiacion->cargarDatos(nombre,piedra,madera,metal,maximo);

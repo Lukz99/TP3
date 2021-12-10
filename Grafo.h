@@ -14,21 +14,21 @@ public:
     void ingresarVertice(char,int,int);
     void ingresarVerticeSuperior(Vertice*,int,int);
     void ingresarVerticeIzquierdo(Vertice*,int,int);
-    void ingresarArista(Vertice*,Vertice*,int);
     void mostrarVertices();
-    Vertice* getVertice(char);
+    Vertice* obtenerListaVertices();
     void mostrarVerticesAdyacentes(int x, int y);
+    int** obtenerMatrizDeCostos();
 
     //Precondiciones:
     //Postcondiciones: crea la matriz de costos
-    void crearMatrizDeCostos();
+    void crearMatrizDeCostos(int cantidadFilas,int cantidadColumnas,string nombreJugador);
 
     //post: libera la memoria de la matriz de adyacencia
     void liberarMatrizDeCostos();
 
-    void definirCostos(string nombreJugador);
+    void cargarMatrizDeCostos(int cantidadFilas, int cantidadColumnas, string nombreJugador);
 
-    int consultaCosto(Vertice* verticeActual, string nombreJugador);
+    int consultarCostoDeVertice(Vertice* verticeActual, string nombreJugador);
 
 };
 

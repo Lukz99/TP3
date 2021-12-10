@@ -39,6 +39,7 @@ public:
     CasilleroTransitable* obtenerCasilleroTransitable();
     CasilleroInaccesible* obtenerCasilleroInaccesible();
     char obtenerCasilla();
+    void construirEdificio(string, Casillero***);
     ~Vertice();
 
 };

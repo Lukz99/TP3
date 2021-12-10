@@ -26,7 +26,7 @@ void NodoArbol::cargarReceta(int piedra,int madera,int metal,int permitidos){
             recetaEdificio = new Fabrica(piedra, madera, metal, permitidos);
             break;
         case 'm':
-            if (nombreEdificio == "mina de oro")
+            if (nombreEdificio == "mina oro")
                 recetaEdificio = new MinaOro(piedra, madera, metal, permitidos);
             else
                 recetaEdificio = new Mina(piedra, madera, metal, permitidos);

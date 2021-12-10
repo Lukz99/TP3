@@ -8,6 +8,7 @@ private:
     string nombreMaterialGenerable = "energia";
     int cantidadMaterialGenerable = 15;
 public:
+    PlantaElectrica();
     PlantaElectrica(int,int,int,int);
 };
 

@@ -8,6 +8,7 @@
 #include "CasilleroInaccesible.h"
 #include "Jugador.h"
 #include "DiccionarioDeEdificios.h"
+#include "Vertice.h"
 
 using namespace std;
 
@@ -27,8 +28,6 @@ private:
 
     //METODOS
 
-    void cargarListaMateriales(ifstream& archivoMateriales,Jugador primerJugador,Jugador segundoJugador);
-    void cargarDiccionarioDeEdificios(ifstream& archivoEdificios,DiccionarioDeEdificios *diccionarioPartida);
 
     //PRE: -
     //POS: Carga atributos fila y columna con las dimensiones que llevara el mapa
@@ -46,19 +45,13 @@ private:
     //POS: Separa cada tipo de casillero en tres arreglos, de manera que el programa pueda acceder a sus metodos
     void separarCasilleros();
 
-    //PRE: -
-    //POS: Lee los edificios a construir y las carga al casillero construible que corresponda segun coordenadas
-    void registrarUbicaciones(ifstream&);
+    bool aperturaDeArchivoExitosa(ifstream& archivo,string nombreArchivo);
 
 public:
     //Constructor sin parametros
     DatosLeidos();
     //Destructor
     ~DatosLeidos();
-
-    //PRE: Recibe el nombre de un archivo
-    //POS: Lo abre y llama a la funcion designada para cada tipo de archivo
-    void leerArchivo(string nombreArchivo,Jugador primerJugador,Jugador segundoJugador,DiccionarioDeEdificios *diccionarioPartida );
 
     //Getters
 
@@ -73,6 +66,14 @@ public:
     int cantConstruibles();
     int cantTransitables();
     int cantInaccesibles();
+
+    //PRE: -
+    //POS: Lee los edificios a construir y las carga al casillero construible que corresponda segun coordenadas
+    void registrarUbicaciones(Vertice*);
+    void cargarListaMateriales(Jugador primerJugador,Jugador segundoJugador);
+    void cargarDiccionarioDeEdificios(DiccionarioDeEdificios *diccionarioPartida);
+    void crearMapa();
+
 };
 
 #endif //UNTITLED_DATOSLEIDOS_H

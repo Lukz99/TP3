@@ -10,6 +10,7 @@ private:
     string nombreMaterialGenerable = "andycoins";
     int cantidadMaterialGenerable = 25;
 public:
+    Escuela();
     Escuela(int,int,int,int);
 };
 

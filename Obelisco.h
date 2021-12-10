@@ -7,6 +7,7 @@ using namespace std;
 
 class Obelisco : public Edificio {
 public:
+    Obelisco();
     Obelisco(int,int,int,int);
 };
 

@@ -6,7 +6,7 @@ using namespace std;
 
 class Edificio {
 protected:
-    string nombre = "";
+    string nombreEdificio;
     char nombreClave;
     int cantidadPiedra, cantidadMadera, cantidadMetal, maximoPermitido, construidos = 0;
 public:

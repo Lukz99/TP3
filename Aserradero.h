@@ -11,6 +11,7 @@ private:
 
     //Metodos
 public:
+    Aserradero();
     Aserradero(int,int,int,int);
 };
 

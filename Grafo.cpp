@@ -11,91 +11,6 @@ Grafo::Grafo() {
     cantidadVertices = 0;
 }
 
-//liberarMatrizDeCostos();
-
-
-void Grafo::crearMatrizDeCostos() {
-
-    matrizDeCostos = new int* [8];
-    for(int i = 0; i < 8; i++) {
-        matrizDeCostos[i] = new int[10];
-    }
-    //inicializarNuevoVertice(matrizAuxiliar);
-}
-
-
-
-void Grafo::definirCostos(string nombreJugador) {
-    Vertice *verticeActual;
-    int costoMovilizacion;
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 10; j++) {
-            verticeActual = vertices->buscarVerticePorPosicion(vertices, i, j);
-            costoMovilizacion = consultaCosto(verticeActual, nombreJugador);
-            matrizDeCostos[i][j] = costoMovilizacion;
-        }
-    }
-    for (int i= 0; i< 8; i++){
-        for (int j=0; j<10;j++)
-            cout << matrizDeCostos[i][j] << " ";
-        cout << "\n";
-    }
-}
-/*
-        int origenver = origen . obtenerPosi
-        int posicionOrigen = vertices ->obtenerPosicion(origen);
-        int posicionDestino = vertices ->obtenerPosicion(destino);
-
-        if(posicionOrigen == POSICION_NO_ENCONTRADA){
-            cout << "El vertice " << origen << " no existe en el grafo" << endl;
-        }
-        if(posicionDestino == POSICION_NO_ENCONTRADA){
-            cout << "El vertice " << destino << " no existe en el grafo" << endl;
-        }
-
-        if(!(posicionDestino == POSICION_NO_ENCONTRADA || posicionOrigen == POSICION_NO_ENCONTRADA)) {
-            matrizDeAdyacencia[posicionOrigen][posicionDestino] = peso;
-            matrizDeAdyacencia[posicionDestino][posicionOrigen] = peso;
-        }
-
-    }
-
-    }
-    */
-
-
-int Grafo::consultaCosto(Vertice* actual, string nombreJugador) {
-    char tipoTerrenoDestino = actual->obtenerCasilla();
-    int costoCamino;
-    switch (tipoTerrenoDestino){
-        case 'B':
-            costoCamino = 0;
-            break;
-        case 'C':
-            costoCamino = 4;
-            break;
-        case 'T':
-            if (actual->edificioConstruido())
-                costoCamino = 25;
-            break;
-        case 'L':
-            if (nombreJugador == "Jugador 1")
-                costoCamino = 2;
-            else
-                costoCamino = 5;
-            break;
-        case 'M':
-            if (nombreJugador == "Jugador 1")
-                costoCamino = 5;
-            else
-                costoCamino = 2;
-            break;
-    }
-    return costoCamino;
-
-}
-
-
 void Grafo::cargarListaVertices(Casillero*** casilleros, int filas, int columnas){
     for (int i=0;i<filas;i++)
         for (int j=0;j<columnas;j++) {
@@ -138,6 +53,69 @@ void Grafo::ingresarVerticeSuperior(Vertice* verticeActual,int x, int y){
     verticeSuperior->direccionarVerticeInferior(verticeActual);
 }
 
+void Grafo::crearMatrizDeCostos(int cantidadFilas,int cantidadColumnas,string nombreJugador) {
+
+    matrizDeCostos = new int* [cantidadFilas];
+    for(int i = 0; i < 8; i++) {
+        matrizDeCostos[i] = new int[cantidadColumnas];
+    }
+    cargarMatrizDeCostos(cantidadFilas,cantidadColumnas,nombreJugador);
+}
+
+void Grafo::cargarMatrizDeCostos(int cantidadFilas, int cantidadColumnas, string nombreJugador) {
+    Vertice *verticeActual;
+    int costoMovilizacion;
+    for (int i = 0; i < cantidadFilas; i++) {
+        for (int j = 0; j < cantidadColumnas; j++) {
+            verticeActual = vertices->buscarVerticePorPosicion(vertices, i, j);
+            costoMovilizacion = consultarCostoDeVertice(verticeActual, nombreJugador);
+            matrizDeCostos[i][j] = costoMovilizacion;
+        }
+    }
+    for (int i = 0; i < cantidadFilas; i++) {
+        for (int j = 0; j < cantidadColumnas; j++) {
+            cout << matrizDeCostos[i][j] << " ";
+        }
+        cout << "\n";
+    }
+}
+
+int Grafo::consultarCostoDeVertice(Vertice* actual, string nombreJugador) {
+    char tipoTerrenoDestino = actual->obtenerCasilla();
+    int costoCamino;
+    switch (tipoTerrenoDestino){
+        case 'B':
+            costoCamino = 0;
+            break;
+        case 'C':
+            costoCamino = 4;
+            break;
+        case 'M':
+            if (nombreJugador == "Jugador 1")
+                costoCamino = 5;
+            else
+                costoCamino = 2;
+            break;
+        case 'L':
+            if (nombreJugador == "Jugador 1")
+                costoCamino = 2;
+            else
+                costoCamino = 5;
+            break;
+        case 'T':
+            if (actual->edificioConstruido())
+                costoCamino = -1;
+            else
+                costoCamino = 25;
+            break;
+    }
+    return costoCamino;
+}
+
+int** Grafo::obtenerMatrizDeCostos(){
+    return matrizDeCostos;
+}
+
 void Grafo::mostrarVertices() {
     Vertice *auxiliar;
     for (int i = 0; i < 8; i++)
@@ -164,4 +142,8 @@ void Grafo::liberarMatrizDeCostos() {
         delete[] matrizDeCostos[i];
     }
     delete[] matrizDeCostos;
+}
+
+Vertice* Grafo::obtenerListaVertices(){
+    return vertices;
 }

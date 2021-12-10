@@ -16,7 +16,7 @@ public:
     char getInicial() override;
     void modificar(char) override;
 
-    void construirEdificio(string,int,int,int,int,Casillero*** casilleros);
+    void construirEdificio(string,Casillero*** casilleros);
     void demolerEdificio(Casillero*** casilleros);
 
     int getFila();

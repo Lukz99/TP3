@@ -9,6 +9,7 @@ private:
     string nombreMaterialGenerable = "piedra";
     int cantidadMaterialGenerable = 15;
 public:
+    Mina();
     Mina(int,int,int,int);
 };
 
