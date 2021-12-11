@@ -21,7 +21,9 @@ int main() {
     d1.crearMapa();
     d1.cargarDiccionarioDeEdificios(diccionario);
     d1.cargarListaMateriales(J1,J2);
+    diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
 
+    system("pause");
     grafo.cargarListaVertices(d1.getCasilleros(),d1.getCantidadFilas(),d1.getCantidadColumnas());
     d1.registrarUbicaciones(grafo.obtenerListaVertices());
 
@@ -30,22 +32,12 @@ int main() {
     //grafo.crearMatrizDeCostos(d1.getCantidadFilas(),d1.getCantidadColumnas(),J2.obtenerNombreJugador());
     //J2.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
 
-    /*
 
     Menu m(9);
 
-    system("pause");
-    m.modificarEdificio(A);
-    A.recorridoInOrden(A.raiz);
 
 
-    DatosLeidos d1;
-
-    d1.leerArchivo("mapa.txt");
-    d1.leerArchivo("materiales.txt");
-    d1.leerArchivo("edificios.txt");
-    d1.leerArchivo("ubicaciones.txt");
-
+    /*
     Menu menu(11);
 
     int opcion = 0;

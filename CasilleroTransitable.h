@@ -12,8 +12,6 @@ public:
 
     ~CasilleroTransitable();
 
-    void setMaterial();
-
     void mostrar() override;
     void modificar(char ) override;
     char getTerreno() override;
@@ -21,7 +19,7 @@ public:
 
 
     void generarMaterial(string,int,Casillero***);
-    //void recolectarMaterial(Casillero***);
+    void recolectarMaterial(Casillero***);
 
     int getFila();
     int getColumna();

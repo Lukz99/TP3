@@ -125,6 +125,7 @@ CMakeFiles/TP3.dir/MinaOro.cpp.obj: \
  ../MinaOro.h
 CMakeFiles/TP3.dir/NodoArbol.cpp.obj: \
  ../Aserradero.h \
+ ../DiccionarioDeEdificios.h \
  ../Edificio.h \
  ../Escuela.h \
  ../Fabrica.h \

@@ -61,17 +61,11 @@ void CasilleroConstruible::construirEdificio(string nombreEdificio, Casillero***
     }
 }
 
-/*
-void CasilleroConstruible::construirEdificio(string nombre, int piedra, int madera, int metal, int maximo, Casillero*** casilleros) {
-    edificiacion->cargarDatos(nombre,piedra,madera,metal,maximo);
-    casilleros[fila][columna]->modificar(edificiacion->getNombreClave());
-}
-
 void CasilleroConstruible::demolerEdificio(Casillero*** casilleros){
-    edificiacion->demolicion();
-    casilleros[fila][columna]->modificar('T');
+    delete [] edificiacion;
+    edificiacion = nullptr;
 }
-
+/*
 int CasilleroConstruible::getFila() {
     return fila;
 }

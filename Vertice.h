@@ -40,6 +40,8 @@ public:
     CasilleroInaccesible* obtenerCasilleroInaccesible();
     char obtenerCasilla();
     void construirEdificio(string, Casillero***);
+    void demolerEdificio(Casillero***);
+    bool materialPresente();
     ~Vertice();
 
 };

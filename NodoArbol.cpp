@@ -7,7 +7,9 @@
 #include "Obelisco.h"
 #include "PlantaElectrica.h"
 
-NodoArbol::NodoArbol(string nombre,int piedra,int madera,int metal,int permitidos){
+NodoArbol::NodoArbol(){}
+
+NodoArbol::NodoArbol(string nombre,int piedra,int madera,int metal, int permitidos){
     nombreEdificio = nombre;
     derecho = nullptr;
     izquierdo = nullptr;
@@ -39,9 +41,19 @@ void NodoArbol::cargarReceta(int piedra,int madera,int metal,int permitidos){
             break;
     }
 }
-
+string NodoArbol::obtenerNombreEdificio(){
+    return nombreEdificio;
+}
 Edificio* NodoArbol::obtenerReceta() {
     return recetaEdificio;
 }
+NodoArbol* NodoArbol::obtenerNodoDerecho(){
+    return derecho;
+}
+NodoArbol* NodoArbol::obtenerNodoIzquierdo(){
+    return izquierdo;
+}
+
+
 
 NodoArbol::~NodoArbol(){}

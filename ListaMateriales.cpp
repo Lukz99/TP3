@@ -18,6 +18,18 @@ void ListaMateriales::imprimirLista(){
     }
 }
 
+int ListaMateriales::extraerCantidadMaterial(string nombreMaterial){
+    bool nodoEncontrado = false;
+    NodoLista *nodoEnRecorrido = nodoInicial;
+    int cantidadMaterialBuscado;
+    while(nodoEnRecorrido != nullptr || !nodoEncontrado){
+        if(nodoEnRecorrido->obtenerMaterial()->obtenerNombre() == nombreMaterial){
+            cantidadMaterialBuscado = nodoEnRecorrido->obtenerMaterial()->getCantidad();
+        }
+    }
+    return cantidadMaterialBuscado;
+}
+
 void ListaMateriales::modificarNodo(string nombreMaterial,int cantidadOperativa, bool realizarSuma){
     bool nodoEncontrado = false;
     NodoLista* nodoEnRecorrido = nodoInicial;

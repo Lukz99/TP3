@@ -19,6 +19,14 @@ Edificio::Edificio(int pie, int mad, int met, int max) {
     setNombreClave();
 }
 
+void Edificio::declararPropietario(string nombreJugador){
+    propietario = nombreJugador;
+}
+
+string Edificio::obtenerPropietario(){
+    return propietario;
+}
+
 void Edificio::cargarDatos(string nom, int pie, int mad, int met, int max) {
     nombreEdificio = nom;
     cantidadPiedra = pie;
@@ -56,11 +64,13 @@ int Edificio::getMadera() {
 int Edificio::getMetal() {
     return cantidadMetal;
 }
+int Edificio::getMaximaCantidad(){
+    return maximoPermitido;
+}
 
 char Edificio::getNombreClave() {
     return nombreClave;
 }
-
 int Edificio::getCostruidos() {
     return construidos;
 }

@@ -2,21 +2,26 @@
 #define NODOARBOL_H
 #include <string>
 #include "Edificio.h"
+#include "DiccionarioDeEdificios.h"
 
 using namespace std;
 
 class NodoArbol {
-public:
+    friend class DiccionarioDeEdificios;
+private:
     //atributos
     string nombreEdificio;
     Edificio* recetaEdificio;
     NodoArbol* derecho;
     NodoArbol* izquierdo;
-    //metodos
+public:
     NodoArbol();
-    NodoArbol(string,int,int,int,int);
+    NodoArbol(string nombre,int piedra,int madera,int metal, int permitidos);
     void cargarReceta(int,int,int,int);
+    string obtenerNombreEdificio();
     Edificio* obtenerReceta();
+    NodoArbol* obtenerNodoDerecho();
+    NodoArbol* obtenerNodoIzquierdo();
     ~NodoArbol();
 };
 

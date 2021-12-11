@@ -5,11 +5,7 @@
 using namespace std;
 
 CasilleroTransitable::CasilleroTransitable(char terreno) : Casillero(terreno){
-    setMaterial();
-}
-
-void CasilleroTransitable::setMaterial(){
-    material = new Material();
+    material = nullptr;
 }
 
 void CasilleroTransitable::mostrar() {
@@ -29,14 +25,16 @@ char CasilleroTransitable::getInicial(){
 }
 
 void CasilleroTransitable::generarMaterial(string nombre,int cantidad,Casillero*** casilleros) {
-    material->cargarDatos(nombre,cantidad);
+    material = new Material(nombre,cantidad);
     casilleros[fila][columna]->modificar(material->getNombreClave());
 }
-/*
+
 void CasilleroTransitable::recolectarMaterial(Casillero*** casilleros) {
     delete material;
+    material = nullptr;
     casilleros[fila][columna]->modificar('C');
-}*/
+}
+
 CasilleroTransitable::~CasilleroTransitable(){
     delete material;
 }

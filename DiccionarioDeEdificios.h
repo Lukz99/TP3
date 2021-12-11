@@ -5,6 +5,8 @@
 
 using namespace std;
 
+class NodoArbol;
+
 class DiccionarioDeEdificios {
 private:
     NodoArbol* raiz;
@@ -15,9 +17,12 @@ public:
     void mostrarArbol(NodoArbol*,int);
     bool nodoEnArbol(NodoArbol*,string);
     bool modificarNodo(NodoArbol*,string,int,int,int);
-    int extraerMaterial(NodoArbol*,string,string);
+    int extraerDato(NodoArbol*,string,string);
     void recorridoInOrden(NodoArbol*);
+    void listarConstruidos(NodoArbol* arbol);
+    void modificacionEnConstruidos(NodoArbol* arbol,string nombreEdificio,bool realizarSuma);
     NodoArbol* obtenerNodoRaiz();
+    void guardarDatosDiccionario(NodoArbol*);
 };
 
 #endif //DICCIONARIODEEDIFICIOS_H

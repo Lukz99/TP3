@@ -6,7 +6,7 @@ using namespace std;
 
 class Edificio {
 protected:
-    string nombreEdificio;
+    string nombreEdificio, propietario;
     char nombreClave;
     int cantidadPiedra, cantidadMadera, cantidadMetal, maximoPermitido, construidos = 0;
 public:
@@ -17,6 +17,8 @@ public:
     //_---------------------------
     void mostrarReceta();
     void modificarReceta(int,int,int);
+    void declararPropietario(string nombreJugador);
+    string obtenerPropietario();
     //--------------------------------
     void cargarDatos(string,int,int,int,int);
     void setNombreClave();

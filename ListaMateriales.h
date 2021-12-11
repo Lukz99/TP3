@@ -17,6 +17,7 @@ public:
     ~ListaMateriales();
     void insertarNodo(string,int);
     void imprimirLista();
+    int extraerCantidadMaterial(string nombreMaterial);
     void modificarNodo(string,int,bool);
 };
 

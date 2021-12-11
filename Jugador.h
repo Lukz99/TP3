@@ -12,7 +12,7 @@ private:
     ListaMateriales *listaMateriales;
     int **matrizDeCostosJugador;
     string objetivos[3];
-    int energia = 50;
+    int energia;
 public:
     Jugador();
     Jugador(int);
@@ -22,8 +22,9 @@ public:
     void cargarMaterial(string nombreMaterial,int cantidadMaterial);
     void recibirMatrizDeCostos(int **matrizDeCostos);
     void mostrarMateriales();
+    ListaMateriales* obtenerListaMateriales();
     void restarEnergia(int);
-    void restaurarEnergia();
+    void sumarEnergia(int);
     int obtenerEnergia();
     bool objetivoPrincipalCumplido();
     bool objetivosSecundariosCumplidos();

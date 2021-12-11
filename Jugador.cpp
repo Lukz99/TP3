@@ -10,6 +10,7 @@ Jugador::Jugador(int numeroJugador) {
 
 Jugador::Jugador(){
     listaMateriales = new ListaMateriales();
+    energia = 50;
 };
 
 Jugador::~Jugador(){};
@@ -30,8 +31,15 @@ void Jugador::mostrarMateriales(){
     listaMateriales->imprimirLista();
 }
 
-void Jugador::restaurarEnergia() {
-    energia += 20;
+ListaMateriales* Jugador::obtenerListaMateriales(){
+    return listaMateriales;
+}
+
+
+void Jugador::sumarEnergia(int sumando) {
+    if(energia + sumando > 100)
+        sumando = energia - sumando;
+    energia += sumando;
 }
 
 int Jugador::obtenerEnergia() {
