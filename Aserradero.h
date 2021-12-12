@@ -19,6 +19,9 @@ public:
     // Precondiciones:
     // Postcondiciones:
     Aserradero(int piedra, int madera, int metal, int maximoPermitidos);
+
+    string obtenerNombreMaterialGenerable();
+    int obtenerCantidadMaterialGenerable();
 };
 
 

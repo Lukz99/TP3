@@ -23,6 +23,33 @@ void Edificio::declararPropietario(string nombreJugador){
     propietario = nombreJugador;
 }
 
+void Edificio::repararEdificio() {
+    if (estadoEdificio == 2)
+        cout << "El edificio ingresado se encuentra en perfecto estado." << endl;
+    else if (estadoEdificio == 1) {
+        estadoEdificio++;
+        cout << "Edificio reparado correctamente." << endl;
+    } else
+        cout << "No puede reparar este edificio porque ya ha sido completamente destruido." << endl;
+}
+
+void Edificio::destruirEdificio(){
+    if (estadoEdificio == 2) {
+        estadoEdificio--;
+        cout << "Edificio parcialmente dañado." << endl;
+    } else if (estadoEdificio == 1) {
+        estadoEdificio--;
+        cout << "Edificio completamente destruido." << endl;
+    } else
+        cout << "Este edificio ya ha sido destruido." << endl;
+}
+
+int Edificio::obtenerEstadoEdificio(){
+    return estadoEdificio;
+}
+
+
+
 string Edificio::obtenerPropietario(){
     return propietario;
 }
@@ -74,7 +101,7 @@ char Edificio::obtenerNombreClave() {
 int Edificio::obtenerConstruidos() {
     return construidos;
 }
-void Edificio::mostrar_edificio() {
+void Edificio::mostrarEdificio() {
     cout << obtenerNombre() << endl;
 }
 void Edificio::sumarEdificio() {

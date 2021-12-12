@@ -36,11 +36,11 @@ public:
 
     // Precondiciones:
     // Postcondiciones:
-    void construirEdificio(string,Casillero*** casilleros);
+    void construirEdificio(string, Casillero ***casilleros);
 
     // Precondiciones:
     // Postcondiciones:
-    void demolerEdificio(Casillero*** casilleros);
+    void demolerEdificio(Casillero ***casilleros);
 
     // Precondiciones:
     // Postcondiciones:
@@ -52,8 +52,10 @@ public:
 
     // Precondiciones:
     // Postcondiciones:
-    Edificio* obtenerEdificio();
-};
+    Edificio *obtenerEdificio();
 
+    void edificiosReparables(bool repararEdificio, Casillero ***casilleros);
+
+};
 
 #endif //UNTITLED_CASILLEROCONSTRUIBLE_H

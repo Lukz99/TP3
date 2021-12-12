@@ -42,7 +42,6 @@ public:
     bool realizarDiferenciaMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio, string nombreMaterial);
     bool materialesSuficientes(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio);
     bool coordenadaConstruible(Vertice*, DiccionarioDeEdificios*, int, int, Jugador, string, Casillero***);
-    void restarMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio);
     //opcion 3
     void demolerEdificio(Vertice*,DiccionarioDeEdificios*, Jugador,DatosLeidos);
     void devolverMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio);
@@ -52,11 +51,16 @@ public:
     void comprarBombas(Jugador jugador);
     //opcion 7
     void consultarCoordenada(Vertice* listaVertices, DatosLeidos baseDeDatos);
+    //opcion 8
+    void repararEdificio(Vertice* listaVertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugador,DatosLeidos baseDeDatos);
+    //opcion 10
+    void recolectarRecursos(Vertice* listaVertices,Jugador jugador,DatosLeidos baseDeDatos);
 
-    //opciones de uso multiple
+    //funciones de uso multiple
     string validarEdificio(DiccionarioDeEdificios *diccionarioDeEdificios, string nombreEdificios);
     string realizarOperacion();
     void leerCoordenadas(int&, int&, int, int);
+    void restarMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio, double porcentajeRestable);
 
     //opciones de menu jugador sin readaptar
     void recolectarRecursos(CasilleroConstruible**, int, Material**,int);

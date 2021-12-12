@@ -10,12 +10,18 @@ protected:
     string nombreEdificio, propietario;
     char nombreClave;
     int cantidadPiedra, cantidadMadera, cantidadMetal, maximoPermitido, construidos = 0;
+    int estadoEdificio;
 
     // Metodos
 public:
     Edificio();
     Edificio(int, int, int, int);
     ~Edificio();
+    void repararEdificio();
+    void destruirEdificio();
+    int obtenerEstadoEdificio();
+    virtual string obtenerNombreMaterialProducible();
+    virtual int obtenerCantidadMaterialProducible();
 
     //----------------------------
     // Precondiciones:

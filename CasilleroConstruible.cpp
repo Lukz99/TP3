@@ -30,7 +30,6 @@ char CasilleroConstruible::obtenerInicial() {
     return terrenoInicial;
 }
 
-
 void CasilleroConstruible::mostrar() {
     cout << obtenerTerreno();
 }
@@ -65,14 +64,17 @@ void CasilleroConstruible::demolerEdificio(Casillero*** casilleros){
     delete [] edificiacion;
     edificiacion = nullptr;
 }
-/*
-int CasilleroConstruible::getFila() {
-    return fila;
+
+void CasilleroConstruible::edificiosReparables(bool repararEdificio, Casillero*** casilleros){
+    if (repararEdificio)
+        edificiacion->repararEdificio();
+    else {
+        edificiacion->destruirEdificio();
+        if (edificiacion->obtenerEstadoEdificio() == 0)
+            demolerEdificio(casilleros);
+    }
 }
 
-int CasilleroConstruible::getColumna() {
-    return columna;
-}*/
 Edificio* CasilleroConstruible::obtenerEdificio() {
     return edificiacion;
 }

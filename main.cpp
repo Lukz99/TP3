@@ -24,16 +24,13 @@ int main() {
     diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
 
     system("pause");
-    grafo.cargarListaVertices(d1.getCasilleros(),d1.getCantidadFilas(),d1.getCantidadColumnas());
+    grafo.cargarListaVertices(d1.obtenerCasilleros(),d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas());
     d1.registrarUbicaciones(grafo.obtenerListaVertices());
 
-    grafo.crearMatrizDeCostos(d1.getCantidadFilas(),d1.getCantidadColumnas(),J1.obtenerNombreJugador());
+    grafo.crearMatrizDeCostos(d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas(),J1.obtenerNombreJugador());
     //J1.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
     //grafo.crearMatrizDeCostos(d1.getCantidadFilas(),d1.getCantidadColumnas(),J2.obtenerNombreJugador());
     //J2.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
-
-
-    Menu m(9);
 
 
 
