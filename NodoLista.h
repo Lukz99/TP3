@@ -7,7 +7,7 @@ private:
     Material *materialJugador;
     NodoLista* siguiente;
 public:
-    NodoLista(string nombreMaterial,int cantidadMaterial);
+    NodoLista(string nombreMaterial, int cantidadMaterial);
     ~NodoLista();
     void insertarNodoSiguiente(NodoLista*);
     Material* obtenerMaterial();

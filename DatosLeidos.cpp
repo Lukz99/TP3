@@ -2,10 +2,10 @@
 #include <fstream>
 #include <iostream>
 
-//CONSTRUCTOR
+// Constructor
 DatosLeidos::DatosLeidos() = default;
 
-//LECTURA DE DATOS
+// Lectura de datos
 bool DatosLeidos::aperturaDeArchivoExitosa(ifstream& archivo,string nombreArchivo) {
     bool archivoAbierto;
     if (archivo.fail()) {
@@ -16,9 +16,9 @@ bool DatosLeidos::aperturaDeArchivoExitosa(ifstream& archivo,string nombreArchiv
     return archivoAbierto;
 }
 
-void DatosLeidos::cargarListaMateriales(Jugador primerJugador, Jugador segundoJugador){
+void DatosLeidos::cargarListaMateriales(Jugador primerJugador, Jugador segundoJugador) {
     ifstream archivoMateriales("materiales.txt");
-    if (aperturaDeArchivoExitosa(archivoMateriales,"materiales.txt")){
+    if (aperturaDeArchivoExitosa(archivoMateriales,"materiales.txt")) {
         string material, cantidadPrimerJugador, cantidadSegundoJugador;
         while(archivoMateriales >> material) {
             archivoMateriales >> cantidadPrimerJugador;
@@ -50,12 +50,12 @@ void DatosLeidos::cargarDiccionarioDeEdificios(DiccionarioDeEdificios *diccionar
     archivoEdificios.close();
 }
 
-//--------------------LECTURA MAPA--------------------
+// Lectura del mapa
 
-void DatosLeidos::crearMapa(){
+void DatosLeidos::crearMapa() {
     ifstream archivoMapa("mapa.txt");
     if (aperturaDeArchivoExitosa(archivoMapa,"mapa.txt")){
-        setDimensiones(archivoMapa);
+        definirDimensiones(archivoMapa);
         generarMapa();
         definirMapa(archivoMapa);
         separarCasilleros();
@@ -63,8 +63,8 @@ void DatosLeidos::crearMapa(){
     archivoMapa.close();
 }
 
-//Lectura de filas y columnas
-void DatosLeidos::setDimensiones(ifstream &arcMapa){
+// Lectura de filas y columnas
+void DatosLeidos::definirDimensiones(ifstream &arcMapa) {
     string filas,columnas;
 
     arcMapa >> filas;
@@ -73,8 +73,8 @@ void DatosLeidos::setDimensiones(ifstream &arcMapa){
     cantidadColumnas = stoi(columnas);
 }
 
-//Reserva de memoria previa a carga de datos
-void DatosLeidos::generarMapa(){
+// Reserva de memoria previa a carga de datos
+void DatosLeidos::generarMapa() {
 
     casilleros = new Casillero**[cantidadFilas];
     for (int i = 0; i < cantidadFilas; i++)
@@ -85,34 +85,32 @@ void DatosLeidos::generarMapa(){
             casilleros[i][j] = nullptr;
 }
 
-//Carga de la matriz
-void DatosLeidos::definirMapa(ifstream &arcMapa) {
+// Carga de la matriz
+void DatosLeidos::definirMapa(ifstream &archivoMapa) {
     char terreno;
     int conteoFilas = 0, conteoColumnas = 0;
 
-    while (arcMapa >> terreno) {
+    while (archivoMapa >> terreno) {
         if (terreno == 'C' || terreno == 'M' || terreno == 'B') {
             casilleros[conteoFilas][conteoColumnas] = new CasilleroTransitable(terreno);
             cantidadTransitables++;
-        }
-        else if (terreno == 'T') {
+        } else if (terreno == 'T') {
             casilleros[conteoFilas][conteoColumnas] = new CasilleroConstruible(terreno);
             cantidadConstruibles++;
-        }
-        else{ // terreno == 'L'
+        } else { // terreno == 'L'
             casilleros[conteoFilas][conteoColumnas] = new CasilleroInaccesible(terreno);
             cantidadInaccesibles++;
         }
         conteoColumnas++;
 
-        if(conteoColumnas == 10) {
+        if (conteoColumnas == 10) {
             conteoFilas++;
             conteoColumnas = 0;
         }
     }
 }
 
-//Carga de arreglos individuales
+// Carga de arreglos individuales
 void DatosLeidos::separarCasilleros() {
     int conteoConstruibles = 0;
     int conteoTransitables = 0;
@@ -122,9 +120,9 @@ void DatosLeidos::separarCasilleros() {
     transitables = new CasilleroTransitable*[cantidadTransitables];
     inaccesibles = new CasilleroInaccesible*[cantidadInaccesibles];
 
-    for (int i=0;i<cantidadFilas;i++)
-        for (int j=0;j<cantidadColumnas;j++) {
-            char terreno = casilleros[i][j]->getTerreno();
+    for (int i = 0; i < cantidadFilas; i++)
+        for (int j = 0; j < cantidadColumnas; j++) {
+            char terreno = casilleros[i][j] -> obtenerTerreno();
             if (terreno == 'T') {
                 construibles[conteoConstruibles] = new CasilleroConstruible(terreno);
                 conteoConstruibles++;
@@ -140,7 +138,7 @@ void DatosLeidos::separarCasilleros() {
         }
 }
 
-//--------------------LECTURA UBICACIONES-------------------
+// Lectura de ubicaciones.txt
 void DatosLeidos::registrarUbicaciones(Vertice* verticeInicial){
     ifstream archivoUbicaciones("ubicaciones.txt");
     if (aperturaDeArchivoExitosa(archivoUbicaciones,"ubicaciones.txt")){
@@ -176,67 +174,68 @@ bool DatosLeidos::haySuperposicion(int posConstruible){
     return construibles[posConstruible]->getEdificio()->getNombre() != "";
 }
 */
-//--------------------GETTERS--------------------
 
-int DatosLeidos::getCantidadFilas() {
+// Getters
+
+int DatosLeidos::obtenerCantidadFilas() {
     return cantidadFilas;
 }
 
-int DatosLeidos::getCantidadColumnas() {
+int DatosLeidos::obtenerCantidadColumnas() {
     return cantidadColumnas;
 }
 
-Casillero*** DatosLeidos::getCasilleros() {
+Casillero*** DatosLeidos::obtenerCasilleros() {
     return casilleros;
 }
 
-CasilleroConstruible** DatosLeidos::getConstruibles(){
+CasilleroConstruible** DatosLeidos::obtenerConstruibles() {
     return construibles;
 }
 
-CasilleroTransitable** DatosLeidos::getTransitables(){
+CasilleroTransitable** DatosLeidos::obtenerTransitables() {
     return transitables;
 }
 
-CasilleroInaccesible** DatosLeidos::getInaccesibles(){
+CasilleroInaccesible** DatosLeidos::obtenerInaccesibles() {
     return inaccesibles;
 }
 
-int DatosLeidos::cantConstruibles(){
+int DatosLeidos::cantConstruibles() {
     return cantidadConstruibles;
 }
 
-int DatosLeidos::cantTransitables(){
+int DatosLeidos::cantTransitables() {
     return cantidadTransitables;
 }
 
-int DatosLeidos::cantInaccesibles(){
+int DatosLeidos::cantInaccesibles() {
     return cantidadInaccesibles;
 }
 
-//--------------------LIBERACION DE MEMORIA--------------------
+// Liberacion de memoria
 
 DatosLeidos::~DatosLeidos() {
     for(int i = 0; i < cantidadConstruibles; i++) {
-        if(construibles[i] != nullptr)
+        if (construibles[i] != nullptr)
             delete construibles[i];
     }
     delete [] construibles;
 
-    for(int i = 0; i < cantidadTransitables; i++) {
-        if(transitables[i] != nullptr)
+    for (int i = 0; i < cantidadTransitables; i++) {
+        if (transitables[i] != nullptr)
             delete transitables[i];
     }
     delete [] transitables;
 
-    for(int i = 0; i < cantidadInaccesibles; i++) {
-        if(inaccesibles[i] != nullptr)
+    for (int i = 0; i < cantidadInaccesibles; i++) {
+        if (inaccesibles[i] != nullptr)
             delete inaccesibles[i];
     }
     delete [] inaccesibles;
 
     for (int i = 0; i < cantidadFilas; i++) {
-        for(int j = 0; j < cantidadColumnas; j++) {
+        for (int j = 0; j < cantidadColumnas; j++) {
             delete casilleros[i][j];
         }
         delete [] casilleros[i];

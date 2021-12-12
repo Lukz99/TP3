@@ -1,5 +1,5 @@
-#ifndef UNTITLED_MENU_H
-#define UNTITLED_MENU_H
+#ifndef TP3_MENU_H
+#define TP3_MENU_H
 #include "CasilleroInaccesible.h"
 #include "CasilleroTransitable.h"
 #include "CasilleroConstruible.h"
@@ -26,50 +26,50 @@ public:
     int getOpcion();
 
     //procesar opcion
-    void menuJugador(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugador,DatosLeidos baseDeDatos);
+    void menuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador, DatosLeidos baseDeDatos);
     void menuPrincipal(DiccionarioDeEdificios* diccionario, Casillero*** casilleros, int cantFilas, int cantColumnas);
 
     //--menu principal--
     //opcion 1
     void modificarEdificio(DiccionarioDeEdificios *diccionarioDeEdificios);
-    int modificarMaterial(DiccionarioDeEdificios* diccionarioDeEdificios,string nombreMaterial,string nombreEdificio);
+    int modificarMaterial(DiccionarioDeEdificios* diccionarioDeEdificios, string nombreMaterial, string nombreEdificio);
     //opcion 3
     void mostrarMapa(Casillero***,int,int);
 
     //--menu jugador--
     //opcion 1
-    void construirEdificio(DiccionarioDeEdificios* diccionario,Grafo vertices, Jugador jugador,DatosLeidos baseDeDatos);
-    bool realizarDiferenciaMateriales(DiccionarioDeEdificios* diccionario,Jugador jugador, string nombreEdificio,string nombreMaterial);
-    bool materialesSuficientes(DiccionarioDeEdificios* diccionario,Jugador jugador,string nombreEdificio);
-    bool coordenadaConstruible(Vertice*,DiccionarioDeEdificios*,int,int,Jugador,string,Casillero***);
+    void construirEdificio(DiccionarioDeEdificios* diccionario, Grafo vertices, Jugador jugador, DatosLeidos baseDeDatos);
+    bool realizarDiferenciaMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio, string nombreMaterial);
+    bool materialesSuficientes(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio);
+    bool coordenadaConstruible(Vertice*, DiccionarioDeEdificios*, int, int, Jugador, string, Casillero***);
     void restarMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio);
     //opcion 3
-    void demolerEdificio(Vertice*,DiccionarioDeEdificios*,Jugador,DatosLeidos);
-    void devolverMateriales(DiccionarioDeEdificios* diccionario,Jugador jugador, string nombreEdificio);
+    void demolerEdificio(Vertice*,DiccionarioDeEdificios*, Jugador,DatosLeidos);
+    void devolverMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio);
     //opcion 4
-    void atacarEdificio(Vertice* listaVertices,Jugador jugador,DatosLeidos baseDeDatos);
+    void atacarEdificio(Vertice* listaVertices, Jugador jugador,DatosLeidos baseDeDatos);
     //opcion 6
     void comprarBombas(Jugador jugador);
     //opcion 7
-    void consultarCoordenada(Vertice* listaVertices,DatosLeidos baseDeDatos);
+    void consultarCoordenada(Vertice* listaVertices, DatosLeidos baseDeDatos);
 
     //opciones de uso multiple
-    string validarEdificio(DiccionarioDeEdificios *diccionarioDeEdificios,string nombreEdificios);
+    string validarEdificio(DiccionarioDeEdificios *diccionarioDeEdificios, string nombreEdificios);
     string realizarOperacion();
-    void leerCoordenadas(int&,int&,int,int);
+    void leerCoordenadas(int&, int&, int, int);
 
     //opciones de menu jugador sin readaptar
-    void recolectarRecursos(CasilleroConstruible**,int,Material**,int);
-    void lluviaRecursos(CasilleroTransitable**,int,Casillero***);
-    void generamientos(string,int,CasilleroTransitable**,int,Casillero***);
-    void guardarMateriales(Material**,int);
-    void guardarUbicaciones(CasilleroConstruible**,int);
-    void guardarMapa(Casillero***,int,int);
+    void recolectarRecursos(CasilleroConstruible**, int, Material**,int);
+    void lluviaRecursos(CasilleroTransitable**, int, Casillero***);
+    void generamientos(string, int, CasilleroTransitable**, int, Casillero***);
+    void guardarMateriales(Material**, int);
+    void guardarUbicaciones(CasilleroConstruible**, int);
+    void guardarMapa(Casillero***, int, int);
     void guardarEdificios(Edificio**, int);
 
     //opciones posiblemente descartables
-    bool haySuperposicion(CasilleroConstruible**,int);
+    bool haySuperposicion(CasilleroConstruible**, int);
 };
 
 
-#endif //UNTITLED_MENU_H
+#endif //TP3_MENU_H

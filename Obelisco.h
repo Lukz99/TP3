@@ -8,10 +8,7 @@ using namespace std;
 class Obelisco : public Edificio {
 public:
     Obelisco();
-    Obelisco(int,int,int,int);
+    Obelisco(int piedra ,int madera, int metal, int maximoPermitidos);
 };
-
-
-
 
 #endif //TP3_OBELISCO_H

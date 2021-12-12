@@ -1,5 +1,5 @@
-#ifndef UNTITLED_DATOSLEIDOS_H
-#define UNTITLED_DATOSLEIDOS_H
+#ifndef TP3_DATOSLEIDOS_H
+#define TP3_DATOSLEIDOS_H
 #include <string>
 #include "Edificio.h"
 #include "Material.h"
@@ -31,7 +31,7 @@ private:
 
     // Precondiciones: -
     // Postcondiciones: Carga los atributos fila y columna con las dimensiones que llevara el mapa
-    void setDimensiones(ifstream &);
+    void definirDimensiones(ifstream &);
 
     // Precondiciones: Toma las dimensiones de la matriz
     // Postcondiciones: Reserva memoria para la matriz dinamica
@@ -88,5 +88,5 @@ public:
 
 };
 
-#endif //UNTITLED_DATOSLEIDOS_H
+#endif //TP3_DATOSLEIDOS_H
 

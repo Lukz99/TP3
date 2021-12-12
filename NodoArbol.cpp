@@ -9,14 +9,14 @@
 
 NodoArbol::NodoArbol(){}
 
-NodoArbol::NodoArbol(string nombre,int piedra,int madera,int metal, int permitidos){
+NodoArbol::NodoArbol(string nombre, int piedra, int madera, int metal, int permitidos) {
     nombreEdificio = nombre;
     derecho = nullptr;
     izquierdo = nullptr;
-    cargarReceta(piedra,madera,metal,permitidos);
+    cargarReceta(piedra, madera, metal, permitidos);
 }
 
-void NodoArbol::cargarReceta(int piedra,int madera,int metal,int permitidos){
+void NodoArbol::cargarReceta(int piedra, int madera, int metal, int permitidos) {
     switch (nombreEdificio[0]) {
         case 'a':
             recetaEdificio = new Aserradero(piedra, madera, metal, permitidos);
@@ -53,7 +53,5 @@ NodoArbol* NodoArbol::obtenerNodoDerecho(){
 NodoArbol* NodoArbol::obtenerNodoIzquierdo(){
     return izquierdo;
 }
-
-
 
 NodoArbol::~NodoArbol(){}

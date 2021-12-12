@@ -16,7 +16,7 @@ Edificio::Edificio(int pie, int mad, int met, int max) {
     cantidadMadera = mad;
     cantidadMetal = met;
     maximoPermitido = max;
-    setNombreClave();
+    definirNombreClave();
 }
 
 void Edificio::declararPropietario(string nombreJugador){
@@ -33,7 +33,7 @@ void Edificio::cargarDatos(string nom, int pie, int mad, int met, int max) {
     cantidadMadera = mad;
     cantidadMetal = met;
     maximoPermitido = max;
-    setNombreClave();
+    definirNombreClave();
 }
 
 void Edificio::mostrarReceta(){
@@ -47,43 +47,43 @@ void Edificio::modificarReceta(int nuevaCantPiedra,int nuevaCantMadera, int nuev
     cantidadMetal = nuevaCantMetal;
 }
 
-void Edificio::setNombreClave(){
+void Edificio::definirNombreClave() {
     nombreClave = (char)toupper(nombreEdificio[0]);
 }
 
-string Edificio::getNombre() {
+string Edificio::obtenerNombre() {
     return nombreEdificio;
 }
 
-int Edificio::getPiedra(){
+int Edificio::obtenerPiedra() {
     return cantidadPiedra;
 }
-int Edificio::getMadera() {
+int Edificio::obtenerMadera() {
     return cantidadMadera;
 }
-int Edificio::getMetal() {
+int Edificio::obtenerMetal() {
     return cantidadMetal;
 }
-int Edificio::getMaximaCantidad(){
+int Edificio::obtenerMaximaCantidad() {
     return maximoPermitido;
 }
 
-char Edificio::getNombreClave() {
+char Edificio::obtenerNombreClave() {
     return nombreClave;
 }
-int Edificio::getCostruidos() {
+int Edificio::obtenerConstruidos() {
     return construidos;
 }
 void Edificio::mostrar_edificio() {
-    cout << getNombre() << endl;
+    cout << obtenerNombre() << endl;
 }
-void Edificio::sumarEdificio(){
+void Edificio::sumarEdificio() {
     construidos++;
 }
-void Edificio::restarEdificio(){
+void Edificio::restarEdificio() {
     construidos--;
 }
-void Edificio::demolicion(){
+void Edificio::demolicion() {
     nombreEdificio = "";
     nombreClave = ' ';
     cantidadPiedra = 0;
