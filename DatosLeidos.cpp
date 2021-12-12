@@ -16,7 +16,7 @@ bool DatosLeidos::aperturaDeArchivoExitosa(ifstream& archivo,string nombreArchiv
     return archivoAbierto;
 }
 
-void DatosLeidos::cargarListaMateriales(Jugador primerJugador,Jugador segundoJugador){
+void DatosLeidos::cargarListaMateriales(Jugador primerJugador, Jugador segundoJugador){
     ifstream archivoMateriales("materiales.txt");
     if (aperturaDeArchivoExitosa(archivoMateriales,"materiales.txt")){
         string material, cantidadPrimerJugador, cantidadSegundoJugador;
@@ -44,7 +44,7 @@ void DatosLeidos::cargarDiccionarioDeEdificios(DiccionarioDeEdificios *diccionar
             archivoEdificios >> madera;
             archivoEdificios >> metal;
             archivoEdificios >> maximo;
-            diccionarioPartida->procesarDatoANodo(edificio, stoi(piedra), stoi(madera), stoi(metal), stoi(maximo));
+            diccionarioPartida -> procesarDatoANodo(edificio, stoi(piedra), stoi(madera), stoi(metal), stoi(maximo));
         }
     }
     archivoEdificios.close();
@@ -57,7 +57,7 @@ void DatosLeidos::crearMapa(){
     if (aperturaDeArchivoExitosa(archivoMapa,"mapa.txt")){
         setDimensiones(archivoMapa);
         generarMapa();
-        setMapa(archivoMapa);
+        definirMapa(archivoMapa);
         separarCasilleros();
     }
     archivoMapa.close();
@@ -77,16 +77,16 @@ void DatosLeidos::setDimensiones(ifstream &arcMapa){
 void DatosLeidos::generarMapa(){
 
     casilleros = new Casillero**[cantidadFilas];
-    for (int i=0;i<cantidadFilas;i++)
+    for (int i = 0; i < cantidadFilas; i++)
         casilleros[i] = new Casillero*[cantidadColumnas];
 
-    for (int i=0;i<cantidadFilas;i++)
-        for (int j=0;j<cantidadColumnas;j++)
+    for (int i = 0; i < cantidadFilas; i++)
+        for (int j = 0; j<cantidadColumnas; j++)
             casilleros[i][j] = nullptr;
 }
 
 //Carga de la matriz
-void DatosLeidos::setMapa(ifstream &arcMapa) {
+void DatosLeidos::definirMapa(ifstream &arcMapa) {
     char terreno;
     int conteoFilas = 0, conteoColumnas = 0;
 

@@ -4,24 +4,55 @@
 #include "Edificio.h"
 
 class CasilleroConstruible : public Casillero {
+    // Atributos
 private:
     Edificio *edificiacion;
 
+    // Metodos
 public:
+    // Precondiciones:
+    // Postcondiciones:
     CasilleroConstruible(char tipoTerreno);
+
+    // Precondiciones:
+    // Postcondiciones:
     ~CasilleroConstruible();
 
+    // Precondiciones:
+    // Postcondiciones:
     void mostrar() override;
-    char getTerreno() override;
-    char getInicial() override;
+
+    // Precondiciones:
+    // Postcondiciones:
+    char obtenerTerreno() override;
+
+    // Precondiciones:
+    // Postcondiciones:
+    char obtenerInicial() override;
+
+    // Precondiciones:
+    // Postcondiciones:
     void modificar(char) override;
 
+    // Precondiciones:
+    // Postcondiciones:
     void construirEdificio(string,Casillero*** casilleros);
+
+    // Precondiciones:
+    // Postcondiciones:
     void demolerEdificio(Casillero*** casilleros);
 
-    int getFila();
-    int getColumna();
-    Edificio* getEdificio();
+    // Precondiciones:
+    // Postcondiciones:
+    int obtenerFila();
+
+    // Precondiciones:
+    // Postcondiciones:
+    int obtenerColumna();
+
+    // Precondiciones:
+    // Postcondiciones:
+    Edificio* obtenerEdificio();
 };
 
 

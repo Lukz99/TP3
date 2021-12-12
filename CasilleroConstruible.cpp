@@ -10,11 +10,11 @@
 
 using namespace std;
 
-CasilleroConstruible::CasilleroConstruible(char terreno) : Casillero(terreno){
+CasilleroConstruible::CasilleroConstruible(char terreno) : Casillero(terreno) {
     edificiacion = nullptr;
 }
 
-CasilleroConstruible::~CasilleroConstruible(){
+CasilleroConstruible::~CasilleroConstruible() {
     delete edificiacion;
 }
 
@@ -22,17 +22,17 @@ void CasilleroConstruible::modificar(char nuevoNombre) {
     terreno = nuevoNombre;
 }
 
-char CasilleroConstruible::getTerreno(){
+char CasilleroConstruible::obtenerTerreno() {
     return terreno;
 }
 
-char CasilleroConstruible::getInicial(){
+char CasilleroConstruible::obtenerInicial() {
     return terrenoInicial;
 }
 
 
 void CasilleroConstruible::mostrar() {
-    cout << getTerreno();
+    cout << obtenerTerreno();
 }
 
 void CasilleroConstruible::construirEdificio(string nombreEdificio, Casillero*** casilleros){
@@ -73,7 +73,7 @@ int CasilleroConstruible::getFila() {
 int CasilleroConstruible::getColumna() {
     return columna;
 }*/
-Edificio* CasilleroConstruible::getEdificio() {
+Edificio* CasilleroConstruible::obtenerEdificio() {
     return edificiacion;
 }
 

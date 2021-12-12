@@ -11,8 +11,14 @@ private:
 
     //Metodos
 public:
+
+    // Precondiciones:
+    // Postcondiciones:
     Aserradero();
-    Aserradero(int,int,int,int);
+
+    // Precondiciones:
+    // Postcondiciones:
+    Aserradero(int piedra, int madera, int metal, int maximoPermitidos);
 };
 
 

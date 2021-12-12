@@ -200,7 +200,7 @@ void Menu::menuPrincipal(DiccionarioDeEdificios *diccionario,Casillero*** casill
 }
 
 
-void Menu::menuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador,DatosLeidos baseDeDatos){
+void Menu::menuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador, DatosLeidos baseDeDatos){
     switch(opcionElegida){
         case 1:
             construirEdificio(diccionarioDeEdificios,vertices,jugador,baseDeDatos);
@@ -230,7 +230,7 @@ void Menu::menuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdif
             jugador.mostrarMateriales();
             break;
         case 10:
-            recolectarRecursos(construibles,cantidadConstruibles,materiales,cantidadMateriales);
+            //recolectarRecursos(construibles,cantidadConstruibles,materiales,cantidadMateriales);
             break;
         case 11:
             //moverse();
@@ -239,8 +239,8 @@ void Menu::menuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdif
             //finalizarTurno();
             break;
         case 13:
-            guardarMateriales(materiales,cantidadMateriales);
-            guardarMapa(casilleros,cantFilas,cantColumnas);
+            //guardarMateriales(materiales,cantidadMateriales);
+            //guardarMapa(casilleros,cantFilas,cantColumnas);
             //guardarUbicaciones(construibles,cantidadConstruibles);
             break;
     }

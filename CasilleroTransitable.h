@@ -3,27 +3,57 @@
 #include "Casillero.h"
 #include "Material.h"
 
-class CasilleroTransitable : public Casillero{
+class CasilleroTransitable : public Casillero {
+    // Atributos
 private:
     int fila, columna;
     Material *material;
+
+    //Metodos
 public:
+    // Precondiciones:
+    // Postcondiciones:
     CasilleroTransitable(char tipoTerreno);
 
+    // Precondiciones:
+    // Postcondiciones:
     ~CasilleroTransitable();
 
+    // Precondiciones:
+    // Postcondiciones:
     void mostrar() override;
-    void modificar(char ) override;
-    char getTerreno() override;
-    char getInicial() override;
 
+    // Precondiciones:
+    // Postcondiciones:
+    void modificar(char) override;
 
-    void generarMaterial(string,int,Casillero***);
+    // Precondiciones:
+    // Postcondiciones:
+    char obtenerTerreno() override;
+
+    // Precondiciones:
+    // Postcondiciones:
+    char obtenerInicial() override;
+
+    // Precondiciones:
+    // Postcondiciones:
+    void generarMaterial(string, int cantidadMaterial, Casillero***);
+
+    // Precondiciones:
+    // Postcondiciones:
     void recolectarMaterial(Casillero***);
 
-    int getFila();
-    int getColumna();
-    Material* getMaterial();
+    // Precondiciones:
+    // Postcondiciones:
+    int obtenerFila();
+
+    // Precondiciones:
+    // Postcondiciones:
+    int obtenerColumna();
+
+    // Precondiciones:
+    // Postcondiciones:
+    Material* obtenerMaterial();
 };
 
 #endif //CASILLEROTRANSITABLE_H

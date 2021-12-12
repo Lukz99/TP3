@@ -4,53 +4,53 @@
 
 using namespace std;
 
-CasilleroTransitable::CasilleroTransitable(char terreno) : Casillero(terreno){
+CasilleroTransitable::CasilleroTransitable(char terreno) : Casillero(terreno) {
     material = nullptr;
 }
 
 void CasilleroTransitable::mostrar() {
-    cout << getTerreno();
+    cout << obtenerTerreno();
 }
 
 void CasilleroTransitable::modificar(char nuevoNombre) {
     terreno = nuevoNombre;
 }
 
-char CasilleroTransitable::getTerreno(){
+char CasilleroTransitable::obtenerTerreno() {
     return terreno;
 }
 
-char CasilleroTransitable::getInicial(){
+char CasilleroTransitable::obtenerInicial() {
     return terrenoInicial;
 }
 
-void CasilleroTransitable::generarMaterial(string nombre,int cantidad,Casillero*** casilleros) {
-    material = new Material(nombre,cantidad);
-    casilleros[fila][columna]->modificar(material->getNombreClave());
+void CasilleroTransitable::generarMaterial(string nombre, int cantidadMaterial, Casillero*** casilleros) {
+    material = new Material(nombre, cantidadMaterial);
+    casilleros[fila][columna] -> modificar(material -> getNombreClave());
 }
 
 void CasilleroTransitable::recolectarMaterial(Casillero*** casilleros) {
     delete material;
     material = nullptr;
-    casilleros[fila][columna]->modificar('C');
+    casilleros[fila][columna] -> modificar('C');
 }
 
-CasilleroTransitable::~CasilleroTransitable(){
+CasilleroTransitable::~CasilleroTransitable() {
     delete material;
 }
 
 
 
 
-int CasilleroTransitable::getFila() {
+int CasilleroTransitable::obtenerFila() {
     return fila;
 }
 
-int CasilleroTransitable::getColumna() {
+int CasilleroTransitable::obtenerColumna() {
     return columna;
 }
 
-Material* CasilleroTransitable::getMaterial() {
+Material* CasilleroTransitable::obtenerMaterial() {
     return material;
 }
 

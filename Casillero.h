@@ -2,17 +2,36 @@
 #define CASILLERO_H
 
 class Casillero {
+    // Atributos
 protected:
     char terreno;
     char terrenoInicial;
+
+    // Metodos
 public:
-    Casillero(char );
+    // Precondiciones:
+    // Postcondiciones:
+    Casillero(char);
+
+    // Precondiciones:
+    // Postcondiciones:
     virtual ~Casillero();
 
+    // Precondiciones:
+    // Postcondiciones:
     virtual void mostrar() = 0;
-    virtual char getTerreno() = 0;
+
+    // Precondiciones:
+    // Postcondiciones:
+    virtual char obtenerTerreno() = 0;
+
+    // Precondiciones:
+    // Postcondiciones:
     virtual void modificar(char) = 0;
-    virtual char getInicial() = 0;
+
+    // Precondiciones:
+    // Postcondiciones:
+    virtual char obtenerInicial() = 0;
 };
 
 #endif //CASILLERO_H
