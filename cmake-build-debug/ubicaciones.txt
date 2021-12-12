@@ -1,5 +1,0 @@
-escuela (0, 0)
-escuela (0, 1)
-mina (4, 8)
-mina oro (4, 6)
-fabrica (1, 8)
