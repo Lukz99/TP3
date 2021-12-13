@@ -69,11 +69,17 @@ public:
     // Precondiciones: -
     // Postcondiciones: Lee los edificios a construir y las carga al casillero construible que corresponda segun las coordenadas
     void registrarUbicaciones(Vertice* listaVertices, DiccionarioDeEdificios* diccionarioDeEdificios);
-    void generarMaterialesEnMapa(ifstream &archivoUbicaciones, Vertice* listaVertices, Vertice* verticeEnPosicionActual, string coordenadaX, string coordenadaY);
-    void generarEdificiosJugador(ifstream &archivoUbicaciones, DiccionarioDeEdificios* diccionario, Vertice* listaVertices, Vertice* verticeEnPosicionActual, string coordenadaX, string coordenadaY);
 
     // Precondiciones:
     // Postcondiciones:
+    void generarMaterialesEnMapa(ifstream &archivoUbicaciones, Vertice* listaVertices, Vertice* verticeEnPosicionActual, string coordenadaX, string coordenadaY);
+
+    // Precondiciones:
+    // Postcondiciones:
+    void generarEdificiosJugador(ifstream &archivoUbicaciones, DiccionarioDeEdificios* diccionario, Vertice* listaVertices, Vertice* verticeEnPosicionActual, string coordenadaX, string coordenadaY);
+
+    // Precondiciones:
+    // Postcondiciones: se cargan en listas separadas los materiales de ambos jugadores
     void cargarListaMateriales(Jugador *primerJugador, Jugador *segundoJugador);
 
     // Precondiciones:

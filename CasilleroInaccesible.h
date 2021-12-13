@@ -13,19 +13,19 @@ public:
     CasilleroInaccesible(char tipoTerreno);
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: imprime por pantalla el valor del atributo terreno
     void mostrar() override;
 
     // Precondiciones:
-    // Postcondiciones:
-    void modificar(char) override;
+    // Postcondiciones: modifica el valor del atributo terreno
+    void modificar(char terreno) override;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el valor del atributo terreno
     char obtenerTerreno() override;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el valor del atributo terrenoInicial
     char obtenerInicial() override;
 };
 

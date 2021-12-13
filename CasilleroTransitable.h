@@ -6,36 +6,33 @@
 class CasilleroTransitable : public Casillero {
     // Atributos
 private:
-    Material *material;
+    Material* material;
 
     //Metodos
 public:
-    // Precondiciones:
-    // Postcondiciones:
+    // Constructor
     CasilleroTransitable(char tipoTerreno);
 
-    // Precondiciones:
-    // Postcondiciones:
     ~CasilleroTransitable();
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: imprime por pantalla el valor del atributo terreno
     void mostrar() override;
 
     // Precondiciones:
-    // Postcondiciones:
-    void modificar(char) override;
+    // Postcondiciones: modifica el valor del atributo terreno
+    void modificar(char terreno) override;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el valor del atributo terreno
     char obtenerTerreno() override;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el valor del atributo terrenoInicial
     char obtenerInicial() override;
 
-    // Precondiciones:
-    // Postcondiciones:
+    // Precondiciones: los datos de entrada son validos
+    // Postcondiciones: reserva memoria para colocar un material en un casillero transitable
     void generarMaterial(string, int cantidadMaterial, Casillero***, int posicionX, int posicionY);
 
     // Precondiciones:
@@ -51,9 +48,11 @@ public:
     int obtenerColumna();
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el valor del atributo material
     Material* obtenerMaterial();
 
+    // Precondiciones:
+    // Postcondiciones: devuelve true o false dependiendo de si hay o no un material en el casillero
     bool materialPresente();
 };
 

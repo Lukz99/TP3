@@ -16,15 +16,15 @@ public:
     ~CasilleroConstruible();
 
     // Precondiciones:
-    // Postcondiciones: devuelve el atributo terreno
+    // Postcondiciones: imprime por pantalla el  valor del atributo terreno
     void mostrar() override;
 
     // Precondiciones:
-    // Postcondiciones: devuelve el atributo terreno
+    // Postcondiciones: devuelve el valor del atributo terreno
     char obtenerTerreno() override;
 
     // Precondiciones:
-    // Postcondiciones: devuelve el atributo terrenoInicial
+    // Postcondiciones: devuelve el valor del atributo terrenoInicial
     char obtenerInicial() override;
 
     // Precondiciones:
