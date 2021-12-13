@@ -6,11 +6,17 @@
 #include "ListaMateriales.h"
 #include "Jugador.h"
 #include "Grafo.h"
+#include "Objetivos.h"
+
 
 using namespace std;
 
 int main() {
     int contador = 0;
+
+    Objetivos O1;
+    O1.asignarObjetivo();
+    O1.mostrarObjetivos();
 
     DatosLeidos d1;
     Grafo grafo;
@@ -23,7 +29,7 @@ int main() {
     d1.cargarListaMateriales(J1,J2);
     diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
 
-    system("pause");
+
     grafo.cargarListaVertices(d1.obtenerCasilleros(),d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas());
     d1.registrarUbicaciones(grafo.obtenerListaVertices());
 
