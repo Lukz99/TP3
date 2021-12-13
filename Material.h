@@ -11,9 +11,9 @@ private:
     int cantidadMaterial;
 public:
     Material();
-    Material(string,int);
-    void cargarDatos(string,int);
+    Material(string, int);
     ~Material();
+    void cargarDatos(string, int);
     void mostrarMaterial();
     void setNombreClave();
     string obtenerNombre();

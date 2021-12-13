@@ -9,8 +9,9 @@ using namespace std;
 class Jugador {
 private:
     string nombreJugador;
-    ListaMateriales *listaMateriales;
-    int **matrizDeCostosJugador;
+    int ordenDeTurno;
+    ListaMateriales* listaMateriales;
+    int** matrizDeCostosJugador;
     string objetivos[3];
     int energia;
 public:
@@ -19,13 +20,14 @@ public:
     ~Jugador();
 
     string obtenerNombreJugador();
-    void cargarMaterial(string nombreMaterial,int cantidadMaterial);
-    void recibirMatrizDeCostos(int **matrizDeCostos);
+    void cargarMaterial(string nombreMaterial, int cantidadMaterial);
+    void recibirMatrizDeCostos(int** matrizDeCostos);
     void mostrarMateriales();
     void asignarTurno(int numeroDeTurno);
     ListaMateriales* obtenerListaMateriales();
-    void restarEnergia(int);
-    void sumarEnergia(int);
+    void asignarNombre(string nombreSegunTurno);
+    void restarEnergia(int cantidadEnergia);
+    void sumarEnergia(int cantidadEnergia);
     int obtenerEnergia();
     bool objetivoPrincipalCumplido();
     bool objetivosSecundariosCumplidos();

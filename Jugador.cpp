@@ -16,23 +16,23 @@ void Jugador::asignarTurno(int numeroDeTurno){
 
 Jugador::~Jugador() {}
 
-string Jugador::obtenerNombreJugador(){
+string Jugador::obtenerNombreJugador() {
     return nombreJugador;
 }
 
 void Jugador::cargarMaterial(string nombreMaterial, int cantidadMaterial) {
-    listaMateriales->insertarNodo(nombreMaterial,cantidadMaterial);
+    listaMateriales -> insertarNodo(nombreMaterial, cantidadMaterial);
 }
 
 void Jugador::recibirMatrizDeCostos(int **matrizDeCostos) {
     matrizDeCostosJugador = matrizDeCostos;
 }
 
-void Jugador::mostrarMateriales(){
-    listaMateriales->imprimirLista();
+void Jugador::mostrarMateriales() {
+    listaMateriales -> imprimirLista();
 }
 
-ListaMateriales* Jugador::obtenerListaMateriales(){
+ListaMateriales* Jugador::obtenerListaMateriales() {
     return listaMateriales;
 }
 

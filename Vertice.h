@@ -39,8 +39,8 @@ public:
     CasilleroTransitable* obtenerCasilleroTransitable();
     CasilleroInaccesible* obtenerCasilleroInaccesible();
     char obtenerCasilla();
-    void construirEdificio(string, Casillero***);
-    void demolerEdificio(Casillero***);
+    void construirEdificio(string nombreEdificio, Casillero*** casilleros,int coordenadaX,int coordenadaY);
+    void demolerEdificio(Casillero*** casilleros);
     bool materialPresente();
     ~Vertice();
 
