@@ -138,10 +138,10 @@ void DiccionarioDeEdificios::mostrarArbol(NodoArbol* arbol, int contador) {
         return;
     else{
         mostrarArbol(arbol->derecho,contador+1);
-        for (int i=0;i<contador;i++)
+        for (int i = 0;i < contador; i++)
             cout << "    ";
-        cout << arbol->nombreEdificio[0] << endl;
-        mostrarArbol(arbol->izquierdo,contador+1);
+        cout << arbol -> nombreEdificio[0] << endl;
+        mostrarArbol(arbol -> izquierdo,contador+1);
     }
 }
 

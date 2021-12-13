@@ -13,20 +13,31 @@ private:
 
     //Metodos
 public:
-
-    // Precondiciones:
-    // Postcondiciones:
+    // Constructor sin parametros
     Aserradero();
     ~Aserradero() override;
 
-    // Precondiciones:
-    // Postcondiciones:
+    // Constructor con parametros
     Aserradero(int piedra, int madera, int metal, int maximoPermitidos);
 
+    // Precondiciones:
+    // Postcondiciones: devuelve el material que produce Aserradero
     string obtenerNombreMaterialGenerable() override;
+
+    // Precondiciones:
+    // Postcondiciones: devuelve la cantidad de material que produce Aserradero
     int obtenerCantidadMaterialGenerable() override;
+
+    // Precondiciones:
+    // Postcondiciones: devuelve el atributo nombreClave
     char obtenerNombreClave() override;
+
+    // Precondiciones:
+    // Postcondiciones: devuelve el atributo propietario
     string obtenerPropietario() override;
+
+    // Precondiciones: nombreJugador es valido
+    // Postcondiciones: define el valor del atributo propietario
     void declararPropietario(string nombreJugador) override;
 };
 

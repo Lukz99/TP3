@@ -8,14 +8,30 @@ using namespace std;
 class NodoArbol;
 
 class DiccionarioDeEdificios {
+    // Atributos
 private:
     NodoArbol* raiz;
     void insertarNodo(NodoArbol *&arbol, string nombreEdificio, int cantidadPiedra, int cantidadMadera, int cantidadMetal, int maximoPermitido);
+
+    // Metodos
 public:
+    // Constructor
     DiccionarioDeEdificios();
+
+    // Precondiciones:
+    // Postcondiciones: complemento de insertar un nodo al diccionario de edificios
     void procesarDatoANodo(string nombreEdificio, int cantidadPiedra, int cantidadMadera, int cantidadMetal, int maximoPermitido);
-    void mostrarArbol(NodoArbol*,int);
-    bool nodoEnArbol(NodoArbol*, string);
+
+    // Precondiciones:
+    // Postcondiciones: imprime por pantalla el diccionario como un arbol
+    void mostrarArbol(NodoArbol*, int);
+
+    // Precondiciones:
+    // Postcondiciones: devuelve false si no se encuentra en el diccionario, true en caso de que sí
+    bool nodoEnArbol(NodoArbol* arbol, string nombreEdificio);
+
+    // Precondiciones:
+    // Postcondiciones:
     bool modificarNodo(NodoArbol*, string, int, int, int);
     int extraerDato(NodoArbol*, string, string);
     void recorridoInOrden(NodoArbol*);
