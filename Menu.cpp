@@ -95,6 +95,11 @@ int Menu::modificarMaterial(DiccionarioDeEdificios* diccionarioDeEdificios,strin
     if (realizarOperacion() == 'S'){
         cout << "Ingrese la nueva cantidad de " << nombreMaterial << ":" << endl;
         cin >> cantidadNuevaMaterial;
+        while (cantidadNuevaMaterial < 0 || cantidadNuevaMaterial > 50000) {
+            cout << "No se puede ingresar mas de 50000 unidades ni menos que 0, intente nuevamente. \n";
+            cout << "Ingrese la nueva cantidad de " << nombreMaterial << ":" << endl;
+            cin >> cantidadNuevaMaterial;
+        }
     }
     else
         cantidadNuevaMaterial = cantidadMaterialOriginal;
