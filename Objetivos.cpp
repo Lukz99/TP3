@@ -85,20 +85,20 @@ void Objetivos::mostrarObjetivos() {
     }
 }
 
-void Objetivos::confirmarObjetivos(int numeroObjetivo) {
+void Objetivos::confirmarObjetivos(int numeroObjetivo, Jugador J1) {
 
     string objetivo = listaObjetivos[numeroObjetivo];
 
-    for(int i = 0; i < 4; i++ ){
     if (objetivo == "Comprar andypolis"){
         //acumuladorAndycoins
         objetivosCumplidos += 1;
 
     }
     else if (objetivo == "Edad de piedra"){
-
-        objetivosCumplidos += 1;
-
+        int cantPiedra = J1.obtenerListaMateriales()->extraerCantidadMaterial("piedra");
+        if (cantPiedra == 5000){
+            objetivosCumplidos += 1;
+        }
     }
     else if (objetivo == "Bombardero"){
         //bombasUsadas
@@ -107,13 +107,13 @@ void Objetivos::confirmarObjetivos(int numeroObjetivo) {
 
     }
     else if (objetivo == "Energetico"){
+        if (J1.obtenerEnergia() == 100){
+            objetivosCumplidos += 1;
 
-        objetivosCumplidos += 1;
-
-
+        }
     }
     else if (objetivo == "Letrado"){
-
+        
         objetivosCumplidos += 1;
 
 
@@ -155,10 +155,11 @@ void Objetivos::confirmarObjetivos(int numeroObjetivo) {
     }
 }
 
-
+/*
 void Objetivos::confirmarVictoria(){
     if (objetivosCumplidos >= 2){
         ganar = true;
     }
 }
 
+*/

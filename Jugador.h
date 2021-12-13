@@ -13,7 +13,7 @@ private:
     int ordenDeTurno;
     ListaMateriales* listaMateriales;
     int** matrizDeCostosJugador;
-    Objetivos* objetivosJugador;
+    //Objetivos* objetivosJugador;
     int energia;
 public:
     Jugador();

@@ -114,12 +114,7 @@ void Menu::lluviaRecursos(CasilleroTransitable** transitables, int cantidadTrans
     int generacionMadera = rand() % (3);
     int generacionMetal = 2 + rand() % (4 - 2);
     int totalGenerado = generacionPiedra + generacionMadera + generacionMetal;
-
-
-
-    generamientos("piedra",generacionPiedra,transitables,cantidadTransitables,casilleros);
-    generamientos("madera",generacionMadera,transitables,cantidadTransitables,casilleros);
-    generamientos("metal",generacionMetal,transitables,cantidadTransitables,casilleros);
+    seleccionarCoordenadasAleatoriamente(listaVertices,"piedra",generacionPiedra,100,baseDeDatos);
     cout << "Se han generado " << totalGenerado << " materiales a lo largo del mapa." << endl
          << "| Piedra: " << generacionPiedra << " | Madera: " << generacionMadera << " | Metal: " << generacionMetal << " |" << endl;
 }

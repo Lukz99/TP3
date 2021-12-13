@@ -14,14 +14,19 @@ using namespace std;
 int main() {
     int contador = 0;
 
+    Jugador J1;
+    Jugador J2;
+
     Objetivos O1;
     O1.asignarObjetivo();
     O1.mostrarObjetivos();
+    O1.confirmarObjetivos(1, J1);
+    O1.confirmarObjetivos(2, J1);
+    O1.confirmarObjetivos(3, J1);
 
     DatosLeidos d1;
     Grafo grafo;
-    Jugador J1;
-    Jugador J2;
+
 
     DiccionarioDeEdificios* diccionario = new DiccionarioDeEdificios();
     d1.crearMapa();
