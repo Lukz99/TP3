@@ -1,19 +1,20 @@
 #include "Jugador.h"
 #include "ListaMateriales.h"
 
-Jugador::Jugador(int numeroJugador) {
-    if (numeroJugador == 1)
-        nombreJugador = "Jugador 1";
-    else
-        nombreJugador = "Jugador 2";
-}
-
-Jugador::Jugador(){
+Jugador::Jugador() {
     listaMateriales = new ListaMateriales();
     energia = 50;
-};
+}
 
-Jugador::~Jugador(){};
+void Jugador::asignarNombre(string nombreElegido){
+    nombreJugador = nombreElegido;
+}
+
+void Jugador::asignarTurno(int numeroDeTurno){
+    ordenDeTurno = numeroDeTurno;
+}
+
+Jugador::~Jugador() {}
 
 string Jugador::obtenerNombreJugador(){
     return nombreJugador;
@@ -41,6 +42,13 @@ void Jugador::sumarEnergia(int sumando) {
         sumando = energia - sumando;
     energia += sumando;
 }
+
+void Jugador::restarEnergia(int restando) {
+    if (energia - restando < 0)
+        restando = restando - energia;
+    energia -= restando;
+}
+
 
 int Jugador::obtenerEnergia() {
     return energia;

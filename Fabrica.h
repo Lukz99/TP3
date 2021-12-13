@@ -10,9 +10,15 @@ class Fabrica : public Edificio{
 private:
     string nombreMaterialGenerable = "metal";
     int cantidadMaterialGenerable = 40;
+    char nombreClave;
+
+
 public:
     Fabrica();
     Fabrica(int,int,int,int);
+    string obtenerNombreMaterialGenerable() override;
+    int obtenerCantidadMaterialGenerable() override;
+    char obtenerNombreClave() override;
 };
 
 

@@ -46,14 +46,6 @@ Vertice* Vertice::buscarVerticePorPosicion(Vertice* verticeInicial, int posFila,
     }
     return auxiliar;
 }
-
-bool Vertice::edificioConstruido() {
-    return construible -> obtenerEdificio() != nullptr;
-}
-bool Vertice::materialPresente() {
-    return transitable -> obtenerMaterial() != nullptr;
-}
-
 CasilleroConstruible* Vertice::obtenerCasilleroConstruible() {
     return construible;
 }
@@ -97,8 +89,8 @@ Vertice* Vertice::obtenerVerticeIzquierdo() {
 char Vertice::obtenerCasilla() {
     return tipoCasilla;
 }
-void Vertice::construirEdificio(string nombreEdificio, Casillero*** casilleros) {
-    construible -> construirEdificio(nombreEdificio, casilleros);
+void Vertice::construirEdificio(string nombreEdificio, Casillero*** casilleros,int coordenadaX,int coordenadaY) {
+    construible -> construirEdificio(nombreEdificio, casilleros,coordenadaX,coordenadaY);
 }
 void Vertice::demolerEdificio(Casillero*** casilleros) {
     construible -> demolerEdificio(casilleros);

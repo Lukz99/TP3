@@ -73,6 +73,8 @@ public:
     // Precondiciones: -
     // Postcondiciones: Lee los edificios a construir y las carga al casillero construible que corresponda segun las coordenadas
     void registrarUbicaciones(Vertice*);
+    void generarMaterialesEnMapa(ifstream &archivoUbicaciones,Vertice* listaVertices,Vertice* verticeEnPosicionActual,string coordenadaX,string coordenadaY);
+    void generarEdificiosJugador(ifstream &archivoUbicaciones,Vertice* listaVertices,Vertice* verticeEnPosicionActual,string coordenadaX, string coordenadaY);
 
     // Precondiciones:
     // Postcondiciones:

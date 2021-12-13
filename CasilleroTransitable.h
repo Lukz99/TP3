@@ -6,7 +6,6 @@
 class CasilleroTransitable : public Casillero {
     // Atributos
 private:
-    int fila, columna;
     Material *material;
 
     //Metodos
@@ -37,7 +36,7 @@ public:
 
     // Precondiciones:
     // Postcondiciones:
-    void generarMaterial(string, int cantidadMaterial, Casillero***);
+    void generarMaterial(string, int cantidadMaterial, Casillero***, int posicionX, int posicionY);
 
     // Precondiciones:
     // Postcondiciones:
@@ -54,6 +53,8 @@ public:
     // Precondiciones:
     // Postcondiciones:
     Material* obtenerMaterial();
+
+    bool materialPresente();
 };
 
 #endif //CASILLEROTRANSITABLE_H

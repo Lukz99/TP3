@@ -6,9 +6,21 @@
 using namespace std;
 
 class Obelisco : public Edificio {
+private:
+    string nombreMaterialGenerable = "";
+    int cantidadMaterialGenerable = 0;
+    char nombreClave;
+
+
 public:
     Obelisco();
     Obelisco(int piedra ,int madera, int metal, int maximoPermitidos);
+
+    string obtenerNombreMaterialGenerable() override;
+    int obtenerCantidadMaterialGenerable() override;
+    char obtenerNombreClave() override;
+
+
 };
 
 #endif //TP3_OBELISCO_H

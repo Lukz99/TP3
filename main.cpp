@@ -27,14 +27,13 @@ int main() {
     grafo.cargarListaVertices(d1.obtenerCasilleros(),d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas());
     d1.registrarUbicaciones(grafo.obtenerListaVertices());
 
-    grafo.crearMatrizDeCostos(d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas(),J1.obtenerNombreJugador());
+    //grafo.crearMatrizDeCostos(d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas(),J1.obtenerNombreJugador());
     //J1.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
     //grafo.crearMatrizDeCostos(d1.getCantidadFilas(),d1.getCantidadColumnas(),J2.obtenerNombreJugador());
     //J2.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
 
 
 
-    /*
     Menu menu(11);
 
     int opcion = 0;
@@ -43,7 +42,9 @@ int main() {
     menu.setOpcion();
     menu.opcionValida();
     opcion = menu.getOpcion();
+    menu.menuPrincipal(diccionario,d1.obtenerCasilleros(),d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas());
 
+    /*
     while(opcion != 11){
         menu.procesarOpcion(d1.getCasilleros(), d1.getCantidadFilas(), d1.getCantidadColumnas(), d1.getConstruibles(), d1.cantConstruibles(), d1.getTransitables(), d1.cantTransitables(), d1.getMateriales(), d1.getCantidadMateriales(), d1.getEdficios(), d1.getCantidadEdificios());
         menu.mostrarMenu();

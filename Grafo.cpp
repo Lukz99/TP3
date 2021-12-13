@@ -103,7 +103,7 @@ int Grafo::consultarCostoDeVertice(Vertice* actual, string nombreJugador) {
                 costoCamino = 5;
             break;
         case 'T':
-            if (actual -> edificioConstruido())
+            if (actual -> obtenerCasilleroConstruible()->edificioConstruido())
                 costoCamino = -1;
             else
                 costoCamino = 25;

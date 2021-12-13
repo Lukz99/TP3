@@ -36,7 +36,7 @@ public:
 
     // Precondiciones:
     // Postcondiciones:
-    void construirEdificio(string, Casillero ***casilleros);
+    void construirEdificio(string, Casillero ***casilleros, int coordenadaX, int coordenadaY);
 
     // Precondiciones:
     // Postcondiciones:
@@ -55,6 +55,7 @@ public:
     Edificio *obtenerEdificio();
 
     void edificiosReparables(bool repararEdificio, Casillero ***casilleros);
+    bool edificioConstruido();
 
 };
 

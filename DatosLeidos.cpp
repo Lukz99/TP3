@@ -139,37 +139,72 @@ void DatosLeidos::separarCasilleros() {
 }
 
 // Lectura de ubicaciones.txt
-void DatosLeidos::registrarUbicaciones(Vertice* verticeInicial){
+void DatosLeidos::registrarUbicaciones(Vertice* listaVertices){
     ifstream archivoUbicaciones("ubicaciones.txt");
+    string coordenadaX, coordenadaY;
+    Vertice* verticeEnPosicionActual;
     if (aperturaDeArchivoExitosa(archivoUbicaciones,"ubicaciones.txt")){
-        string edificio, basura, x, y;
-        int contador = 0;
-        Vertice* verticeEnPosicionActual;
-        while (getline(archivoUbicaciones, edificio, ' ')) {
-            if (edificio == "planta") {
-                archivoUbicaciones >> basura;
-                edificio = "planta electrica";
-            }
-            if (contador != 0)
-                edificio = edificio.erase(0, 1);
-            getline(archivoUbicaciones, basura, '(');
-            getline(archivoUbicaciones, x, ',');
-            getline(archivoUbicaciones, y, ')');
-            verticeEnPosicionActual = verticeInicial->buscarVerticePorPosicion(verticeInicial, stoi(x), stoi(y));
-            if (verticeEnPosicionActual->obtenerCasilla() == 'T' && !verticeEnPosicionActual->edificioConstruido())
-                verticeEnPosicionActual->construirEdificio(edificio, casilleros);
-            contador++;
-        }
+        generarMaterialesEnMapa(archivoUbicaciones,listaVertices,verticeEnPosicionActual,coordenadaX,coordenadaY);
+        generarEdificiosJugador(archivoUbicaciones,listaVertices,verticeEnPosicionActual,coordenadaX,coordenadaY);
     }
     archivoUbicaciones.close();
 }
-/*
-int DatosLeidos::posicionConstruible(int x, int y) {
-    for (int i = 0; i < cantidadConstruibles; i++)
-        if (construibles[i]->getFila() == x && construibles[i]->getColumna() == y) return i;
-    return -1;
+
+void DatosLeidos::generarMaterialesEnMapa(ifstream &archivoUbicaciones,Vertice* listaVertices,Vertice* verticeEnPosicionActual,string coordenadaX,string coordenadaY){
+    string nombreMaterial, basura;
+    Vertice* verticePosicionBuscada;
+    int tipoCasilla;
+    getline(archivoUbicaciones,nombreMaterial,' ');
+    while (nombreMaterial != "1"){
+        getline(archivoUbicaciones, basura, '(');
+        getline(archivoUbicaciones, coordenadaX, ',');
+        getline(archivoUbicaciones, coordenadaY, ')');
+        verticePosicionBuscada = listaVertices->buscarVerticePorPosicion(listaVertices, stoi(coordenadaX), stoi(coordenadaY));
+        tipoCasilla = verticePosicionBuscada->obtenerCasilla();
+        if ((tipoCasilla == 'T' || tipoCasilla == 'M' || tipoCasilla == 'B') && !verticePosicionBuscada->obtenerCasilleroTransitable()->materialPresente()){
+            verticePosicionBuscada->obtenerCasilleroTransitable()->generarMaterial(nombreMaterial,1,casilleros,stoi(coordenadaX),stoi(coordenadaY));
+        }
+        getline(archivoUbicaciones,nombreMaterial,' ');
+        nombreMaterial = nombreMaterial.erase(0, 1);
+    }
 }
 
+void DatosLeidos::generarEdificiosJugador(ifstream &archivoUbicaciones,Vertice* listaVertices, Vertice* verticeEnPosicionActual,string coordenadaX, string coordenadaY) {
+    string nombreJugadorActual = "Jugador 1", nombreEdificio, basura;
+    Vertice *verticePosicionBuscada;
+    getline(archivoUbicaciones, basura, '(');
+    getline(archivoUbicaciones, coordenadaX, ',');
+    getline(archivoUbicaciones, coordenadaY, ')');
+    while (getline(archivoUbicaciones, nombreEdificio, ' ')) {
+        nombreEdificio = nombreEdificio.erase(0, 1);
+        if (nombreEdificio == "2") {
+            nombreJugadorActual = "Jugador 2";
+            getline(archivoUbicaciones, basura, '(');
+            getline(archivoUbicaciones, coordenadaX, ',');
+            getline(archivoUbicaciones, coordenadaY, ')');
+        } else {
+            if (nombreEdificio == "planta") {
+                archivoUbicaciones >> basura;
+                nombreEdificio = "planta electrica";
+            } else if (nombreEdificio == "mina") {
+                getline(archivoUbicaciones, basura, '(');
+                if (basura == "oro")
+                    nombreEdificio = "mina oro";
+            }
+            getline(archivoUbicaciones, basura, '(');
+            getline(archivoUbicaciones, coordenadaX, ',');
+            getline(archivoUbicaciones, coordenadaY, ')');
+            verticePosicionBuscada = listaVertices->buscarVerticePorPosicion(listaVertices, stoi(coordenadaX),
+                                                                             stoi(coordenadaY));
+            if (verticePosicionBuscada->obtenerCasilla() == 'T' && !verticePosicionBuscada->obtenerCasilleroConstruible()->edificioConstruido()) {
+                verticePosicionBuscada->construirEdificio(nombreEdificio, casilleros,stoi(coordenadaX),stoi(coordenadaY));
+                verticePosicionBuscada->obtenerCasilleroConstruible()->obtenerEdificio()->declararPropietario(nombreJugadorActual);
+            }
+        }
+    }
+}
+
+/*
 bool DatosLeidos::haySuperposicion(int posConstruible){
     return construibles[posConstruible]->getEdificio()->getNombre() != "";
 }

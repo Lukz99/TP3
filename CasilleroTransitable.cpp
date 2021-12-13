@@ -24,33 +24,27 @@ char CasilleroTransitable::obtenerInicial() {
     return terrenoInicial;
 }
 
-void CasilleroTransitable::generarMaterial(string nombre, int cantidadMaterial, Casillero*** casilleros) {
+void CasilleroTransitable::generarMaterial(string nombre, int cantidadMaterial, Casillero*** casilleros, int posicionX, int posicionY) {
     material = new Material(nombre, cantidadMaterial);
-    casilleros[fila][columna] -> modificar(material -> getNombreClave());
+    casilleros[posicionX][posicionY] -> modificar(material->getNombreClave());
 }
 
 void CasilleroTransitable::recolectarMaterial(Casillero*** casilleros) {
-    delete material;
+    delete [] material;
     material = nullptr;
-    casilleros[fila][columna] -> modificar('C');
+    //casilleros[fila][columna] -> modificar('C');
 }
 
 CasilleroTransitable::~CasilleroTransitable() {
-    delete material;
-}
-
-
-
-
-int CasilleroTransitable::obtenerFila() {
-    return fila;
-}
-
-int CasilleroTransitable::obtenerColumna() {
-    return columna;
+    if(material != nullptr)
+        delete [] material;
 }
 
 Material* CasilleroTransitable::obtenerMaterial() {
     return material;
+}
+
+bool CasilleroTransitable::materialPresente(){
+    return material != nullptr;
 }
 

@@ -1,12 +1,8 @@
 #include "Menu.h"
 #include <iostream>
-#include "DatosLeidos.h"
 #include<stdlib.h>
 #include<time.h>
 #include <fstream>
-#include "Jugador.h"
-#include "DiccionarioDeEdificios.h"
-
 
 using namespace std;
 
@@ -16,14 +12,19 @@ Menu::Menu(int cantOpciones) {
 
 Menu::~Menu() = default;
 
-/*
-void designarTurnos(){
-    int primerTurno = rand() % (1);
-    if (primerTurno == 0)
-        primerJugador = new Jugador(primerTurno);
-    else
-        segundoJugador = new Jugador(primerTurno);
-}*/
+void designarTurnos(Jugador primerJugador,Jugador segundoJugador){
+    int sorteoDeTurno = rand() % (1);
+    if (sorteoDeTurno == 0){
+        primerJugador.asignarTurno(1);
+        segundoJugador.asignarTurno(2);
+        cout << "->Jugador 1 inicia turno ->Lo sigue Jugador 2" << endl;
+    }
+    else{
+        segundoJugador.asignarTurno(1);
+        primerJugador.asignarTurno(2);
+        cout << "->Jugador 2 inicia turno ->Lo sigue Jugador 1" << endl;
+    }
+}
 
 void Menu::mostrarMenuPrincipal() {
     cout << "\n\t\t\t|----------------------------------|" << endl
@@ -278,7 +279,7 @@ bool Menu::coordenadaConstruible(Vertice* listaVertices,DiccionarioDeEdificios* 
     bool esPosibleConstruir;
     if (verticeBuscado->obtenerCasilla() == 'T') {
         esPosibleConstruir = true;
-        verticeBuscado->construirEdificio(nombreEdificio,casilleros);
+        verticeBuscado->construirEdificio(nombreEdificio,casilleros,coordenadaX,coordenadaY);
         verticeBuscado->obtenerCasilleroConstruible()->obtenerEdificio()->declararPropietario(jugador.obtenerNombreJugador());
         diccionario->modificacionEnConstruidos(diccionario->obtenerNodoRaiz(),verticeBuscado->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombre(),true);
     }
@@ -296,7 +297,7 @@ void Menu::demolerEdificio(Vertice* listaVertices,DiccionarioDeEdificios* diccio
     cout << ">--Demoler un edificio--<\nIngrese las coordenadas del edificio a demoler." << endl;
     leerCoordenadas(posicionY,posicionY,baseDeDatos.obtenerCantidadFilas(),baseDeDatos.obtenerCantidadColumnas());
     verticeBuscado = listaVertices->buscarVerticePorPosicion(listaVertices,posicionX,posicionY);
-    if (verticeBuscado->edificioConstruido()){
+    if (verticeBuscado->obtenerCasilleroConstruible()->edificioConstruido()){
         nombreEdificio = verticeBuscado->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombre();
         cout << "Usted posee un/una " << nombreEdificio
              << " en la coordenada (" << posicionX << "," << posicionY << ")\nDesea demoler este edificio?"
@@ -329,7 +330,7 @@ void Menu::atacarEdificio(Vertice* listaVertices,Jugador jugador,DatosLeidos bas
     cout << ">--Atacar edificio!--<\n| Coste de energia: 30 |\nIngrese las coordenadas del edificio que desea atacar." << endl;
     leerCoordenadas(posicionY,posicionY,baseDeDatos.obtenerCantidadFilas(),baseDeDatos.obtenerCantidadColumnas());
     verticeBuscado = listaVertices->buscarVerticePorPosicion(listaVertices,posicionX,posicionY);
-    if (verticeBuscado->edificioConstruido()) {
+    if (verticeBuscado->obtenerCasilleroConstruible()->edificioConstruido()) {
         if (verticeBuscado->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerPropietario() !=
             jugador.obtenerNombreJugador()) {
             nombreEdificio = verticeBuscado->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombre();
@@ -356,7 +357,7 @@ void Menu::repararEdificio(Vertice* listaVertices,DiccionarioDeEdificios* diccio
     cout << ">--Reparar edificio!--<\n| Coste de energia: 25 |\nIngrese las coordenadas del edificio que desea reparar." << endl;
     leerCoordenadas(posicionY,posicionY,baseDeDatos.obtenerCantidadFilas(),baseDeDatos.obtenerCantidadColumnas());
     verticeBuscado = listaVertices->buscarVerticePorPosicion(listaVertices,posicionX,posicionY);
-    if (verticeBuscado->edificioConstruido() && materialesSuficientes(diccionario,jugador,nombreEdificio))
+    if (verticeBuscado->obtenerCasilleroConstruible()->edificioConstruido() && materialesSuficientes(diccionario,jugador,nombreEdificio))
         if (verticeBuscado->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerPropietario() ==
             jugador.obtenerNombreJugador()) {
             nombreEdificio = verticeBuscado->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombre();
@@ -409,7 +410,7 @@ void Menu::consultarCoordenada(Vertice* listaVertices,DatosLeidos baseDeDatos) {
     verticeBuscado = listaVertices->buscarVerticePorPosicion(listaVertices,posicionX,posicionY);
     if (tipoCasilla == 'T') {
         cout << "Ha encontrado un casillero construible." << endl;
-        if (verticeBuscado->edificioConstruido())
+        if (verticeBuscado->obtenerCasilleroConstruible()->edificioConstruido())
             cout << "Hay un/una " << verticeBuscado->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombre()
                  << "construido/a en este casillero.";
         else
@@ -428,7 +429,7 @@ void Menu::consultarCoordenada(Vertice* listaVertices,DatosLeidos baseDeDatos) {
                 cout << "Tipo: Betun" << endl;
                 break;
         }
-        if(verticeBuscado->materialPresente())
+        if(verticeBuscado->obtenerCasilleroTransitable()->materialPresente())
             cout << "Hay "<< verticeBuscado->obtenerCasilleroTransitable()->obtenerMaterial()->getCantidad()
                  << " de " << verticeBuscado->obtenerCasilleroTransitable()->obtenerMaterial()->obtenerNombre()
                  << "presente en este casillero. " << endl;
@@ -451,11 +452,11 @@ void Menu::recolectarRecursos(Vertice* listaVertices,Jugador jugador,DatosLeidos
     for (int i = 0; i < baseDeDatos.obtenerCantidadFilas(); i++)
         for (int j = 0; j < baseDeDatos.obtenerCantidadColumnas(); j++) {
             verticeActual = listaVertices->buscarVerticePorPosicion(listaVertices, i, j);
-            if (verticeActual->edificioConstruido() &&
+            if (verticeActual->obtenerCasilleroConstruible()->edificioConstruido() &&
                 verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerPropietario() ==
                 jugador.obtenerNombreJugador()) {
-                nombreMaterialGenerable = verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombreMaterialProducible();
-                cantidadMaterialGenerable = verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerCantidadMaterialProducible();
+                nombreMaterialGenerable = verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombreMaterialGenerable();
+                cantidadMaterialGenerable = verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerCantidadMaterialGenerable();
                 jugador.obtenerListaMateriales()->modificarNodo(nombreMaterialGenerable, cantidadMaterialGenerable,true);
                 jugador.restarEnergia(20);
                 cout << "->Se han recolectado " << cantidadMaterialGenerable << " de " << nombreMaterialGenerable

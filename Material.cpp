@@ -27,6 +27,8 @@ void Material::setNombreClave() {
         nombreClave = 'W';
     if (nombreMaterial == "metal")
         nombreClave = 'I';
+    if (nombreMaterial == "andycoins")
+        nombreClave = 'C';
 }
 
 void Material::mostrarMaterial() {

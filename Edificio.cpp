@@ -1,7 +1,3 @@
-//
-// Created by juamp on 4/11/2021.
-//
-
 #include "Edificio.h"
 #include <iostream>
 #include "CasilleroConstruible.h"
@@ -16,7 +12,6 @@ Edificio::Edificio(int pie, int mad, int met, int max) {
     cantidadMadera = mad;
     cantidadMetal = met;
     maximoPermitido = max;
-    definirNombreClave();
 }
 
 void Edificio::declararPropietario(string nombreJugador){
@@ -33,7 +28,7 @@ void Edificio::repararEdificio() {
         cout << "No puede reparar este edificio porque ya ha sido completamente destruido." << endl;
 }
 
-void Edificio::destruirEdificio(){
+void Edificio::destruirEdificio() {
     if (estadoEdificio == 2) {
         estadoEdificio--;
         cout << "Edificio parcialmente dañado." << endl;
@@ -44,13 +39,13 @@ void Edificio::destruirEdificio(){
         cout << "Este edificio ya ha sido destruido." << endl;
 }
 
-int Edificio::obtenerEstadoEdificio(){
+int Edificio::obtenerEstadoEdificio() {
     return estadoEdificio;
 }
 
 
 
-string Edificio::obtenerPropietario(){
+string Edificio::obtenerPropietario() {
     return propietario;
 }
 
@@ -60,22 +55,17 @@ void Edificio::cargarDatos(string nom, int pie, int mad, int met, int max) {
     cantidadMadera = mad;
     cantidadMetal = met;
     maximoPermitido = max;
-    definirNombreClave();
 }
 
-void Edificio::mostrarReceta(){
+void Edificio::mostrarReceta() {
     cout << "\n" << "| Piedra: "<< cantidadPiedra << " | Madera:  " << cantidadMadera
          << " | Metal: " << cantidadMetal << " | Permitidos: " << maximoPermitido << " |" << endl;
 }
 
-void Edificio::modificarReceta(int nuevaCantPiedra,int nuevaCantMadera, int nuevaCantMetal){
+void Edificio::modificarReceta(int nuevaCantPiedra,int nuevaCantMadera, int nuevaCantMetal) {
     cantidadPiedra = nuevaCantPiedra;
     cantidadMadera = nuevaCantMadera;
     cantidadMetal = nuevaCantMetal;
-}
-
-void Edificio::definirNombreClave() {
-    nombreClave = (char)toupper(nombreEdificio[0]);
 }
 
 string Edificio::obtenerNombre() {
@@ -95,9 +85,6 @@ int Edificio::obtenerMaximaCantidad() {
     return maximoPermitido;
 }
 
-char Edificio::obtenerNombreClave() {
-    return nombreClave;
-}
 int Edificio::obtenerConstruidos() {
     return construidos;
 }
@@ -109,12 +96,4 @@ void Edificio::sumarEdificio() {
 }
 void Edificio::restarEdificio() {
     construidos--;
-}
-void Edificio::demolicion() {
-    nombreEdificio = "";
-    nombreClave = ' ';
-    cantidadPiedra = 0;
-    cantidadMadera = 0;
-    cantidadMetal = 0;
-    maximoPermitido = 0;
 }

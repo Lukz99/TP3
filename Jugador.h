@@ -22,6 +22,7 @@ public:
     void cargarMaterial(string nombreMaterial,int cantidadMaterial);
     void recibirMatrizDeCostos(int **matrizDeCostos);
     void mostrarMateriales();
+    void asignarTurno(int numeroDeTurno);
     ListaMateriales* obtenerListaMateriales();
     void restarEnergia(int);
     void sumarEnergia(int);

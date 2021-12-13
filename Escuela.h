@@ -9,9 +9,14 @@ class Escuela : public Edificio {
 private:
     string nombreMaterialGenerable = "andycoins";
     int cantidadMaterialGenerable = 25;
+
 public:
     Escuela();
     Escuela(int,int,int,int);
+    string obtenerNombreMaterialGenerable() override;
+    int obtenerCantidadMaterialGenerable() override;
+    char obtenerNombreClave() override;
+
 };
 
 

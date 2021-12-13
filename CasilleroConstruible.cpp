@@ -15,7 +15,8 @@ CasilleroConstruible::CasilleroConstruible(char terreno) : Casillero(terreno) {
 }
 
 CasilleroConstruible::~CasilleroConstruible() {
-    delete edificiacion;
+    if(edificiacion != nullptr)
+        delete [] edificiacion;
 }
 
 void CasilleroConstruible::modificar(char nuevoNombre) {
@@ -34,7 +35,7 @@ void CasilleroConstruible::mostrar() {
     cout << obtenerTerreno();
 }
 
-void CasilleroConstruible::construirEdificio(string nombreEdificio, Casillero*** casilleros){
+void CasilleroConstruible::construirEdificio(string nombreEdificio, Casillero*** casilleros, int coordenadaX, int coordenadaY){
     switch (nombreEdificio[0]) {
         case 'a':
             edificiacion = new Aserradero();
@@ -58,6 +59,7 @@ void CasilleroConstruible::construirEdificio(string nombreEdificio, Casillero***
             edificiacion = new PlantaElectrica();
             break;
     }
+    casilleros[coordenadaX][coordenadaY]->modificar(edificiacion->obtenerNombreClave());
 }
 
 void CasilleroConstruible::demolerEdificio(Casillero*** casilleros){
@@ -79,6 +81,8 @@ Edificio* CasilleroConstruible::obtenerEdificio() {
     return edificiacion;
 }
 
-
+bool CasilleroConstruible::edificioConstruido(){
+    return edificiacion != nullptr;
+}
 
 

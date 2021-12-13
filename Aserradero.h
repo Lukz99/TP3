@@ -8,6 +8,8 @@ class Aserradero : public Edificio {
 private:
     string nombreMaterialGenerable = "madera";
     int cantidadMaterialGenerable = 25;
+    char nombreClave;
+
 
     //Metodos
 public:
@@ -20,8 +22,9 @@ public:
     // Postcondiciones:
     Aserradero(int piedra, int madera, int metal, int maximoPermitidos);
 
-    string obtenerNombreMaterialGenerable();
-    int obtenerCantidadMaterialGenerable();
+    string obtenerNombreMaterialGenerable() override;
+    int obtenerCantidadMaterialGenerable() override;
+    char obtenerNombreClave() override;
 };
 
 

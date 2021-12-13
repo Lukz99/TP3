@@ -8,10 +8,9 @@ class Edificio {
     // Atributos
 protected:
     string nombreEdificio, propietario;
-    char nombreClave;
     int cantidadPiedra, cantidadMadera, cantidadMetal, maximoPermitido, construidos = 0;
     int estadoEdificio;
-
+    char nombreClave;
     // Metodos
 public:
     Edificio();
@@ -20,8 +19,9 @@ public:
     void repararEdificio();
     void destruirEdificio();
     int obtenerEstadoEdificio();
-    virtual string obtenerNombreMaterialProducible();
-    virtual int obtenerCantidadMaterialProducible();
+    virtual string obtenerNombreMaterialGenerable() = 0;
+    virtual int obtenerCantidadMaterialGenerable() = 0;
+    virtual char obtenerNombreClave() = 0;
 
     //----------------------------
     // Precondiciones:
@@ -46,16 +46,8 @@ public:
     void cargarDatos(string nombreEdificio, int piedra, int madera, int metal, int maximoPermitido);
 
     // Precondiciones:
-    // Postcondiciones:
-    void definirNombreClave();
-
-    // Precondiciones:
     // Postcondiciones: devuelve el atributo nombreEdificio
     string obtenerNombre();
-
-    // Precondiciones:
-    // Postcondiciones: devuelve el atributo nombreClave
-    char obtenerNombreClave();
 
     // Precondiciones:
     // Postcondiciones: devuelve el atributo cantidadMadera
@@ -79,7 +71,7 @@ public:
 
     // Precondiciones:
     // Postcondiciones:
-    void mostrar_edificio();
+    void mostrarEdificio();
 
     // Precondiciones:
     // Postcondiciones:
