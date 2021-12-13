@@ -1,5 +1,5 @@
-#ifndef CASILLEROCONSTRUIBLE_H
-#define CASILLEROCONSTRUIBLE_H
+#ifndef TP3_CASILLEROCONSTRUIBLE_H
+#define TP3_CASILLEROCONSTRUIBLE_H
 #include "Casillero.h"
 #include "Edificio.h"
 
@@ -10,37 +10,34 @@ private:
 
     // Metodos
 public:
-    // Precondiciones:
-    // Postcondiciones:
+    // Constructor
     CasilleroConstruible(char tipoTerreno);
 
-    // Precondiciones:
-    // Postcondiciones:
     ~CasilleroConstruible();
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el atributo terreno
     void mostrar() override;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el atributo terreno
     char obtenerTerreno() override;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el atributo terrenoInicial
     char obtenerInicial() override;
 
     // Precondiciones:
-    // Postcondiciones:
-    void modificar(char) override;
+    // Postcondiciones: modifica el valor del atributo terreno
+    void modificar(char terreno) override;
 
-    // Precondiciones:
-    // Postcondiciones:
-    void construirEdificio(string, Casillero ***casilleros, int coordenadaX, int coordenadaY);
+    // Precondiciones: los datos de entrada son validos
+    // Postcondiciones: se reserva memoria para el tipo de edificio que se quiere construir
+    void construirEdificio(string, Casillero*** casilleros, int coordenadaX, int coordenadaY);
 
-    // Precondiciones:
-    // Postcondiciones:
-    void demolerEdificio(Casillero ***casilleros);
+    // Precondiciones: el edificio existe
+    // Postcondiciones: se libera memoria para un edificio
+    void demolerEdificio(Casillero*** casilleros);
 
     // Precondiciones:
     // Postcondiciones:
@@ -51,12 +48,17 @@ public:
     int obtenerColumna();
 
     // Precondiciones:
-    // Postcondiciones:
-    Edificio *obtenerEdificio();
+    // Postcondiciones: devuelve el atributo edificacion
+    Edificio* obtenerEdificio();
 
+    // Precondiciones:
+    // Postcondiciones: se repara el edificio de ser posible
     void edificiosReparables(bool repararEdificio, Casillero ***casilleros);
+
+    // Precondiciones:
+    // Postcondiciones: devuelve true o false dependiendo de si hay o no un edificio construido
     bool edificioConstruido();
 
 };
 
-#endif //UNTITLED_CASILLEROCONSTRUIBLE_H
+#endif //TP3_CASILLEROCONSTRUIBLE_H

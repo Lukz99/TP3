@@ -59,20 +59,20 @@ void CasilleroConstruible::construirEdificio(string nombreEdificio, Casillero***
             edificiacion = new PlantaElectrica();
             break;
     }
-    casilleros[coordenadaX][coordenadaY]->modificar(edificiacion->obtenerNombreClave());
+    casilleros[coordenadaX][coordenadaY] -> modificar(edificiacion -> obtenerNombreClave());
 }
 
-void CasilleroConstruible::demolerEdificio(Casillero*** casilleros){
+void CasilleroConstruible::demolerEdificio(Casillero*** casilleros) {
     delete edificiacion;
     edificiacion = nullptr;
 }
 
-void CasilleroConstruible::edificiosReparables(bool repararEdificio, Casillero*** casilleros){
+void CasilleroConstruible::edificiosReparables(bool repararEdificio, Casillero*** casilleros) {
     if (repararEdificio)
-        edificiacion->repararEdificio();
+        edificiacion -> repararEdificio();
     else {
-        edificiacion->destruirEdificio();
-        if (edificiacion->obtenerEstadoEdificio() == 0)
+        edificiacion -> destruirEdificio();
+        if (edificiacion -> obtenerEstadoEdificio() == 0)
             demolerEdificio(casilleros);
     }
 }

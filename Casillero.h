@@ -22,15 +22,15 @@ public:
     virtual void mostrar() = 0;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el atributo terreno
     virtual char obtenerTerreno() = 0;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: modifica el atributo terreno
     virtual void modificar(char) = 0;
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el atributo terrenoInicial
     virtual char obtenerInicial() = 0;
 };
 
