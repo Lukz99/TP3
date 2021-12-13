@@ -10,10 +10,10 @@ DiccionarioDeEdificios::DiccionarioDeEdificios(){
 };
 
 void DiccionarioDeEdificios::procesarDatoANodo(string nombreEdificio, int cantidadPiedra, int cantidadMadera, int cantidadMetal, int maximoPermitido) {
-    insertarNodo(raiz,nombreEdificio,cantidadPiedra,cantidadMadera,cantidadMetal,maximoPermitido);
+    insertarNodo(raiz,nombreEdificio, cantidadPiedra, cantidadMadera, cantidadMetal, maximoPermitido);
 }
 
-void DiccionarioDeEdificios::insertarNodo(NodoArbol* &arbol,string nomEdificio,int cantPiedra,int cantMadera, int cantMetal, int maxPermitido){
+void DiccionarioDeEdificios::insertarNodo(NodoArbol* &arbol, string nomEdificio, int cantPiedra, int cantMadera, int cantMetal, int maxPermitido){
     if(arbol == nullptr) {
         NodoArbol *nodoNuevo = new NodoArbol(nomEdificio, cantPiedra, cantMadera, cantMetal, maxPermitido);
         arbol = nodoNuevo;
@@ -23,7 +23,7 @@ void DiccionarioDeEdificios::insertarNodo(NodoArbol* &arbol,string nomEdificio,i
         if (nomEdificio[0] < clave)
             insertarNodo(arbol -> izquierdo, nomEdificio, cantPiedra, cantMadera, cantMetal, maxPermitido);
         else {
-            insertarNodo(arbol -> derecho, nomEdificio,cantPiedra,cantMadera,cantMetal,maxPermitido);
+            insertarNodo(arbol -> derecho, nomEdificio, cantPiedra, cantMadera, cantMetal, maxPermitido);
         }
     }
 }
@@ -34,14 +34,14 @@ bool DiccionarioDeEdificios::nodoEnArbol(NodoArbol* arbol, string nomEdificio){
     else if (arbol->nombreEdificio == nomEdificio)
         return true;
     else if(nomEdificio[0] < arbol -> nombreEdificio[0])
-        return nodoEnArbol(arbol -> izquierdo,nomEdificio);
+        return nodoEnArbol(arbol -> izquierdo, nomEdificio);
     else
-        return nodoEnArbol(arbol -> derecho,nomEdificio);
+        return nodoEnArbol(arbol -> derecho, nomEdificio);
 }
 
-bool DiccionarioDeEdificios::modificarNodo(NodoArbol* arbol, string nomEdificio, int nuevaCantPiedra, int nuevaCantMadera, int nuevaCantMetal){
+bool DiccionarioDeEdificios::modificarNodo(NodoArbol* arbol, string nomEdificio, int nuevaCantPiedra, int nuevaCantMadera, int nuevaCantMetal) {
     if (arbol -> nombreEdificio == nomEdificio) {
-        arbol -> recetaEdificio->modificarReceta(nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
+        arbol -> recetaEdificio->modificarReceta(nuevaCantPiedra, nuevaCantMadera, nuevaCantMetal);
     }
     else if (nomEdificio[0] < arbol -> nombreEdificio[0])
         modificarNodo(arbol -> izquierdo, nomEdificio, nuevaCantPiedra,nuevaCantMadera, nuevaCantMetal);
@@ -62,10 +62,10 @@ int DiccionarioDeEdificios::extraerDato(NodoArbol* arbol, string nombreEdificio,
         else
             arbol->recetaEdificio -> obtenerConstruidos();
     }
-    else if (nombreEdificio[0] < arbol->nombreEdificio[0])
-        return extraerDato(arbol->izquierdo,nombreEdificio,nombreDato);
+    else if (nombreEdificio[0] < arbol -> nombreEdificio[0])
+        return extraerDato(arbol -> izquierdo, nombreEdificio, nombreDato);
     else
-        return extraerDato(arbol->derecho, nombreEdificio, nombreDato);
+        return extraerDato(arbol -> derecho, nombreEdificio, nombreDato);
 }
 
 void DiccionarioDeEdificios::recorridoInOrden(NodoArbol* arbol) {
@@ -84,7 +84,7 @@ void DiccionarioDeEdificios::listarConstruidos(NodoArbol* arbol) {
         return;
     else {
         listarConstruidos(arbol -> izquierdo);
-        if (arbol -> obtenerReceta()->obtenerConstruidos() > 0)
+        if (arbol -> obtenerReceta() -> obtenerConstruidos() > 0)
             cout << "->" << arbol -> nombreEdificio << "\nConstruidos: " << arbol -> obtenerReceta() -> obtenerConstruidos()
                  << endl;
         listarConstruidos(arbol -> derecho);
@@ -124,15 +124,15 @@ void DiccionarioDeEdificios::guardarDatosDiccionario(NodoArbol* arbol) {
 void DiccionarioDeEdificios::mostrarArbol(NodoArbol* arbol, int contador) {
     if(arbol == nullptr)
         return;
-    else{
-        mostrarArbol(arbol->derecho,contador+1);
-        for (int i=0;i<contador;i++)
+    else {
+        mostrarArbol(arbol -> derecho, contador+1);
+        for (int i = 0; i < contador; i++)
             cout << "    ";
-        cout << arbol->nombreEdificio[0] << endl;
-        mostrarArbol(arbol->izquierdo,contador+1);
+        cout << arbol -> nombreEdificio[0] << endl;
+        mostrarArbol(arbol->izquierdo, contador+1);
     }
 }
 
-NodoArbol* DiccionarioDeEdificios::obtenerNodoRaiz(){
+NodoArbol* DiccionarioDeEdificios::obtenerNodoRaiz() {
     return raiz;
 }

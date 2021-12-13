@@ -20,9 +20,9 @@ public:
     void mostrarMenuJugador();
 
     //navegacion por el menu
-    void setOpcion();
+    void definirOpcion();
     void opcionValida(int cantidadOpciones);
-    int getOpcion();
+    int obtenerOpcion();
 
     void gestionarPartida(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugadorActual,DatosLeidos baseDeDatos);
     //procesar opcion

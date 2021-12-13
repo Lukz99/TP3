@@ -50,7 +50,7 @@ int main() {
     int opcion = 0;
     bool finalizarTurno;
     menu.mostrarMenuPrincipal();
-    menu.setOpcion();
+    menu.definirOpcion();
     menu.opcionValida(10);
     menu.procesarOpcionMenuPrincipal(grafo.obtenerListaVertices(),diccionario,d1);
 /*

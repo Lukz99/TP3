@@ -1,5 +1,5 @@
-#ifndef UNTITLED_MATERIAL_H
-#define UNTITLED_MATERIAL_H
+#ifndef TP3_MATERIAL_H
+#define TP3_MATERIAL_H
 #include <string>
 
 using namespace std;
@@ -15,12 +15,12 @@ public:
     ~Material();
     void cargarDatos(string, int);
     void mostrarMaterial();
-    void setNombreClave();
+    void definirNombreClave();
     string obtenerNombre();
-    char getNombreClave();
-    int getCantidad();
+    char obtenerNombreClave();
+    int obtenerCantidad();
     void sumar(int);
     void restar(int);
 };
 
-#endif //UNTITLED_MATERIAL_H
+#endif //TP3_MATERIAL_H
