@@ -26,13 +26,12 @@ char CasilleroTransitable::obtenerInicial() {
 
 void CasilleroTransitable::generarMaterial(string nombre, int cantidadMaterial, Casillero*** casilleros, int posicionX, int posicionY) {
     material = new Material(nombre, cantidadMaterial);
-    casilleros[posicionX][posicionY] -> modificar(material->getNombreClave());
+    //casilleros[posicionX][posicionY] -> modificar(material->getNombreClave());
 }
 
 void CasilleroTransitable::recolectarMaterial(Casillero*** casilleros) {
     delete [] material;
     material = nullptr;
-    //casilleros[fila][columna] -> modificar('C');
 }
 
 CasilleroTransitable::~CasilleroTransitable() {

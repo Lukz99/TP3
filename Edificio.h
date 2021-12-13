@@ -8,14 +8,14 @@ class Edificio {
     // Atributos
 protected:
     string nombreEdificio, propietario;
-    int cantidadPiedra, cantidadMadera, cantidadMetal, maximoPermitido, construidos = 0;
+    int cantidadPiedra, cantidadMadera, cantidadMetal, maximoPermitido, construidosJugador1, construidosJugador2;
     int estadoEdificio;
     char nombreClave;
     // Metodos
 public:
     Edificio();
     Edificio(int, int, int, int);
-    ~Edificio();
+    virtual ~Edificio() = 0;
     void repararEdificio();
     void destruirEdificio();
     int obtenerEstadoEdificio();
@@ -34,11 +34,11 @@ public:
 
     // Precondiciones:
     // Postcondiciones:
-    void declararPropietario(string nombreJugador);
+    virtual void declararPropietario(string nombreJugador) = 0;
 
     // Precondiciones:
     // Postcondiciones: devuelve el atributo propietario
-    string obtenerPropietario();
+    virtual string obtenerPropietario() = 0;
     //--------------------------------
 
     // Precondiciones:
@@ -67,7 +67,8 @@ public:
 
     // Precondiciones:
     // Postcondiciones:  devuelve el atributo construidos
-    int obtenerConstruidos();
+    int obtenerConstruidosJugador1();
+    int obtenerConstruidosJugador2();
 
     // Precondiciones:
     // Postcondiciones:
@@ -75,15 +76,11 @@ public:
 
     // Precondiciones:
     // Postcondiciones:
-    void sumarEdificio();
+    void sumarEdificio(string nombreJugador);
 
     // Precondiciones:
     // Postcondiciones:
-    void restarEdificio();
-
-    // Precondiciones:
-    // Postcondiciones:
-    void demolicion();
+    void restarEdificio(string nombreJugador);
 };
 
 #endif //EDIFICIO_H

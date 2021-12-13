@@ -2,7 +2,10 @@
 
 Aserradero::Aserradero() : Edificio() {
     nombreClave = 'A';
+    nombreEdificio = "aserradero";
 }
+
+Aserradero::~Aserradero() = default;
 
 Aserradero::Aserradero(int piedra, int madera, int metal, int maximoPermitidos) : Edificio(piedra, madera, metal, maximoPermitidos) {}
 
@@ -14,4 +17,11 @@ int Aserradero::obtenerCantidadMaterialGenerable() {
 }
 char Aserradero::obtenerNombreClave() {
     return nombreClave;
+}
+
+void Aserradero::declararPropietario(string nombreJugador){
+    propietario = nombreJugador;
+}
+string Aserradero::obtenerPropietario() {
+    return propietario;
 }

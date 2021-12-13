@@ -20,13 +20,14 @@ public:
     Jugador(int);
     ~Jugador();
 
-    string obtenerNombreJugador();
     void cargarMaterial(string nombreMaterial, int cantidadMaterial);
     void recibirMatrizDeCostos(int** matrizDeCostos);
     void mostrarMateriales();
+    bool suficienteEnergia(int cantidadRequerida);
     void asignarTurno(int numeroDeTurno);
     ListaMateriales* obtenerListaMateriales();
-    void asignarNombre(string nombreSegunTurno);
+    void asignarNombre(string nombreElegido);
+    string obtenerNombreJugador();
     void restarEnergia(int cantidadEnergia);
     void sumarEnergia(int cantidadEnergia);
     int obtenerEnergia();

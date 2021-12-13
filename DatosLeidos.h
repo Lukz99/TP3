@@ -41,10 +41,6 @@ private:
     // Postcondiciones: Carga el mapa con cada tipo de casillero según el dato leido
     void definirMapa(ifstream&);
 
-    // Precondiciones: -
-    // Postcondiciones: Separa cada tipo de casillero en tres arreglos, de manera que el programa pueda acceder a sus metodos
-    void separarCasilleros();
-
     // Precondiciones:
     // Postcondiciones:
     bool aperturaDeArchivoExitosa(ifstream& archivo, string nombreArchivo);
@@ -72,13 +68,13 @@ public:
 
     // Precondiciones: -
     // Postcondiciones: Lee los edificios a construir y las carga al casillero construible que corresponda segun las coordenadas
-    void registrarUbicaciones(Vertice*);
+    void registrarUbicaciones(Vertice*,DiccionarioDeEdificios*);
     void generarMaterialesEnMapa(ifstream &archivoUbicaciones,Vertice* listaVertices,Vertice* verticeEnPosicionActual,string coordenadaX,string coordenadaY);
-    void generarEdificiosJugador(ifstream &archivoUbicaciones,Vertice* listaVertices,Vertice* verticeEnPosicionActual,string coordenadaX, string coordenadaY);
+    void generarEdificiosJugador(ifstream &archivoUbicaciones,DiccionarioDeEdificios* diccionario,Vertice* listaVertices,Vertice* verticeEnPosicionActual,string coordenadaX, string coordenadaY);
 
     // Precondiciones:
     // Postcondiciones:
-    void cargarListaMateriales(Jugador primerJugador,Jugador segundoJugador);
+    void cargarListaMateriales(Jugador *primerJugador,Jugador *segundoJugador);
 
     // Precondiciones:
     // Postcondiciones:

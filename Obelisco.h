@@ -15,10 +15,13 @@ private:
 public:
     Obelisco();
     Obelisco(int piedra ,int madera, int metal, int maximoPermitidos);
+    ~Obelisco() override;
 
     string obtenerNombreMaterialGenerable() override;
     int obtenerCantidadMaterialGenerable() override;
     char obtenerNombreClave() override;
+    void declararPropietario(string nombreJugador) override;
+    string obtenerPropietario() override;
 
 
 };

@@ -16,9 +16,12 @@ private:
 public:
     Fabrica();
     Fabrica(int,int,int,int);
+    ~Fabrica() override;
     string obtenerNombreMaterialGenerable() override;
     int obtenerCantidadMaterialGenerable() override;
     char obtenerNombreClave() override;
+    void declararPropietario(string nombreJugador) override;
+    string obtenerPropietario() override;
 };
 
 

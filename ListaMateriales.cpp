@@ -22,7 +22,7 @@ int ListaMateriales::extraerCantidadMaterial(string nombreMaterial){
     bool nodoEncontrado = false;
     NodoLista *nodoEnRecorrido = nodoInicial;
     int cantidadMaterialBuscado;
-    while(nodoEnRecorrido != nullptr || !nodoEncontrado){
+    while(nodoEnRecorrido != nullptr && !nodoEncontrado){
         if(nodoEnRecorrido->obtenerMaterial()->obtenerNombre() == nombreMaterial){
             cantidadMaterialBuscado = nodoEnRecorrido->obtenerMaterial()->getCantidad();
             nodoEncontrado = true;

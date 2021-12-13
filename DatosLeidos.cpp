@@ -16,15 +16,15 @@ bool DatosLeidos::aperturaDeArchivoExitosa(ifstream& archivo,string nombreArchiv
     return archivoAbierto;
 }
 
-void DatosLeidos::cargarListaMateriales(Jugador primerJugador, Jugador segundoJugador) {
+void DatosLeidos::cargarListaMateriales(Jugador *primerJugador, Jugador *segundoJugador) {
     ifstream archivoMateriales("materiales.txt");
     if (aperturaDeArchivoExitosa(archivoMateriales,"materiales.txt")) {
         string material, cantidadPrimerJugador, cantidadSegundoJugador;
         while(archivoMateriales >> material) {
             archivoMateriales >> cantidadPrimerJugador;
             archivoMateriales >> cantidadSegundoJugador;
-            primerJugador.cargarMaterial(material, stoi(cantidadPrimerJugador));
-            segundoJugador.cargarMaterial(material, stoi(cantidadSegundoJugador));
+            primerJugador->cargarMaterial(material, stoi(cantidadPrimerJugador));
+            segundoJugador->cargarMaterial(material, stoi(cantidadSegundoJugador));
         }
     }
     archivoMateriales.close();
@@ -39,8 +39,19 @@ void DatosLeidos::cargarDiccionarioDeEdificios(DiccionarioDeEdificios *diccionar
             if (edificio == "planta") {
                 archivoEdificios >> nombreAdicional;
                 edificio = "planta electrica";
+                archivoEdificios >> piedra;
             }
-            archivoEdificios >> piedra;
+            else if(edificio == "mina") {
+                archivoEdificios >> nombreAdicional;
+                if (nombreAdicional == "oro") {
+                    edificio = "mina oro";
+                    archivoEdificios >> piedra;
+                }
+                else
+                    piedra = nombreAdicional;
+            }
+            else
+                archivoEdificios >> piedra;
             archivoEdificios >> madera;
             archivoEdificios >> metal;
             archivoEdificios >> maximo;
@@ -110,13 +121,13 @@ void DatosLeidos::definirMapa(ifstream &archivoMapa) {
 }
 
 // Lectura de ubicaciones.txt
-void DatosLeidos::registrarUbicaciones(Vertice* listaVertices){
+void DatosLeidos::registrarUbicaciones(Vertice* listaVertices,DiccionarioDeEdificios* diccionarioDeEdificios){
     ifstream archivoUbicaciones("ubicaciones.txt");
     string coordenadaX, coordenadaY;
     Vertice* verticeEnPosicionActual;
     if (aperturaDeArchivoExitosa(archivoUbicaciones,"ubicaciones.txt")){
         generarMaterialesEnMapa(archivoUbicaciones,listaVertices,verticeEnPosicionActual,coordenadaX,coordenadaY);
-        generarEdificiosJugador(archivoUbicaciones,listaVertices,verticeEnPosicionActual,coordenadaX,coordenadaY);
+        generarEdificiosJugador(archivoUbicaciones,diccionarioDeEdificios,listaVertices,verticeEnPosicionActual,coordenadaX,coordenadaY);
     }
     archivoUbicaciones.close();
 }
@@ -140,7 +151,7 @@ void DatosLeidos::generarMaterialesEnMapa(ifstream &archivoUbicaciones,Vertice* 
     }
 }
 
-void DatosLeidos::generarEdificiosJugador(ifstream &archivoUbicaciones,Vertice* listaVertices, Vertice* verticeEnPosicionActual,string coordenadaX, string coordenadaY) {
+void DatosLeidos::generarEdificiosJugador(ifstream &archivoUbicaciones,DiccionarioDeEdificios* diccionario,Vertice* listaVertices, Vertice* verticeEnPosicionActual,string coordenadaX, string coordenadaY) {
     string nombreJugadorActual = "Jugador 1", nombreEdificio, basura;
     Vertice *verticePosicionBuscada;
     getline(archivoUbicaciones, basura, '(');
@@ -153,7 +164,7 @@ void DatosLeidos::generarEdificiosJugador(ifstream &archivoUbicaciones,Vertice* 
             getline(archivoUbicaciones, basura, '(');
             getline(archivoUbicaciones, coordenadaX, ',');
             getline(archivoUbicaciones, coordenadaY, ')');
-        } else {
+        }else {
             if (nombreEdificio == "planta") {
                 archivoUbicaciones >> basura;
                 nombreEdificio = "planta electrica";
@@ -163,18 +174,22 @@ void DatosLeidos::generarEdificiosJugador(ifstream &archivoUbicaciones,Vertice* 
                 getline(archivoUbicaciones, basura, '(');
                 if (basura == "oro ")
                     nombreEdificio = "mina oro";
-            }
-            else
+            } else
                 getline(archivoUbicaciones, basura, '(');
             getline(archivoUbicaciones, coordenadaX, ',');
             getline(archivoUbicaciones, coordenadaY, ')');
             verticePosicionBuscada = listaVertices->buscarVerticePorPosicion(listaVertices, stoi(coordenadaX),
                                                                              stoi(coordenadaY));
-            if (verticePosicionBuscada->obtenerCasilla() == 'T' && !verticePosicionBuscada->obtenerCasilleroConstruible()->edificioConstruido()) {
-                verticePosicionBuscada->construirEdificio(nombreEdificio, casilleros,stoi(coordenadaX),stoi(coordenadaY));
-                verticePosicionBuscada->obtenerCasilleroConstruible()->obtenerEdificio()->declararPropietario(nombreJugadorActual);
+            if (verticePosicionBuscada->obtenerCasilla() == 'T' &&
+                !verticePosicionBuscada->obtenerCasilleroConstruible()->edificioConstruido()) {
+                verticePosicionBuscada->construirEdificio(nombreEdificio, casilleros, stoi(coordenadaX),
+                                                          stoi(coordenadaY));
+                verticePosicionBuscada->obtenerCasilleroConstruible()->obtenerEdificio()->declararPropietario(
+                        nombreJugadorActual);
+                diccionario->modificacionEnConstruidos(diccionario->obtenerNodoRaiz(),nombreJugadorActual,nombreEdificio,true);
             }
         }
+
     }
 }
 
@@ -219,24 +234,6 @@ int DatosLeidos::cantInaccesibles() {
 // Liberacion de memoria
 
 DatosLeidos::~DatosLeidos() {
-    for(int i = 0; i < cantidadConstruibles; i++) {
-        if (construibles[i] != nullptr)
-            delete construibles[i];
-    }
-    delete [] construibles;
-
-    for (int i = 0; i < cantidadTransitables; i++) {
-        if (transitables[i] != nullptr)
-            delete transitables[i];
-    }
-    delete [] transitables;
-
-    for (int i = 0; i < cantidadInaccesibles; i++) {
-        if (inaccesibles[i] != nullptr)
-            delete inaccesibles[i];
-    }
-    delete [] inaccesibles;
-
     for (int i = 0; i < cantidadFilas; i++) {
         for (int j = 0; j < cantidadColumnas; j++) {
             delete casilleros[i][j];

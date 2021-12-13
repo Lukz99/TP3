@@ -2,7 +2,10 @@
 
 Fabrica::Fabrica() : Edificio(){
     nombreClave = 'F';
+    nombreEdificio = "fabrica";
 }
+
+Fabrica::~Fabrica() = default;
 
 Fabrica::Fabrica(int cantidadPiedra, int cantidadMadera, int cantidadMetal, int maximoPermitidos) : Edificio(cantidadPiedra,cantidadMadera,cantidadMetal,maximoPermitidos){}
 
@@ -14,4 +17,10 @@ int Fabrica::obtenerCantidadMaterialGenerable() {
 }
 char Fabrica::obtenerNombreClave() {
     return nombreClave;
+}
+void Fabrica::declararPropietario(string nombreJugador){
+    propietario = nombreJugador;
+}
+string Fabrica::obtenerPropietario() {
+    return propietario;
 }

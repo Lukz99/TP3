@@ -4,18 +4,11 @@
 
 Edificio::Edificio() = default;
 
-Edificio::~Edificio() = default;
-
-
 Edificio::Edificio(int pie, int mad, int met, int max) {
     cantidadPiedra = pie;
     cantidadMadera = mad;
     cantidadMetal = met;
     maximoPermitido = max;
-}
-
-void Edificio::declararPropietario(string nombreJugador){
-    propietario = nombreJugador;
 }
 
 void Edificio::repararEdificio() {
@@ -41,12 +34,6 @@ void Edificio::destruirEdificio() {
 
 int Edificio::obtenerEstadoEdificio() {
     return estadoEdificio;
-}
-
-
-
-string Edificio::obtenerPropietario() {
-    return propietario;
 }
 
 void Edificio::cargarDatos(string nom, int pie, int mad, int met, int max) {
@@ -85,15 +72,24 @@ int Edificio::obtenerMaximaCantidad() {
     return maximoPermitido;
 }
 
-int Edificio::obtenerConstruidos() {
-    return construidos;
+int Edificio::obtenerConstruidosJugador1() {
+    return construidosJugador1;
+}
+int Edificio::obtenerConstruidosJugador2(){
+    return construidosJugador2;
 }
 void Edificio::mostrarEdificio() {
     cout << obtenerNombre() << endl;
 }
-void Edificio::sumarEdificio() {
-    construidos++;
+void Edificio::sumarEdificio(string nombreJugador) {
+    if(nombreJugador == "Jugador 1")
+        construidosJugador1++;
+    else
+        construidosJugador2++;
 }
-void Edificio::restarEdificio() {
-    construidos--;
+void Edificio::restarEdificio(string nombreJugador) {
+    if(nombreJugador == "Jugador 1")
+        construidosJugador1--;
+    else
+        construidosJugador2--;
 }

@@ -19,8 +19,8 @@ public:
     bool modificarNodo(NodoArbol*, string, int, int, int);
     int extraerDato(NodoArbol*, string, string);
     void recorridoInOrden(NodoArbol*);
-    void listarConstruidos(NodoArbol* arbol);
-    void modificacionEnConstruidos(NodoArbol* arbol,string nombreEdificio, bool realizarSuma);
+    void listarConstruidos(NodoArbol* arbol,string nombreJugador);
+    void modificacionEnConstruidos(NodoArbol* arbol,string nombreJugador,string nombreEdificio, bool realizarSuma);
     NodoArbol* obtenerNodoRaiz();
     void guardarDatosDiccionario(NodoArbol*);
 };

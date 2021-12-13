@@ -63,7 +63,7 @@ void CasilleroConstruible::construirEdificio(string nombreEdificio, Casillero***
 }
 
 void CasilleroConstruible::demolerEdificio(Casillero*** casilleros){
-    delete [] edificiacion;
+    delete edificiacion;
     edificiacion = nullptr;
 }
 

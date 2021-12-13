@@ -13,9 +13,13 @@ private:
 public:
     Mina();
     Mina(int,int,int,int);
+    ~Mina() override;
     string obtenerNombreMaterialGenerable() override;
     int obtenerCantidadMaterialGenerable() override;
     char obtenerNombreClave() override;
+    void declararPropietario(string nombreJugador) override;
+    string obtenerPropietario() override;
+
 
 };
 

@@ -12,9 +12,13 @@ private:
 public:
     PlantaElectrica();
     PlantaElectrica(int,int,int,int);
+    ~PlantaElectrica() override;
+
     string obtenerNombreMaterialGenerable() override;
     int obtenerCantidadMaterialGenerable() override;
     char obtenerNombreClave() override;
+    string obtenerPropietario() override;
+    void declararPropietario(string nombreJugador) override;
 
 };
 

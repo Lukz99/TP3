@@ -59,8 +59,10 @@ int DiccionarioDeEdificios::extraerDato(NodoArbol* arbol, string nombreEdificio,
             arbol -> recetaEdificio -> obtenerMetal();
         else if (nombreDato == "maximo permitido")
             arbol->recetaEdificio -> obtenerMaximaCantidad();
+        else if(nombreDato == "construidos Jugador 1")
+            arbol->recetaEdificio -> obtenerConstruidosJugador1();
         else
-            arbol->recetaEdificio -> obtenerConstruidos();
+            arbol->recetaEdificio->obtenerConstruidosJugador2();
     }
     else if (nombreEdificio[0] < arbol->nombreEdificio[0])
         return extraerDato(arbol->izquierdo,nombreEdificio,nombreDato);
@@ -79,29 +81,38 @@ void DiccionarioDeEdificios::recorridoInOrden(NodoArbol* arbol) {
     }
 }
 
-void DiccionarioDeEdificios::listarConstruidos(NodoArbol* arbol) {
+void DiccionarioDeEdificios::listarConstruidos(NodoArbol* arbol,string nombreJugador) {
     if (arbol == nullptr)
         return;
     else {
-        listarConstruidos(arbol -> izquierdo);
-        if (arbol -> obtenerReceta()->obtenerConstruidos() > 0)
-            cout << "->" << arbol -> nombreEdificio << "\nConstruidos: " << arbol -> obtenerReceta() -> obtenerConstruidos()
-                 << endl;
-        listarConstruidos(arbol -> derecho);
+        listarConstruidos(arbol -> izquierdo,nombreJugador);
+        if(nombreJugador == "Jugador 1") {
+            if (arbol->obtenerReceta()->obtenerConstruidosJugador1() > 0)
+                cout << "->" << arbol->nombreEdificio << "\nConstruidos: "
+                     << arbol->obtenerReceta()->obtenerConstruidosJugador1()
+                     << endl;
+        }
+        else{if (arbol->obtenerReceta()->obtenerConstruidosJugador2() > 0)
+                cout << "->" << arbol->nombreEdificio << "\nConstruidos: "
+                     << arbol->obtenerReceta()->obtenerConstruidosJugador2()
+                     << endl;
+
+        }
+        listarConstruidos(arbol -> derecho,nombreJugador);
     }
 }
 
-void DiccionarioDeEdificios::modificacionEnConstruidos(NodoArbol* arbol, string nombreEdificio, bool realizarSuma) {
+void DiccionarioDeEdificios::modificacionEnConstruidos(NodoArbol* arbol,string nombreJugador, string nombreEdificio, bool realizarSuma) {
     if (arbol -> nombreEdificio == nombreEdificio) {
        if (realizarSuma)
-           arbol -> recetaEdificio -> sumarEdificio();
+           arbol -> recetaEdificio -> sumarEdificio(nombreJugador);
        else
-           arbol -> recetaEdificio -> restarEdificio();
+           arbol -> recetaEdificio -> restarEdificio(nombreJugador);
     }
     else if (nombreEdificio[0] < arbol -> nombreEdificio[0])
-        return modificacionEnConstruidos(arbol -> izquierdo, nombreEdificio, realizarSuma);
+        return modificacionEnConstruidos(arbol -> izquierdo,nombreJugador, nombreEdificio, realizarSuma);
     else
-        return modificacionEnConstruidos(arbol -> derecho, nombreEdificio, realizarSuma);
+        return modificacionEnConstruidos(arbol -> derecho,nombreJugador, nombreEdificio, realizarSuma);
 }
 
 void DiccionarioDeEdificios::guardarDatosDiccionario(NodoArbol* arbol) {

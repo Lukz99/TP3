@@ -17,6 +17,7 @@ public:
     // Precondiciones:
     // Postcondiciones:
     Aserradero();
+    ~Aserradero() override;
 
     // Precondiciones:
     // Postcondiciones:
@@ -25,6 +26,8 @@ public:
     string obtenerNombreMaterialGenerable() override;
     int obtenerCantidadMaterialGenerable() override;
     char obtenerNombreClave() override;
+    string obtenerPropietario() override;
+    void declararPropietario(string nombreJugador) override;
 };
 
 

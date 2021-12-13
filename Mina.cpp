@@ -2,7 +2,10 @@
 
 Mina::Mina() {
     nombreClave = 'M';
+    nombreEdificio = "Mina";
 }
+
+Mina::~Mina() = default;
 
 Mina::Mina(int cantidadPiedra, int cantidadMadera, int cantidadMetal, int maximoPermitidos) : Edificio(cantidadPiedra,cantidadMadera,cantidadMetal,maximoPermitidos){}
 
@@ -14,4 +17,10 @@ int Mina::obtenerCantidadMaterialGenerable() {
 }
 char Mina::obtenerNombreClave() {
     return nombreClave;
+}
+void Mina::declararPropietario(string nombreJugador){
+    propietario = nombreJugador;
+}
+string Mina::obtenerPropietario() {
+    return propietario;
 }

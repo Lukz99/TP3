@@ -57,6 +57,10 @@ int Jugador::obtenerEnergia() {
     return energia;
 }
 
+bool Jugador::suficienteEnergia(int cantidadRequerida){
+    return energia >= cantidadRequerida;
+}
+
 bool Jugador::jugadorSinEnergias(){
-    return energia = 0;
+    return energia == 0;
 }

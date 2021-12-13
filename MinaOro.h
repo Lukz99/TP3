@@ -13,12 +13,16 @@ private:
 public:
     MinaOro();
     MinaOro(int,int,int,int);
+    ~MinaOro() override;
     void repararEdificio();
     void destruirEdificio();
     int obtenerEstadoEdificio();
     string obtenerNombreMaterialGenerable() override;
     int obtenerCantidadMaterialGenerable() override;
     char obtenerNombreClave() override;
+    void declararPropietario(string nombreJugador) override;
+    string obtenerPropietario() override;
+
 
 
 };

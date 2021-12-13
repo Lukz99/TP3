@@ -12,10 +12,8 @@
 using namespace std;
 
 int main() {
-    int contador = 0;
-
-    Jugador J1;
-    Jugador J2;
+    Jugador *J1 = new Jugador;
+    Jugador *J2 = new Jugador;
 
     /*Objetivos O1;
     O1.asignarObjetivo();
@@ -26,33 +24,27 @@ int main() {
 
     DatosLeidos d1;
     Grafo grafo;
-
+    Menu menu;
 
     DiccionarioDeEdificios* diccionario = new DiccionarioDeEdificios();
     d1.crearMapa();
     d1.cargarDiccionarioDeEdificios(diccionario);
     d1.cargarListaMateriales(J1,J2);
-    diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
-
 
     grafo.cargarListaVertices(d1.obtenerCasilleros(),d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas());
-    d1.registrarUbicaciones(grafo.obtenerListaVertices());
+    d1.registrarUbicaciones(grafo.obtenerListaVertices(),diccionario);
+/*
+    while(menu.obtenerOpcion() != 4 && menu.obtenerOpcion() != 5) {
+        menu.mostrarMenuJugador();
+        menu.definirOpcion();
+        menu.opcionValida(5);
+        menu.procesarOpcionMenuJugador(grafo.obtenerListaVertices(), diccionario, d1,J1,J2);
+    }*/
     system("pause");
-    //grafo.crearMatrizDeCostos(d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas(),J1.obtenerNombreJugador());
-    //J1.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
-    //grafo.crearMatrizDeCostos(d1.getCantidadFilas(),d1.getCantidadColumnas(),J2.obtenerNombreJugador());
-    //J2.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
+    menu.eleccionJugador(J1,J2);
+    menu.gestionDeTurnos(grafo,diccionario,J1,d1);
 
 
-
-    Menu menu;
-
-    int opcion = 0;
-    bool finalizarTurno;
-    menu.mostrarMenuPrincipal();
-    menu.setOpcion();
-    menu.opcionValida(10);
-    menu.procesarOpcionMenuPrincipal(grafo.obtenerListaVertices(),diccionario,d1);
 /*
     while(opcion != 11){
         menu.procesarOpcion(d1.getCasilleros(), d1.getCantidadFilas(), d1.getCantidadColumnas(), d1.getConstruibles(), d1.cantConstruibles(), d1.getTransitables(), d1.cantTransitables(), d1.getMateriales(), d1.getCantidadMateriales(), d1.getEdficios(), d1.getCantidadEdificios());
@@ -61,4 +53,10 @@ int main() {
         menu.opcionValida();
         opcion = menu.getOpcion();
     }*/
+    //grafo.crearMatrizDeCostos(d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas(),J1.obtenerNombreJugador());
+    //J1.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
+    //grafo.crearMatrizDeCostos(d1.getCantidadFilas(),d1.getCantidadColumnas(),J2.obtenerNombreJugador());
+    //J2.recibirMatrizDeCostos(grafo.obtenerMatrizDeCostos());
+    delete J1;
+    delete J2;
 }
