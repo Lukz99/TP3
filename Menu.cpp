@@ -117,16 +117,16 @@ void Menu::mostrarMapa(Vertice* listaVertices,Casillero*** casilleros, int cantF
             if ((verticeActual->obtenerCasilla() == 'T' && verticeActual->obtenerCasilleroConstruible()->edificioConstruido()))
                 cout << verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombreClave() << " ";
             else if((verticeActual->obtenerCasilla() == 'C' || verticeActual->obtenerCasilla() == 'M' || verticeActual->obtenerCasilla() == 'B') && verticeActual->obtenerCasilleroTransitable()->materialPresente())
-                cout << verticeActual->obtenerCasilleroTransitable()->obtenerMaterial()->getNombreClave() << " ";
+                cout << verticeActual->obtenerCasilleroTransitable()->obtenerMaterial()-> obtenerNombreClave() << " ";
             else
                 cout << "X ";
         }
         cout << "\n";
     }
     cout << "\n--MAPA TERRENOS--" << endl;
-    for(int i=0; i<cantFilas;i++) {
+    for(int i = 0; i < cantFilas; i++) {
         for (int j = 0; j < cantColumnas; j++) {
-            cout << casilleros[i][j]->obtenerInicial();
+            cout << casilleros[i][j] -> obtenerInicial();
             cout << " ";
         }
         cout << "\n";
@@ -525,9 +525,9 @@ void Menu::consultarCoordenada(Vertice* listaVertices,DatosLeidos baseDeDatos) {
                 cout << "Tipo: Betun" << endl;
                 break;
         }
-        if(verticeBuscado->obtenerCasilleroTransitable()->materialPresente())
-            cout << "Hay "<< verticeBuscado->obtenerCasilleroTransitable()->obtenerMaterial()->getCantidad()
-                 << " de " << verticeBuscado->obtenerCasilleroTransitable()->obtenerMaterial()->obtenerNombre()
+        if(verticeBuscado -> obtenerCasilleroTransitable() -> materialPresente())
+            cout << "Hay "<< verticeBuscado -> obtenerCasilleroTransitable() -> obtenerMaterial()-> obtenerCantidad()
+                 << " de " << verticeBuscado -> obtenerCasilleroTransitable() -> obtenerMaterial() -> obtenerNombre()
                  << " presente en este casillero. " << endl;
         else
             cout << "No hay materiales en este casillero." << endl;
