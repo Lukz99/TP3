@@ -15,7 +15,7 @@ protected:
 public:
     Edificio();
     Edificio(int, int, int, int);
-    virtual ~Edificio() = 0;
+    virtual ~Edificio();
     void repararEdificio();
     void destruirEdificio();
     int obtenerEstadoEdificio();

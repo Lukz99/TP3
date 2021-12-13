@@ -39,6 +39,9 @@ ListaMateriales* Jugador::obtenerListaMateriales() {
     return listaMateriales;
 }
 
+int Jugador::obtenerTurno() {
+    return ordenDeTurno;
+}
 
 void Jugador::sumarEnergia(int sumando) {
     if(energia + sumando > 100)
@@ -52,6 +55,18 @@ void Jugador::restarEnergia(int restando) {
     energia -= restando;
 }
 
+void Jugador::cargarPosicion(int x, int y){
+    posicionX = x;
+    posicionY = y;
+}
+
+int Jugador::obtenerPosicionX(){
+    return posicionX;
+}
+
+int Jugador::obtenerPosicionY(){
+    return posicionY;
+}
 
 int Jugador::obtenerEnergia() {
     return energia;

@@ -2,7 +2,9 @@
 
 Mina::Mina() {
     nombreClave = 'M';
-    nombreEdificio = "Mina";
+    nombreEdificio = "mina";
+    estadoEdificio = 2;
+
 }
 
 Mina::~Mina() = default;

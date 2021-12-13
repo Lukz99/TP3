@@ -3,7 +3,9 @@
 
 MinaOro::MinaOro() {
     nombreClave = 'G';
-    nombreEdificio = "Mina oro";
+    nombreEdificio = "mina oro";
+    estadoEdificio = 2;
+
 }
 
 MinaOro::~MinaOro() = default;

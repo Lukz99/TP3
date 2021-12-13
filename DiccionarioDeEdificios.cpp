@@ -128,6 +128,7 @@ void DiccionarioDeEdificios::guardarDatosDiccionario(NodoArbol* arbol) {
                               << recetaActual -> obtenerMetal() << " " << recetaActual -> obtenerMaximaCantidad() << endl;
         guardarDatosDiccionario(arbol -> derecho);
     }
+    nuevoArchivoEdificios.close();
 }
 
 

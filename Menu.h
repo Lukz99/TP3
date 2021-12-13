@@ -24,9 +24,8 @@ public:
     void opcionValida(int cantidadOpciones);
     int obtenerOpcion();
 
-    void gestionDeTurnos(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador *jugadorActual,DatosLeidos baseDeDatos);
     //procesar opcion
-    void procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador *jugador, DatosLeidos baseDeDatos,bool &finalizarTurno);
+    void procesarOpcionMenuJugador(Vertice* vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador *jugador,DatosLeidos baseDeDatos,bool &finalizarTurno);
     void procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios* diccionario,DatosLeidos baseDeDatos,Jugador *primerJugador,Jugador *segundoJugador);
 
     //--menu principal--
@@ -38,14 +37,15 @@ public:
 
     //--menu jugador--
     //pre-inicio
-    void comenzarPartida(Vertice* listaVertices,DatosLeidos baseDeDatos,Jugador *primerJugador,Jugador *segundoJugador);
+    void comenzarPartida(Vertice* listaVertices,DiccionarioDeEdificios* diccionario,DatosLeidos baseDeDatos,Jugador *primerJugador,Jugador *segundoJugador);
     void eleccionJugador(Jugador *primerJugador,Jugador *segundoJugador);
     void designarTurnos(Jugador *primerJugador,Jugador *segundoJugador);
     void lluviaRecursos(Vertice* listaVertices,DatosLeidos baseDeDatos);
     void seleccionarCoordenadasAleatoriamente(Vertice* listaVertices,string nombreMaterial,int generacionMaterial,int equivalenciaUnitaria,DatosLeidos baseDeDatos);
-    
+    void gestionDeTurnos(Vertice* vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador *jugadorActual,DatosLeidos baseDeDatos);
+
     //opcion 1
-    void construirEdificio(DiccionarioDeEdificios* diccionario, Grafo vertices, Jugador *jugador, DatosLeidos baseDeDatos);
+    void construirEdificio(DiccionarioDeEdificios* diccionario, Vertice* vertices, Jugador *jugador, DatosLeidos baseDeDatos);
     bool realizarDiferenciaMateriales(DiccionarioDeEdificios* diccionario, Jugador *jugador, string nombreEdificio, string nombreMaterial);
     bool materialesSuficientes(DiccionarioDeEdificios* diccionario, Jugador *jugador, string nombreEdificio);
     bool coordenadaConstruible(Vertice*, DiccionarioDeEdificios*, int, int,Jugador*, string, Casillero***);
@@ -67,8 +67,10 @@ public:
     void guardarUbicaciones(Vertice* listaVertices,Jugador *primerJugador,Jugador *segundoJugador,DatosLeidos baseDeDatos);
     void guardarMaterialesDelMapa(ofstream& archivoUbicaciones,Vertice* listaVertices,DatosLeidos baseDeDatos);
     void guardarEdificiosJugador(ofstream& archivoUbicaciones,Vertice* listaVertices,Jugador *jugador,DatosLeidos baseDeDatos);
+    void guardarMateriales(Jugador* primerJugador,Jugador* segundoJugador );
+    void extraerMaterial(ofstream& archivoMateriales,Jugador* primerJugador,Jugador* segundoJugador,string nombreMaterial);
 
-        //funciones de uso multiple
+    //funciones de uso multiple
     string validarEdificio(DiccionarioDeEdificios *diccionarioDeEdificios, string nombreEdificios);
     char realizarOperacion();
     void leerCoordenadas(int&, int&, int, int);

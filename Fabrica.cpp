@@ -3,6 +3,8 @@
 Fabrica::Fabrica() : Edificio(){
     nombreClave = 'F';
     nombreEdificio = "fabrica";
+    estadoEdificio = 2;
+
 }
 
 Fabrica::~Fabrica() = default;

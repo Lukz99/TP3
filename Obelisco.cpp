@@ -2,7 +2,7 @@
 
 Obelisco::Obelisco() {
     nombreClave = 'O';
-    nombreEdificio = "Obelisco";
+    nombreEdificio = "obelisco";
 }
 Obelisco::~Obelisco() = default;
 

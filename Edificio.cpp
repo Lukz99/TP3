@@ -4,6 +4,8 @@
 
 Edificio::Edificio() = default;
 
+Edificio::~Edificio() = default;
+
 Edificio::Edificio(int pie, int mad, int met, int max) {
     cantidadPiedra = pie;
     cantidadMadera = mad;
@@ -13,7 +15,7 @@ Edificio::Edificio(int pie, int mad, int met, int max) {
 
 void Edificio::repararEdificio() {
     if (estadoEdificio == 2)
-        cout << "El edificio ingresado se encuentra en perfecto estado." << endl;
+        cout << "El edificio ingresado se encuentra en perfecto estado, no es necesaria una reparacion." << endl;
     else if (estadoEdificio == 1) {
         estadoEdificio++;
         cout << "Edificio reparado correctamente." << endl;

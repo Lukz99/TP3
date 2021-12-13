@@ -2,7 +2,9 @@
 
 Escuela::Escuela() : Edificio(){
     nombreClave = 'E';
-    nombreEdificio = "Escuela";
+    nombreEdificio = "escuela";
+    estadoEdificio = 1;
+
 }
 
 Escuela::Escuela(int cantidadPiedra, int cantidadMadera, int cantidadMetal, int maximoPermitidos) : Edificio(cantidadPiedra,cantidadMadera,cantidadMetal,maximoPermitidos){}
