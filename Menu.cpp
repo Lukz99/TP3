@@ -108,8 +108,7 @@ void Menu::mostrarMapa(Vertice* listaVertices,Casillero*** casilleros, int cantF
 }
 
 
-void Menu::lluviaRecursos(CasilleroTransitable** transitables, int cantidadTransitables, Casillero*** casilleros) {
-    int posicionX, posicionY;
+void Menu::lluviaRecursos(Vertice* listaVertices,DatosLeidos baseDeDatos) {
     int generacionPiedra = 1 + rand() % (2 - 1);
     int generacionMadera = rand() % (3);
     int generacionMetal = 2 + rand() % (4 - 2);
@@ -119,17 +118,34 @@ void Menu::lluviaRecursos(CasilleroTransitable** transitables, int cantidadTrans
          << "| Piedra: " << generacionPiedra << " | Madera: " << generacionMadera << " | Metal: " << generacionMetal << " |" << endl;
 }
 
-void seleccionarCoordenadasAlAzar(Vertice* listaVertices,DatosLeidos baseDeDatos,int &posicionX,int &posicionY){
-    Vertice* verticeBuscado;
-    posicionX = rand() % (baseDeDatos.obtenerCantidadFilas());
-    posicionY = rand() % (baseDeDatos.obtenerCantidadColumnas());
-    verticeBuscado = listaVertices->buscarVerticePorPosicion(posicionX,posicionY);
-
-
-
+void Menu::seleccionarCoordenadasAleatoriamente(Vertice* listaVertices,string nombreMaterial,int generacionMaterial,int equivalenciaUnitaria,DatosLeidos baseDeDatos) {
+    int posicionX, posicionY;
+    int contadorCiclos;
+    bool sinCasillerosTransitables;
+    Vertice *verticeBuscado;
+    char casilla;
+    while(sinCasillerosTransitables )
+    for(int i=0; i<generacionMaterial;i++) {
+        posicionX = rand() % (baseDeDatos.obtenerCantidadFilas());
+        posicionY = rand() % (baseDeDatos.obtenerCantidadColumnas());
+        verticeBuscado = listaVertices->buscarVerticePorPosicion(listaVertices, posicionX, posicionY);
+        casilla = listaVertices->obtenerCasilla();
+        while ((casilla != 'C' && casilla != 'M' && casilla != 'B') ||
+               verticeBuscado->obtenerCasilleroTransitable()->materialPresente() || !sinCasillerosTransitables) {
+            posicionX = rand() % (baseDeDatos.obtenerCantidadFilas());
+            posicionY = rand() % (baseDeDatos.obtenerCantidadColumnas());
+            verticeBuscado = listaVertices->buscarVerticePorPosicion(listaVertices, posicionX, posicionY);
+            casilla = listaVertices->obtenerCasilla();
+            if (contadorCiclos == 50)
+                sinCasillerosTransitables = true;
+        }
+        verticeBuscado->obtenerCasilleroTransitable()->generarMaterial(nombreMaterial,
+                                                                       generacionMaterial * equivalenciaUnitaria,
+                                                                       baseDeDatos.obtenerCasilleros(), posicionX,
+                                                                       posicionY);
+        contadorCiclos = 0;
+    }
 }
-
-
 /*
 void Menu::guardarMateriales(Material** materiales, int cantidadMateriales){
     ofstream arcMateriales("materiales.txt");
@@ -146,7 +162,7 @@ void Menu::guardarUbicaciones(CasilleroConstruible** construibles, int cantidadC
                            << construibles[i]->getFila() << "," << construibles[i]->getColumna() << ")" << endl;
         }
     arcUbicaciones.close();
-}*/
+}
 
 void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
     ofstream arcMapa("mapa.txt");
@@ -158,7 +174,7 @@ void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
         arcMapa << "\n";
     }
     arcMapa.close();
-}
+}*/
 
 void Menu::procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios *diccionario,Casillero*** casilleros, int cantFilas, int cantColumnas) {
     switch (opcionElegida) {

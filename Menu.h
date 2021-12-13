@@ -26,7 +26,7 @@ public:
     int getOpcion();
 
     void gestionarPartida(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugadorActual,DatosLeidos baseDeDatos);
-        //procesar opcion
+    //procesar opcion
     void procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador, DatosLeidos baseDeDatos,bool &finalizarTurno);
     void procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios* diccionario, Casillero*** casilleros, int cantFilas, int cantColumnas);
 
@@ -38,6 +38,10 @@ public:
     void mostrarMapa(Vertice*,Casillero***,int,int);
 
     //--menu jugador--
+    //pre-inicio
+    void lluviaRecursos(Vertice* listaVertices,DatosLeidos baseDeDatos);
+    void seleccionarCoordenadasAleatoriamente(Vertice* listaVertices,string nombreMaterial,int generacionMaterial,int equivalenciaUnitaria,DatosLeidos baseDeDatos);
+    
     //opcion 1
     void construirEdificio(DiccionarioDeEdificios* diccionario, Grafo vertices, Jugador jugador, DatosLeidos baseDeDatos);
     bool realizarDiferenciaMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio, string nombreMaterial);
@@ -64,9 +68,6 @@ public:
     void restarMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio, double porcentajeRestable);
 
     //opciones de menu jugador sin readaptar
-    void recolectarRecursos(CasilleroConstruible**, int, Material**,int);
-    void lluviaRecursos(CasilleroTransitable**, int, Casillero***);
-    void generamientos(string, int, CasilleroTransitable**, int, Casillero***);
     void guardarMateriales(Material**, int);
     void guardarUbicaciones(CasilleroConstruible**, int);
     void guardarMapa(Casillero***, int, int);
