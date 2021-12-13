@@ -9,18 +9,18 @@ Material::Material() = default;
 Material::Material(string n, int c){
     nombreMaterial = n;
     cantidadMaterial = c;
-    setNombreClave();
+    definirNombreClave();
 }
 
 Material::~Material() = default;
 
-void Material::cargarDatos(string n,int c){
+void Material::cargarDatos(string n, int c) {
     nombreMaterial = n;
     cantidadMaterial = c;
-    setNombreClave();
+    definirNombreClave();
 }
 
-void Material::setNombreClave() {
+void Material::definirNombreClave() {
     if (nombreMaterial == "piedra")
         nombreClave = 'S';
     if (nombreMaterial == "madera")
@@ -39,11 +39,11 @@ string Material::obtenerNombre() {
     return nombreMaterial;
 }
 
-char Material::getNombreClave(){
+char Material::obtenerNombreClave(){
     return nombreClave;
 }
 
-int Material::getCantidad() {
+int Material::obtenerCantidad() {
     return cantidadMaterial;
 }
 

@@ -64,7 +64,7 @@ void Objetivos::asignarObjetivo() {
     objetivo2 = generarObjetivo();
     objetivo3 = generarObjetivo();
 
-    while(objetivo1 == objetivo2 or objetivo1 == objetivo3 or objetivo2 == objetivo3){
+    while (objetivo1 == objetivo2 or objetivo1 == objetivo3 or objetivo2 == objetivo3){
         objetivo2 = generarObjetivo();
         objetivo3 = generarObjetivo();
     }
@@ -80,7 +80,7 @@ void Objetivos::asignarObjetivo() {
 
 void Objetivos::mostrarObjetivos() {
 
-    for(int i = 0; i < 4; i++ ){
+    for (int i = 0; i < 4; i++){
         cout << listaObjetivos[i] << endl;
     }
 }
@@ -94,62 +94,62 @@ void Objetivos::confirmarObjetivos(int numeroObjetivo, Jugador J1) {
         objetivosCumplidos += 1;
 
     }
-    else if (objetivo == "Edad de piedra"){
-        int cantPiedra = J1.obtenerListaMateriales()->extraerCantidadMaterial("piedra");
-        if (cantPiedra == 5000){
+    else if (objetivo == "Edad de piedra") {
+        int cantPiedra = J1.obtenerListaMateriales() -> extraerCantidadMaterial("piedra");
+        if (cantPiedra == 5000) {
             objetivosCumplidos += 1;
         }
     }
-    else if (objetivo == "Bombardero"){
+    else if (objetivo == "Bombardero") {
         //bombasUsadas
         objetivosCumplidos += 1;
 
 
     }
-    else if (objetivo == "Energetico"){
-        if (J1.obtenerEnergia() == 100){
+    else if (objetivo == "Energetico") {
+        if (J1.obtenerEnergia() == 100) {
             objetivosCumplidos += 1;
 
         }
     }
-    else if (objetivo == "Letrado"){
+    else if (objetivo == "Letrado") {
         
         objetivosCumplidos += 1;
 
 
     }
-    else if (objetivo == "Minero"){
+    else if (objetivo == "Minero") {
         //ConstruirTodasMinas
         objetivosCumplidos += 1;
 
 
     }
-    else if (objetivo == "Cansado"){
+    else if (objetivo == "Cansado") {
 
         objetivosCumplidos += 1;
 
 
     }
-    else if (objetivo == "Constructor"){
+    else if (objetivo == "Constructor") {
             //construidoTodosEdificios
         objetivosCumplidos += 1;
 
 
     }
-    else if (objetivo == "Armado"){
+    else if (objetivo == "Armado") {
 
         objetivosCumplidos += 1;
 
 
     }
-    else if (objetivo == "Extremista"){
+    else if (objetivo == "Extremista") {
         //bombrasCompradas
         objetivosCumplidos += 1;
 
 
     }
         //obelisco
-    else{
+    else {
         objetivosCumplidos = 2;
 
     }

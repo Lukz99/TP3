@@ -34,7 +34,7 @@ Vertice* Vertice::buscarVerticePorPosicion(Vertice* verticeInicial, int posFila,
     int posColu = auxiliar -> obtenerPosicionColumna();
     while (posFil != posFila || posColu != posColumna) {
         if (contadorColumnas == 9) {
-            auxiliar = primerVerticeDeFila->verticeInferior;
+            auxiliar = primerVerticeDeFila -> verticeInferior;
             primerVerticeDeFila = auxiliar;
             contadorColumnas = 0;
         } else {
@@ -89,8 +89,8 @@ Vertice* Vertice::obtenerVerticeIzquierdo() {
 char Vertice::obtenerCasilla() {
     return tipoCasilla;
 }
-void Vertice::construirEdificio(string nombreEdificio, Casillero*** casilleros,int coordenadaX,int coordenadaY) {
-    construible -> construirEdificio(nombreEdificio, casilleros,coordenadaX,coordenadaY);
+void Vertice::construirEdificio(string nombreEdificio, Casillero*** casilleros, int coordenadaX, int coordenadaY) {
+    construible -> construirEdificio(nombreEdificio, casilleros, coordenadaX, coordenadaY);
 }
 void Vertice::demolerEdificio(Casillero*** casilleros) {
     construible -> demolerEdificio(casilleros);

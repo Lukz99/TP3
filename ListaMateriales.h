@@ -1,9 +1,5 @@
-//
-// Created by ekizu on 3/12/2021.
-//
-
-#ifndef INC_3MOSQUETEROS_LISTAMATERIALES_H
-#define INC_3MOSQUETEROS_LISTAMATERIALES_H
+#ifndef TP3_LISTAMATERIALES_H
+#define TP3_LISTAMATERIALES_H
 #include <string>
 #include "NodoLista.h"
 
@@ -22,4 +18,4 @@ public:
 };
 
 
-#endif //INC_3MOSQUETEROS_LISTAMATERIALES_H
+#endif //TP3_LISTAMATERIALES_H
