@@ -3,6 +3,7 @@
 #include <string>
 #include "Material.h"
 #include "ListaMateriales.h"
+#include "Objetivos.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ private:
     int ordenDeTurno;
     ListaMateriales* listaMateriales;
     int** matrizDeCostosJugador;
-    string objetivos[3];
+    Objetivos* objetivosJugador;
     int energia;
 public:
     Jugador();
@@ -31,6 +32,7 @@ public:
     int obtenerEnergia();
     bool objetivoPrincipalCumplido();
     bool objetivosSecundariosCumplidos();
+    bool jugadorSinEnergias();
 };
 
 

@@ -37,12 +37,11 @@ int main() {
     Menu menu(11);
 
     int opcion = 0;
-
+    bool finalizarTurno;
     menu.mostrarMenuPrincipal();
     menu.setOpcion();
     menu.opcionValida();
-    opcion = menu.getOpcion();
-    menu.menuPrincipal(diccionario,d1.obtenerCasilleros(),d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas());
+    menu.procesarOpcionMenuPrincipal(grafo.obtenerListaVertices(),diccionario,d1.obtenerCasilleros(),d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas());
 
     /*
     while(opcion != 11){

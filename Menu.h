@@ -25,16 +25,17 @@ public:
     void opcionValida();
     int getOpcion();
 
-    //procesar opcion
-    void menuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador, DatosLeidos baseDeDatos);
-    void menuPrincipal(DiccionarioDeEdificios* diccionario, Casillero*** casilleros, int cantFilas, int cantColumnas);
+    void gestionarPartida(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugadorActual,DatosLeidos baseDeDatos);
+        //procesar opcion
+    void procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador, DatosLeidos baseDeDatos,bool &finalizarTurno);
+    void procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios* diccionario, Casillero*** casilleros, int cantFilas, int cantColumnas);
 
     //--menu principal--
     //opcion 1
     void modificarEdificio(DiccionarioDeEdificios *diccionarioDeEdificios);
     int modificarMaterial(DiccionarioDeEdificios* diccionarioDeEdificios, string nombreMaterial, string nombreEdificio);
     //opcion 3
-    void mostrarMapa(Casillero***,int,int);
+    void mostrarMapa(Vertice*,Casillero***,int,int);
 
     //--menu jugador--
     //opcion 1

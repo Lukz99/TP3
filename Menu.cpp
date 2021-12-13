@@ -26,6 +26,13 @@ void designarTurnos(Jugador primerJugador,Jugador segundoJugador){
     }
 }
 
+void Menu::gestionarPartida(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugadorActual,DatosLeidos baseDeDatos){
+    bool finalizarTurno = false;
+    cout << "| TURNO DE: " << jugadorActual.obtenerNombreJugador() << " |" << endl;
+    while(!jugadorActual.jugadorSinEnergias() || !finalizarTurno)
+        procesarOpcionMenuJugador(vertices, diccionarioDeEdificios,jugadorActual,baseDeDatos,finalizarTurno);
+}
+
 void Menu::mostrarMenuPrincipal() {
     cout << "\n\t\t\t|----------------------------------|" << endl
          << "\n\t\t\t|         .: BIENVENIDO :.         |" << endl
@@ -74,23 +81,42 @@ int Menu::getOpcion() {
     return opcionElegida;
 }
 
-void Menu::mostrarMapa(Casillero*** casilleros, int cantFilas, int cantColumnas){
+void Menu::mostrarMapa(Vertice* listaVertices,Casillero*** casilleros, int cantFilas, int cantColumnas){
+    Vertice* verticeActual;
     cout << "\n";
+    cout << "--------MATERIALES Y EDIFICIOS------" << endl;
     for(int i=0; i<cantFilas;i++) {
         for (int j = 0; j < cantColumnas; j++) {
-            casilleros[i][j]->mostrar();
+            verticeActual = listaVertices->buscarVerticePorPosicion(listaVertices,i,j);
+            if ((verticeActual->obtenerCasilla() == 'T' && verticeActual->obtenerCasilleroConstruible()->edificioConstruido()))
+                cout << verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombreClave() << " ";
+            else if((verticeActual->obtenerCasilla() == 'C' || verticeActual->obtenerCasilla() == 'M' || verticeActual->obtenerCasilla() == 'B') && verticeActual->obtenerCasilleroTransitable()->materialPresente())
+                cout << verticeActual->obtenerCasilleroTransitable()->obtenerMaterial()->getNombreClave() << " ";
+            else
+                cout << " ";
+        }
+        cout << "\n";
+    }
+    cout << "---------MAPA TERRENOS-------" << endl;
+    for(int i=0; i<cantFilas;i++) {
+        for (int j = 0; j < cantColumnas; j++) {
+            cout << casilleros[i][j]->obtenerInicial();
             cout << " ";
         }
         cout << "\n";
     }
 }
 
-/*
+
 void Menu::lluviaRecursos(CasilleroTransitable** transitables, int cantidadTransitables, Casillero*** casilleros) {
-    int generacionPiedra = 1 + rand() % (4 - 1);
-    int generacionMadera = rand() % (2);
-    int generacionMetal = 2 + rand() % (5 - 2);
+    int posicionX, posicionY;
+    int generacionPiedra = 1 + rand() % (2 - 1);
+    int generacionMadera = rand() % (3);
+    int generacionMetal = 2 + rand() % (4 - 2);
     int totalGenerado = generacionPiedra + generacionMadera + generacionMetal;
+
+
+
     generamientos("piedra",generacionPiedra,transitables,cantidadTransitables,casilleros);
     generamientos("madera",generacionMadera,transitables,cantidadTransitables,casilleros);
     generamientos("metal",generacionMetal,transitables,cantidadTransitables,casilleros);
@@ -98,10 +124,18 @@ void Menu::lluviaRecursos(CasilleroTransitable** transitables, int cantidadTrans
          << "| Piedra: " << generacionPiedra << " | Madera: " << generacionMadera << " | Metal: " << generacionMetal << " |" << endl;
 }
 
-bool Menu::haySuperposicion(CasilleroConstruible** construibles,int posConstruible){
-    return construibles[posConstruible]->getEdificio()->getNombre() != "";
+void seleccionarCoordenadasAlAzar(Vertice* listaVertices,DatosLeidos baseDeDatos,int &posicionX,int &posicionY){
+    Vertice* verticeBuscado;
+    posicionX = rand() % (baseDeDatos.obtenerCantidadFilas());
+    posicionY = rand() % (baseDeDatos.obtenerCantidadColumnas());
+    verticeBuscado = listaVertices->buscarVerticePorPosicion(posicionX,posicionY);
+
+
+
 }
 
+
+/*
 void Menu::guardarMateriales(Material** materiales, int cantidadMateriales){
     ofstream arcMateriales("materiales.txt");
     for (int i=0;i<cantidadMateriales;i++)
@@ -131,7 +165,7 @@ void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
     arcMapa.close();
 }
 
-void Menu::menuPrincipal(DiccionarioDeEdificios *diccionario,Casillero*** casilleros, int cantFilas, int cantColumnas) {
+void Menu::procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios *diccionario,Casillero*** casilleros, int cantFilas, int cantColumnas) {
     switch (opcionElegida) {
         case 1:
             modificarEdificio(diccionario);
@@ -140,7 +174,7 @@ void Menu::menuPrincipal(DiccionarioDeEdificios *diccionario,Casillero*** casill
             diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
             break;
         case 3:
-            mostrarMapa(casilleros,cantFilas,cantColumnas);
+            mostrarMapa(listaVertices,casilleros,cantFilas,cantColumnas);
             break;
         case 4:
             //designarObjetivos();
@@ -156,7 +190,7 @@ void Menu::menuPrincipal(DiccionarioDeEdificios *diccionario,Casillero*** casill
 }
 
 
-void Menu::menuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador, DatosLeidos baseDeDatos){
+void Menu::procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador, DatosLeidos baseDeDatos,bool &finalizarTurno){
     switch(opcionElegida){
         case 1:
             construirEdificio(diccionarioDeEdificios,vertices,jugador,baseDeDatos);
@@ -192,7 +226,7 @@ void Menu::menuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdif
             //moverse();
             break;
         case 12:
-            //finalizarTurno();
+            finalizarTurno = true;
             break;
         case 13:
             //guardarMateriales(materiales,cantidadMateriales);

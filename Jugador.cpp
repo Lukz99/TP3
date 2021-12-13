@@ -2,6 +2,7 @@
 #include "ListaMateriales.h"
 
 Jugador::Jugador() {
+    objetivosJugador = nullptr;
     listaMateriales = new ListaMateriales();
     energia = 50;
 }
@@ -14,7 +15,9 @@ void Jugador::asignarTurno(int numeroDeTurno){
     ordenDeTurno = numeroDeTurno;
 }
 
-Jugador::~Jugador() {}
+Jugador::~Jugador() {
+    delete [] objetivosJugador;
+}
 
 string Jugador::obtenerNombreJugador() {
     return nombreJugador;
@@ -52,4 +55,8 @@ void Jugador::restarEnergia(int restando) {
 
 int Jugador::obtenerEnergia() {
     return energia;
+}
+
+bool Jugador::jugadorSinEnergias(){
+    return energia = 0;
 }
