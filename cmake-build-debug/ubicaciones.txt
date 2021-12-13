@@ -1,6 +1,0 @@
-madera (1, 0)
-1 (7, 6)
-escuela (0, 0)
-escuela (4, 2)
-2 (2, 7)
-fabrica (5, 0)
