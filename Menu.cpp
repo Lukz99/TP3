@@ -6,32 +6,11 @@
 
 using namespace std;
 
-Menu::Menu(int cantOpciones) {
+Menu::Menu() {
     srand(time(nullptr));
 }
 
 Menu::~Menu() = default;
-
-void designarTurnos(Jugador primerJugador,Jugador segundoJugador){
-    int sorteoDeTurno = rand() % (1);
-    if (sorteoDeTurno == 0){
-        primerJugador.asignarTurno(1);
-        segundoJugador.asignarTurno(2);
-        cout << "->Jugador 1 inicia turno ->Lo sigue Jugador 2" << endl;
-    }
-    else{
-        segundoJugador.asignarTurno(1);
-        primerJugador.asignarTurno(2);
-        cout << "->Jugador 2 inicia turno ->Lo sigue Jugador 1" << endl;
-    }
-}
-
-void Menu::gestionarPartida(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugadorActual,DatosLeidos baseDeDatos){
-    bool finalizarTurno = false;
-    cout << "| TURNO DE: " << jugadorActual.obtenerNombreJugador() << " |" << endl;
-    while(!jugadorActual.jugadorSinEnergias() || !finalizarTurno)
-        procesarOpcionMenuJugador(vertices, diccionarioDeEdificios,jugadorActual,baseDeDatos,finalizarTurno);
-}
 
 void Menu::mostrarMenuPrincipal() {
     cout << "\n\t\t\t|----------------------------------|" << endl
@@ -67,7 +46,7 @@ void Menu::setOpcion() {
     cin >> opcionElegida;
 }
 
-void Menu::opcionValida(){
+void Menu::opcionValida(int cantidadOpciones){
     bool opcion_valida = opcionElegida > 0 && opcionElegida <= cantidadOpciones;
     while(!opcion_valida){
         cout << "\nEl numero de opcion elegido no corresponde con los mostrados en pantalla." << endl
@@ -81,10 +60,30 @@ int Menu::getOpcion() {
     return opcionElegida;
 }
 
+void designarTurnos(Jugador primerJugador,Jugador segundoJugador){
+    int sorteoDeTurno = rand() % (1);
+    if (sorteoDeTurno == 0){
+        primerJugador.asignarTurno(1);
+        segundoJugador.asignarTurno(2);
+        cout << "->Jugador 1 inicia turno ->Lo sigue Jugador 2" << endl;
+    }
+    else{
+        segundoJugador.asignarTurno(1);
+        primerJugador.asignarTurno(2);
+        cout << "->Jugador 2 inicia turno ->Lo sigue Jugador 1" << endl;
+    }
+}
+
+void Menu::gestionarPartida(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugadorActual,DatosLeidos baseDeDatos){
+    bool finalizarTurno = false;
+    cout << "| TURNO DE: " << jugadorActual.obtenerNombreJugador() << " |" << endl;
+    while(!jugadorActual.jugadorSinEnergias() || !finalizarTurno)
+        procesarOpcionMenuJugador(vertices, diccionarioDeEdificios,jugadorActual,baseDeDatos,finalizarTurno);
+}
+
 void Menu::mostrarMapa(Vertice* listaVertices,Casillero*** casilleros, int cantFilas, int cantColumnas){
     Vertice* verticeActual;
-    cout << "\n";
-    cout << "--------MATERIALES Y EDIFICIOS------" << endl;
+    cout << "\n--MATERIALES Y EDIFICIOS--\nX: sin elementos" << endl;
     for(int i=0; i<cantFilas;i++) {
         for (int j = 0; j < cantColumnas; j++) {
             verticeActual = listaVertices->buscarVerticePorPosicion(listaVertices,i,j);
@@ -93,11 +92,11 @@ void Menu::mostrarMapa(Vertice* listaVertices,Casillero*** casilleros, int cantF
             else if((verticeActual->obtenerCasilla() == 'C' || verticeActual->obtenerCasilla() == 'M' || verticeActual->obtenerCasilla() == 'B') && verticeActual->obtenerCasilleroTransitable()->materialPresente())
                 cout << verticeActual->obtenerCasilleroTransitable()->obtenerMaterial()->getNombreClave() << " ";
             else
-                cout << " ";
+                cout << "X ";
         }
         cout << "\n";
     }
-    cout << "---------MAPA TERRENOS-------" << endl;
+    cout << "\n--MAPA TERRENOS--" << endl;
     for(int i=0; i<cantFilas;i++) {
         for (int j = 0; j < cantColumnas; j++) {
             cout << casilleros[i][j]->obtenerInicial();
@@ -121,7 +120,7 @@ void Menu::lluviaRecursos(Vertice* listaVertices,DatosLeidos baseDeDatos) {
 void Menu::seleccionarCoordenadasAleatoriamente(Vertice* listaVertices,string nombreMaterial,int generacionMaterial,int equivalenciaUnitaria,DatosLeidos baseDeDatos) {
     int posicionX, posicionY;
     int contadorCiclos;
-    bool sinCasillerosTransitables;
+    bool sinCasillerosTransitables = false;
     Vertice *verticeBuscado;
     char casilla;
     while(sinCasillerosTransitables )
@@ -136,6 +135,7 @@ void Menu::seleccionarCoordenadasAleatoriamente(Vertice* listaVertices,string no
             posicionY = rand() % (baseDeDatos.obtenerCantidadColumnas());
             verticeBuscado = listaVertices->buscarVerticePorPosicion(listaVertices, posicionX, posicionY);
             casilla = listaVertices->obtenerCasilla();
+            contadorCiclos++;
             if (contadorCiclos == 50)
                 sinCasillerosTransitables = true;
         }
@@ -146,37 +146,8 @@ void Menu::seleccionarCoordenadasAleatoriamente(Vertice* listaVertices,string no
         contadorCiclos = 0;
     }
 }
-/*
-void Menu::guardarMateriales(Material** materiales, int cantidadMateriales){
-    ofstream arcMateriales("materiales.txt");
-    for (int i=0;i<cantidadMateriales;i++)
-        arcMateriales << materiales[i]->obtenerNombre() << " " << materiales[i]->getCantidad() << endl;
-    arcMateriales.close();
-}
 
-void Menu::guardarUbicaciones(CasilleroConstruible** construibles, int cantidadConstruibles){
-    ofstream arcUbicaciones("ubicaciones.txt");
-    for (int i=0; i<cantidadConstruibles;i++)
-        if(construibles[i]->getEdificio()->getNombre() != "") {
-            arcUbicaciones << construibles[i]->getEdificio()->getNombre() << " ("
-                           << construibles[i]->getFila() << "," << construibles[i]->getColumna() << ")" << endl;
-        }
-    arcUbicaciones.close();
-}
-
-void Menu::guardarMapa(Casillero*** casilleros, int filas, int columnas) {
-    ofstream arcMapa("mapa.txt");
-    arcMapa << filas << " " << columnas << endl;
-    for (int i = 0; i < filas; i++) {
-        for (int j = 0; j < columnas; j++) {
-            arcMapa << casilleros[i][j]->obtenerInicial() << " ";
-        }
-        arcMapa << "\n";
-    }
-    arcMapa.close();
-}*/
-
-void Menu::procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios *diccionario,Casillero*** casilleros, int cantFilas, int cantColumnas) {
+void Menu::procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios *diccionario,DatosLeidos baseDeDatos) {
     switch (opcionElegida) {
         case 1:
             modificarEdificio(diccionario);
@@ -185,7 +156,7 @@ void Menu::procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdifi
             diccionario->recorridoInOrden(diccionario->obtenerNodoRaiz());
             break;
         case 3:
-            mostrarMapa(listaVertices,casilleros,cantFilas,cantColumnas);
+            mostrarMapa(listaVertices,baseDeDatos.obtenerCasilleros(),baseDeDatos.obtenerCantidadFilas(),baseDeDatos.obtenerCantidadColumnas());
             break;
         case 4:
             //designarObjetivos();
@@ -224,7 +195,7 @@ void Menu::procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* dic
         case 7:
             consultarCoordenada(vertices.obtenerListaVertices(),baseDeDatos);
             break;
-        case 8:
+        //case 8:
             //mostrarObjetivos();
             break;
         case 9:
@@ -240,9 +211,8 @@ void Menu::procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* dic
             finalizarTurno = true;
             break;
         case 13:
-            //guardarMateriales(materiales,cantidadMateriales);
-            //guardarMapa(casilleros,cantFilas,cantColumnas);
-            //guardarUbicaciones(construibles,cantidadConstruibles);
+            guardarMapa(baseDeDatos);
+            //guardarUbicaciones(vertices.obtenerListaVertices(),jugador,baseDeDatos);
             break;
     }
 }
@@ -268,8 +238,8 @@ void Menu::modificarEdificio(DiccionarioDeEdificios *diccionarioDeEdificios) {
 int Menu::modificarMaterial(DiccionarioDeEdificios* diccionarioDeEdificios,string nombreMaterial,string nombreEdificio){
     int cantidadNuevaMaterial, cantidadMaterialOriginal = diccionarioDeEdificios->extraerDato(diccionarioDeEdificios->obtenerNodoRaiz(),nombreEdificio,nombreMaterial);
     cout << "¿Desea modificar la cantidad de " << nombreMaterial << "? (Actual: " << cantidadMaterialOriginal << ")" << endl;
-    if (realizarOperacion() == "S"){
-        cout << "Ingrese la nueva cantidad de " << nombreMaterial << "." << endl;
+    if (realizarOperacion() == 'S'){
+        cout << "Ingrese la nueva cantidad de " << nombreMaterial << ":" << endl;
         cin >> cantidadNuevaMaterial;
     }
     else
@@ -290,7 +260,7 @@ void Menu::construirEdificio(DiccionarioDeEdificios* diccionario,Grafo vertices,
     if (materialesSuficientes(diccionario,jugador,nombreEdificio) && respetaMaximaCantidad){
         cout << "\nEs posible construir un/una " << nombreEdificio << ". Desea continuar?\n| Coste de energia: 15 |";
 
-        if (realizarOperacion() == "S"){
+        if (realizarOperacion() == 'S'){
             leerCoordenadas(coordenadaX,coordenadaY,baseDeDatos.obtenerCantidadFilas(),baseDeDatos.obtenerCantidadColumnas());
             if (coordenadaConstruible(vertices.obtenerListaVertices(),diccionario,coordenadaX,coordenadaY,jugador,nombreEdificio,baseDeDatos.obtenerCasilleros())) {
                 jugador.restarEnergia(15);
@@ -347,7 +317,7 @@ void Menu::demolerEdificio(Vertice* listaVertices,DiccionarioDeEdificios* diccio
         cout << "Usted posee un/una " << nombreEdificio
              << " en la coordenada (" << posicionX << "," << posicionY << ")\nDesea demoler este edificio?"
              << "\n| Coste de energia: 15 |" << endl;
-        if(realizarOperacion() == "S"){
+        if(realizarOperacion() == 'S'){
             verticeBuscado->demolerEdificio(baseDeDatos.obtenerCasilleros());
             diccionario->modificacionEnConstruidos(diccionario->obtenerNodoRaiz(),nombreEdificio,false);
             devolverMateriales(diccionario,jugador,nombreEdificio);
@@ -440,7 +410,7 @@ void Menu::comprarBombas(Jugador jugador){
          << compraSolicitada << " bombas.";
 
     cout << "\nDesea volver a realizar una compra?" << endl;
-    if (realizarOperacion() == "S")
+    if (realizarOperacion() == 'S')
         comprarBombas(jugador);
 }
 
@@ -512,23 +482,87 @@ void Menu::recolectarRecursos(Vertice* listaVertices,Jugador jugador,DatosLeidos
         }
 }
 
+//------------------------MENU JUGADOR ---> OPCION 11 -----------------------------
+
+void Menu::guardarMapa(DatosLeidos baseDeDatos) {
+    ofstream arcMapa("mapa.txt");
+    arcMapa << baseDeDatos.obtenerCantidadFilas() << " " << baseDeDatos.obtenerCantidadColumnas() << endl;
+    for (int i = 0; i < baseDeDatos.obtenerCantidadFilas(); i++) {
+        for (int j = 0; j < baseDeDatos.obtenerCantidadColumnas(); j++) {
+            arcMapa << baseDeDatos.obtenerCasilleros()[i][j]->obtenerInicial() << " ";
+        }
+        arcMapa << "\n";
+    }
+    arcMapa.close();
+}
+
+
+void Menu::guardarUbicaciones(Vertice* listaVertices,Jugador primerJugador,Jugador segundoJugador,DatosLeidos baseDeDatos){
+    ofstream archivoUbicaciones("ubicaciones.txt");
+    guardarMaterialesDelMapa(archivoUbicaciones,listaVertices,baseDeDatos);
+    guardarEdificiosJugador(archivoUbicaciones,listaVertices,primerJugador,baseDeDatos);
+    guardarEdificiosJugador(archivoUbicaciones,listaVertices,segundoJugador,baseDeDatos);
+}
+
+void Menu::guardarMaterialesDelMapa(ofstream& archivoUbicaciones,Vertice* listaVertices,DatosLeidos baseDeDatos){
+    char tipoCasilla;
+    Vertice* verticeActual;
+    for (int i=0;i<baseDeDatos.obtenerCantidadFilas();i++)
+        for (int j=0;j<baseDeDatos.obtenerCantidadColumnas();j++) {
+            verticeActual = listaVertices->buscarVerticePorPosicion(listaVertices, i, j);
+            tipoCasilla = verticeActual->obtenerCasilla();
+            if((tipoCasilla == 'M' || tipoCasilla == 'C' || tipoCasilla == 'B') && verticeActual->obtenerCasilleroTransitable()->materialPresente()){
+                archivoUbicaciones << verticeActual->obtenerCasilleroTransitable()->obtenerMaterial()->obtenerNombre()
+                                   << " (" << i << "," << ")" << endl;
+            }
+        }
+}
+
+void Menu::guardarEdificiosJugador(ofstream& archivoUbicaciones,Vertice* listaVertices,Jugador jugador,DatosLeidos baseDeDatos) {
+    Vertice *verticeActual;
+    if (jugador.obtenerNombreJugador() == "Jugador 1")
+        archivoUbicaciones << "1 (";
+    else
+        archivoUbicaciones << "2 (";
+    //archivoUbicaciones << jugador.obtenerPosicionX() << "," << jugador.obtenerPosicionY() << endl;
+    for (int i = 0; i < baseDeDatos.obtenerCantidadFilas(); i++)
+        for (int j = 0; j < baseDeDatos.obtenerCantidadColumnas(); j++) {
+            verticeActual = listaVertices->buscarVerticePorPosicion(listaVertices, i, j);
+            if (verticeActual->obtenerCasilla() == 'T' &&
+                verticeActual->obtenerCasilleroConstruible()->edificioConstruido() &&
+                verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombre() ==
+                jugador.obtenerNombreJugador())
+                archivoUbicaciones << verticeActual->obtenerCasilleroConstruible()->obtenerEdificio()->obtenerNombre()
+                                   << " (" << i << "," << ")" << endl;
+        }
+}
+/*
+void Menu::guardarMateriales(Jugador primerJugador,Jugador segundoJugador ){
+    ofstream archivoMateriales("materiales.txt");
+    primerJugador.obtenerListaMateriales().
+
+}*/
+
 //-----------------------------FUNCIONES DE USO MULTIPLE------------------------------
 
-string Menu::realizarOperacion(){
+char Menu::realizarOperacion(){
     string respuesta;
+    char inicialRespuesta;
     cout << "\n(s/n)-> ";
     cin >> respuesta;
-    while (toupper(respuesta[0]) != 'S' && toupper(respuesta[0]) != 'N'){
+    inicialRespuesta = toupper(respuesta[0]);
+    while (inicialRespuesta != 'S' && inicialRespuesta != 'N'){
         cout << "Respuesta invalida, debe ingresar s/n";
         cin >> respuesta;
+        inicialRespuesta = toupper(respuesta[0]);
     }
-    return respuesta;
+    return inicialRespuesta;
 }
 
 string Menu::validarEdificio(DiccionarioDeEdificios* diccionarioDeEdificios,string nombreEdificio){
     while (!diccionarioDeEdificios->nodoEnArbol(diccionarioDeEdificios->obtenerNodoRaiz(), nombreEdificio)) {
         cout << nombreEdificio << " no se encuentra registrado. ¿Desea ver los edificios en registro?";
-        if (realizarOperacion() == "S")
+        if (realizarOperacion() == 'S')
             diccionarioDeEdificios->recorridoInOrden(diccionarioDeEdificios->obtenerNodoRaiz());
         cout << "\nReingrese el nombre del edificio: " << endl;
         cin >> nombreEdificio;

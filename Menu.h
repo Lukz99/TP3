@@ -11,9 +11,8 @@
 class Menu {
 private:
     int opcionElegida;
-    int cantidadOpciones;
 public:
-    Menu(int);
+    Menu();
     ~Menu();
 
     //interfaces
@@ -22,13 +21,13 @@ public:
 
     //navegacion por el menu
     void setOpcion();
-    void opcionValida();
+    void opcionValida(int cantidadOpciones);
     int getOpcion();
 
     void gestionarPartida(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugadorActual,DatosLeidos baseDeDatos);
     //procesar opcion
     void procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador jugador, DatosLeidos baseDeDatos,bool &finalizarTurno);
-    void procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios* diccionario, Casillero*** casilleros, int cantFilas, int cantColumnas);
+    void procesarOpcionMenuPrincipal(Vertice* listaVertices,DiccionarioDeEdificios* diccionario,DatosLeidos baseDeDatos);
 
     //--menu principal--
     //opcion 1
@@ -60,21 +59,17 @@ public:
     void repararEdificio(Vertice* listaVertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador jugador,DatosLeidos baseDeDatos);
     //opcion 10
     void recolectarRecursos(Vertice* listaVertices,Jugador jugador,DatosLeidos baseDeDatos);
+    //opcion 12
+    void guardarMapa(DatosLeidos baseDeDatos);
+    void guardarUbicaciones(Vertice* listaVertices,Jugador primerJugador,Jugador segundoJugador,DatosLeidos baseDeDatos);
+    void guardarMaterialesDelMapa(ofstream& archivoUbicaciones,Vertice* listaVertices,DatosLeidos baseDeDatos);
+    void guardarEdificiosJugador(ofstream& archivoUbicaciones,Vertice* listaVertices,Jugador jugador,DatosLeidos baseDeDatos);
 
-    //funciones de uso multiple
+        //funciones de uso multiple
     string validarEdificio(DiccionarioDeEdificios *diccionarioDeEdificios, string nombreEdificios);
-    string realizarOperacion();
+    char realizarOperacion();
     void leerCoordenadas(int&, int&, int, int);
     void restarMateriales(DiccionarioDeEdificios* diccionario, Jugador jugador, string nombreEdificio, double porcentajeRestable);
-
-    //opciones de menu jugador sin readaptar
-    void guardarMateriales(Material**, int);
-    void guardarUbicaciones(CasilleroConstruible**, int);
-    void guardarMapa(Casillero***, int, int);
-    void guardarEdificios(Edificio**, int);
-
-    //opciones posiblemente descartables
-    bool haySuperposicion(CasilleroConstruible**, int);
 };
 
 

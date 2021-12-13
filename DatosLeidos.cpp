@@ -58,7 +58,6 @@ void DatosLeidos::crearMapa() {
         definirDimensiones(archivoMapa);
         generarMapa();
         definirMapa(archivoMapa);
-        separarCasilleros();
     }
     archivoMapa.close();
 }
@@ -110,34 +109,6 @@ void DatosLeidos::definirMapa(ifstream &archivoMapa) {
     }
 }
 
-// Carga de arreglos individuales
-void DatosLeidos::separarCasilleros() {
-    int conteoConstruibles = 0;
-    int conteoTransitables = 0;
-    int conteoInaccesibles = 0;
-
-    construibles = new CasilleroConstruible*[cantidadConstruibles];
-    transitables = new CasilleroTransitable*[cantidadTransitables];
-    inaccesibles = new CasilleroInaccesible*[cantidadInaccesibles];
-
-    for (int i = 0; i < cantidadFilas; i++)
-        for (int j = 0; j < cantidadColumnas; j++) {
-            char terreno = casilleros[i][j] -> obtenerTerreno();
-            if (terreno == 'T') {
-                construibles[conteoConstruibles] = new CasilleroConstruible(terreno);
-                conteoConstruibles++;
-            }
-            if (terreno == 'C' || terreno == 'M' || terreno == 'B') {
-                transitables[conteoTransitables] = new CasilleroTransitable(terreno);
-                conteoTransitables++;
-            }
-            if (terreno == 'L') {
-                inaccesibles[conteoInaccesibles] = new CasilleroInaccesible(terreno);
-                conteoInaccesibles++;
-            }
-        }
-}
-
 // Lectura de ubicaciones.txt
 void DatosLeidos::registrarUbicaciones(Vertice* listaVertices){
     ifstream archivoUbicaciones("ubicaciones.txt");
@@ -186,12 +157,15 @@ void DatosLeidos::generarEdificiosJugador(ifstream &archivoUbicaciones,Vertice* 
             if (nombreEdificio == "planta") {
                 archivoUbicaciones >> basura;
                 nombreEdificio = "planta electrica";
+                getline(archivoUbicaciones, basura, '(');
+
             } else if (nombreEdificio == "mina") {
                 getline(archivoUbicaciones, basura, '(');
-                if (basura == "oro")
+                if (basura == "oro ")
                     nombreEdificio = "mina oro";
             }
-            getline(archivoUbicaciones, basura, '(');
+            else
+                getline(archivoUbicaciones, basura, '(');
             getline(archivoUbicaciones, coordenadaX, ',');
             getline(archivoUbicaciones, coordenadaY, ')');
             verticePosicionBuscada = listaVertices->buscarVerticePorPosicion(listaVertices, stoi(coordenadaX),
@@ -203,12 +177,6 @@ void DatosLeidos::generarEdificiosJugador(ifstream &archivoUbicaciones,Vertice* 
         }
     }
 }
-
-/*
-bool DatosLeidos::haySuperposicion(int posConstruible){
-    return construibles[posConstruible]->getEdificio()->getNombre() != "";
-}
-*/
 
 // Getters
 
