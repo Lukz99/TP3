@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="tp3nuevo"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tp3nuevo">
+				<Option output="C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/tp3nuevo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/ekizu/Desktop/tp3nuevo/."/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 tp3nuevo"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tp3nuevo/fast">
+				<Option output="C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/tp3nuevo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/ekizu/Desktop/tp3nuevo/."/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 tp3nuevo/fast"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Aserradero.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Aserradero.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Casillero.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Casillero.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/CasilleroConstruible.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/CasilleroConstruible.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/CasilleroInaccesible.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/CasilleroInaccesible.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/CasilleroTransitable.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/CasilleroTransitable.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/DatosLeidos.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/DatosLeidos.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/DiccionarioDeEdificios.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/DiccionarioDeEdificios.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Edificio.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Edificio.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Escuela.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Escuela.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Fabrica.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Fabrica.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Grafo.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Grafo.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Jugador.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Jugador.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/ListaMateriales.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/ListaMateriales.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Material.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Material.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Menu.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Menu.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Mina.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Mina.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/MinaOro.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/MinaOro.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/NodoArbol.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/NodoArbol.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/NodoLista.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/NodoLista.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Obelisco.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Obelisco.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Objetivos.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Objetivos.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/PlantaElectrica.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/PlantaElectrica.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Vertice.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/Vertice.h">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/main.cpp">
+			<Option target="tp3nuevo"/>
+		</Unit>
+		<Unit filename="C:/Users/ekizu/Desktop/tp3nuevo/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

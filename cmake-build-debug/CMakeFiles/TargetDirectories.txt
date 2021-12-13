@@ -1,0 +1,3 @@
+C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/CMakeFiles/tp3nuevo.dir
+C:/Users/ekizu/Desktop/tp3nuevo/cmake-build-debug/CMakeFiles/edit_cache.dir
