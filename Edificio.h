@@ -66,16 +66,19 @@ public:
     int obtenerMaximaCantidad();
 
     // Precondiciones:
-    // Postcondiciones:  devuelve el atributo construidos
+    // Postcondiciones:  devuelve el atributo construidos del jugador 1
     int obtenerConstruidosJugador1();
+
+    // Precondiciones:
+    // Postcondiciones:  devuelve el atributo construidos del jugador 2
     int obtenerConstruidosJugador2();
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: imprime por pantalla el nombre del edificio
     void mostrarEdificio();
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: incrementa en 1 la cantidad de edificios de un jugador
     void sumarEdificio(string nombreJugador);
 
     // Precondiciones:

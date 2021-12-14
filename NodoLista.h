@@ -4,7 +4,7 @@
 
 class NodoLista {
 private:
-    Material *materialJugador;
+    Material* materialJugador;
     NodoLista* siguiente;
 public:
     NodoLista(string nombreMaterial, int cantidadMaterial);

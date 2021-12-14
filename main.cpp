@@ -32,6 +32,8 @@ int main() {
     d1.cargarListaMateriales(J1,J2);
 
     grafo.cargarListaVertices(d1.obtenerCasilleros(),d1.obtenerCantidadFilas(),d1.obtenerCantidadColumnas());
+
+
     d1.registrarUbicaciones(grafo.obtenerListaVertices(),diccionario);
 
     while(menu.obtenerOpcion() != 4 && menu.obtenerOpcion() != 5) {

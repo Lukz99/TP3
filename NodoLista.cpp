@@ -17,4 +17,6 @@ NodoLista* NodoLista::obtenerNodoSiguiente() {
     return siguiente;
 }
 
-NodoLista::~NodoLista() {}
+NodoLista::~NodoLista() {
+    delete[] materialJugador;
+}

@@ -177,7 +177,7 @@ void Menu::eleccionJugador(Jugador *primerJugador,Jugador *segundoJugador){
 void Menu::designarTurnos(Jugador *primerJugador,Jugador *segundoJugador){
     int sorteoDeTurno = rand() % (1);
     cout << "\nDesignacion de turnos." << endl;
-    if (sorteoDeTurno == 0){
+    if (sorteoDeTurno == 0) {
         primerJugador->asignarTurno(1);
         segundoJugador->asignarTurno(2);
         cout << "->" << primerJugador->obtenerNombreJugador() << " inicia turno. \2\n->Lo sigue "

@@ -39,7 +39,7 @@ bool DiccionarioDeEdificios::nodoEnArbol(NodoArbol* arbol, string nomEdificio){
         return nodoEnArbol(arbol -> derecho,nomEdificio);
 }
 
-bool DiccionarioDeEdificios::modificarNodo(NodoArbol* arbol, string nomEdificio, int nuevaCantPiedra, int nuevaCantMadera, int nuevaCantMetal){
+void DiccionarioDeEdificios::modificarNodo(NodoArbol* arbol, string nomEdificio, int nuevaCantPiedra, int nuevaCantMadera, int nuevaCantMetal){
     if (arbol -> nombreEdificio == nomEdificio) {
         arbol -> recetaEdificio->modificarReceta(nuevaCantPiedra,nuevaCantMadera,nuevaCantMetal);
     }
@@ -50,9 +50,10 @@ bool DiccionarioDeEdificios::modificarNodo(NodoArbol* arbol, string nomEdificio,
 }
 
 int DiccionarioDeEdificios::extraerDato(NodoArbol* arbol, string nombreEdificio, string nombreDato) {
+    int datoBuscado;
     if (arbol->nombreEdificio == nombreEdificio) {
         if (nombreDato == "piedra")
-            arbol -> recetaEdificio -> obtenerPiedra();
+            datoBuscado = arbol -> recetaEdificio -> obtenerPiedra();
         else if (nombreDato == "madera")
             arbol -> recetaEdificio -> obtenerMadera();
         else if (nombreDato == "metal")
@@ -62,7 +63,8 @@ int DiccionarioDeEdificios::extraerDato(NodoArbol* arbol, string nombreEdificio,
         else if(nombreDato == "construidos Jugador 1")
             arbol->recetaEdificio -> obtenerConstruidosJugador1();
         else
-            arbol->recetaEdificio->obtenerConstruidosJugador2();
+            datoBuscado = arbol->recetaEdificio->obtenerConstruidosJugador2();
+        return datoBuscado;
     }
     else if (nombreEdificio[0] < arbol->nombreEdificio[0])
         return extraerDato(arbol->izquierdo,nombreEdificio,nombreDato);

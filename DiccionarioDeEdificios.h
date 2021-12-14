@@ -31,8 +31,8 @@ public:
     bool nodoEnArbol(NodoArbol* arbol, string nombreEdificio);
 
     // Precondiciones:
-    // Postcondiciones:
-    bool modificarNodo(NodoArbol*, string, int, int, int);
+    // Postcondiciones: modifica los requisitos de construccion de un nodo
+    void modificarNodo(NodoArbol*, string, int, int, int);
     int extraerDato(NodoArbol*, string, string);
     void recorridoInOrden(NodoArbol*);
     void listarConstruidos(NodoArbol* arbol,string nombreJugador);
