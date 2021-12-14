@@ -8,6 +8,7 @@
 using namespace std;
 
 class Jugador {
+    // Atributos
 private:
     string nombreJugador;
     int ordenDeTurno;
@@ -15,6 +16,8 @@ private:
     int** matrizDeCostosJugador;
     //Objetivos* objetivosJugador;
     int energia;
+
+    // Metodos
 public:
     Jugador();
     Jugador(int);

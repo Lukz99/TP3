@@ -18,7 +18,7 @@ int Escuela::obtenerCantidadMaterialGenerable() {
 char Escuela::obtenerNombreClave() {
     return nombreClave;
 }
-void Escuela::declararPropietario(string nombreJugador){
+void Escuela::declararPropietario(string nombreJugador) {
     propietario = nombreJugador;
 }
 string Escuela::obtenerPropietario() {
