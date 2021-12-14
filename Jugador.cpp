@@ -44,6 +44,7 @@ int Jugador::obtenerTurno() {
     return ordenDeTurno;
 }
 
+
 void Jugador::sumarEnergia(int sumando) {
     if(energia + sumando > 100)
         sumando = energia - sumando;
@@ -55,7 +56,7 @@ void Jugador::restarEnergia(int restando) {
         restando = restando - energia;
     energia -= restando;
 }
-
+/*
 void Jugador::cargarPosicion(int x, int y){
     posicionX = x;
     posicionY = y;
@@ -68,6 +69,7 @@ int Jugador::obtenerPosicionX(){
 int Jugador::obtenerPosicionY(){
     return posicionY;
 }
+*/
 
 int Jugador::obtenerEnergia() {
     return energia;
@@ -79,4 +81,12 @@ bool Jugador::suficienteEnergia(int cantidadRequerida){
 
 bool Jugador::jugadorSinEnergias(){
     return energia == 0;
+}
+
+int Jugador::obtenerPosicionX() {
+    return posicionX;
+}
+
+int Jugador::obtenerPosicionY() {
+    return posicionY;
 }

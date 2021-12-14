@@ -76,3 +76,5 @@ public:
     void leerCoordenadas(int&, int&, int, int);
     void restarMateriales(DiccionarioDeEdificios* diccionario, Jugador *jugador, string nombreEdificio, double porcentajeRestable);
 };
+
+#endif //TP3_MENU_H

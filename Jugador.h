@@ -16,6 +16,7 @@ private:
     int** matrizDeCostosJugador;
     //Objetivos* objetivosJugador;
     int energia;
+    int posicionX, posicionY;
 
     // Metodos
 public:
@@ -37,6 +38,9 @@ public:
     bool objetivoPrincipalCumplido();
     bool objetivosSecundariosCumplidos();
     bool jugadorSinEnergias();
+    int obtenerTurno();
+    int obtenerPosicionX();
+    int obtenerPosicionY();
 };
 
 

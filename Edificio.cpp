@@ -13,8 +13,6 @@ Edificio::Edificio(int pie, int mad, int met, int max) {
     maximoPermitido = max;
 }
 
-Edificio::~Edificio() = default;
-
 void Edificio::repararEdificio() {
     if (estadoEdificio == 2)
         cout << "El edificio ingresado se encuentra en perfecto estado, no es necesaria una reparacion." << endl;
