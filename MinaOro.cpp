@@ -11,7 +11,6 @@ MinaOro::MinaOro() {
 MinaOro::~MinaOro() = default;
 
 MinaOro::MinaOro(int cantidadPiedra, int cantidadMadera, int cantidadMetal, int maximoPermitidos) : Edificio(cantidadPiedra,cantidadMadera,cantidadMetal,maximoPermitidos){
-    estadoEdificio = 2;
 }
 
 string MinaOro::obtenerNombreMaterialGenerable() {

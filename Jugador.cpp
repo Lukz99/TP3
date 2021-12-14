@@ -16,6 +16,7 @@ void Jugador::asignarTurno(int numeroDeTurno){
 }
 
 Jugador::~Jugador() {
+    delete listaMateriales;
     //delete [] objetivosJugador;
 }
 
