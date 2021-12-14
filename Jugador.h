@@ -12,7 +12,6 @@ class Jugador {
 private:
     string nombreJugador;
     int ordenDeTurno;
-    int posicionX, posicionY;
     ListaMateriales* listaMateriales;
     int** matrizDeCostosJugador;
     //Objetivos* objetivosJugador;
@@ -29,16 +28,12 @@ public:
     void mostrarMateriales();
     bool suficienteEnergia(int cantidadRequerida);
     void asignarTurno(int numeroDeTurno);
-    void cargarPosicion(int x, int y);
-    int obtenerPosicionX();
-    int obtenerPosicionY();
     ListaMateriales* obtenerListaMateriales();
     void asignarNombre(string nombreElegido);
     string obtenerNombreJugador();
     void restarEnergia(int cantidadEnergia);
     void sumarEnergia(int cantidadEnergia);
     int obtenerEnergia();
-    int obtenerTurno();
     bool objetivoPrincipalCumplido();
     bool objetivosSecundariosCumplidos();
     bool jugadorSinEnergias();
