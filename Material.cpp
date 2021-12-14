@@ -6,7 +6,7 @@ using namespace std;
 
 Material::Material() = default;
 
-Material::Material(string n, int c){
+Material::Material(string n, int c) {
     nombreMaterial = n;
     cantidadMaterial = c;
     definirNombreClave();
@@ -39,7 +39,7 @@ string Material::obtenerNombre() {
     return nombreMaterial;
 }
 
-char Material::obtenerNombreClave(){
+char Material::obtenerNombreClave() {
     return nombreClave;
 }
 
@@ -47,10 +47,10 @@ int Material::obtenerCantidad() {
     return cantidadMaterial;
 }
 
-void Material::sumar(int adicional){
+void Material::sumar(int adicional) {
     cantidadMaterial += adicional;
 }
 
-void Material::restar(int utilizado){
+void Material::restar(int utilizado) {
     cantidadMaterial -= utilizado;
 }

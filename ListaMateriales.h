@@ -6,15 +6,32 @@
 using namespace std;
 
 class ListaMateriales {
+    // Atributos
 private:
     NodoLista *nodoInicial;
+
+    // Metodos
 public:
+    // Constructor
     ListaMateriales();
+
     ~ListaMateriales();
-    void insertarNodo(string,int);
+
+    // Precondiciones:
+    // Postcondiciones: reserva memoria para un NodoLista
+    void insertarNodo(string nombreMaterial, int cantidadMaterial);
+
+    // Precondiciones:
+    // Postcondiciones: imprime por pantalla la lista de materiales
     void imprimirLista();
+
+    // Precondiciones:
+    // Postcondiciones: devuelve la cantidad de material
     int extraerCantidadMaterial(string nombreMaterial);
-    void modificarNodo(string,int,bool);
+
+    // Precondiciones:
+    // Postcondiciones: modifica el nombre y cantidad de un material
+    void modificarNodo(string nombreMaterial, int cantidad, bool realizarSuma);
 };
 
 

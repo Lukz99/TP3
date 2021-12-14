@@ -22,9 +22,9 @@ void Menu::definirOpcion() {
 
 void Menu::opcionValida(int cantidadOpciones){
     bool opcion_valida = opcionElegida > 0 && opcionElegida <= cantidadOpciones;
-    while(!opcion_valida){
+    while(!opcion_valida) {
         cout << "\nEl numero de opcion elegido no corresponde con los mostrados en pantalla." << endl
-             << "Por favor, vuelva a internarlo." << endl;
+             << "Por favor, vuelva a intentarlo." << endl;
         definirOpcion();
         opcion_valida = opcionElegida > 0 && opcionElegida <= cantidadOpciones;
     }
@@ -175,10 +175,10 @@ void Menu::designarTurnos(Jugador *primerJugador,Jugador *segundoJugador){
     }
 }
 
-void Menu::gestionDeTurnos(Grafo vertices,DiccionarioDeEdificios* diccionarioDeEdificios,Jugador *jugadorActual,DatosLeidos baseDeDatos){
+void Menu::gestionDeTurnos(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador *jugadorActual, DatosLeidos baseDeDatos){
     bool finalizarTurno = false;
-    cout << "| TURNO DE: " << jugadorActual->obtenerNombreJugador() << " |" << endl;
-    while(!jugadorActual->jugadorSinEnergias() || !finalizarTurno) {
+    cout << "| TURNO DE: " << jugadorActual -> obtenerNombreJugador() << " |" << endl;
+    while(!jugadorActual -> jugadorSinEnergias() || !finalizarTurno) {
         mostrarMenuJugador();
         definirOpcion();
         opcionValida(13);
@@ -250,7 +250,7 @@ void Menu::mostrarMenuJugador() {
          << "12. Guardar y salir." << endl;
 }
 
-void Menu::procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador* jugador, DatosLeidos baseDeDatos,bool &finalizarTurno){
+void Menu::procesarOpcionMenuJugador(Grafo vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador* jugador, DatosLeidos baseDeDatos, bool &finalizarTurno){
     switch(opcionElegida){
         case 1:
             construirEdificio(diccionarioDeEdificios,vertices,jugador,baseDeDatos);
@@ -626,7 +626,7 @@ void Menu::guardarMateriales(Jugador primerJugador,Jugador segundoJugador ){
 
 //-----------------------------FUNCIONES DE USO MULTIPLE------------------------------
 
-char Menu::realizarOperacion(){
+char Menu::realizarOperacion() {
     string respuesta;
     char inicialRespuesta;
     cout << "\n(s/n)-> ";
@@ -639,8 +639,8 @@ char Menu::realizarOperacion(){
     return inicialRespuesta;
 }
 
-string Menu::validarEdificio(DiccionarioDeEdificios* diccionarioDeEdificios,string nombreEdificio){
-    while (!diccionarioDeEdificios->nodoEnArbol(diccionarioDeEdificios->obtenerNodoRaiz(), nombreEdificio)) {
+string Menu::validarEdificio(DiccionarioDeEdificios* diccionarioDeEdificios, string nombreEdificio) {
+    while (!diccionarioDeEdificios->nodoEnArbol(diccionarioDeEdificios -> obtenerNodoRaiz(), nombreEdificio)) {
         cout << nombreEdificio << " no se encuentra registrado. ¿Desea ver los edificios en registro?";
         if (realizarOperacion() == 'S')
             diccionarioDeEdificios->recorridoInOrden(diccionarioDeEdificios->obtenerNodoRaiz());
@@ -650,7 +650,7 @@ string Menu::validarEdificio(DiccionarioDeEdificios* diccionarioDeEdificios,stri
     return nombreEdificio;
 }
 
-void Menu::leerCoordenadas(int &x, int &y, int maxFilas, int maxColumnas){
+void Menu::leerCoordenadas(int &x, int &y, int maxFilas, int maxColumnas) {
     cout << "Convencion de coordenadas ->(X,Y)" << endl;
     cout << "| Rango X: 0-" << maxFilas - 1 << " | Rango Y: 0-" << maxColumnas - 1 << " |" << endl;
     cout << "X -> ";
@@ -671,9 +671,9 @@ void Menu::leerCoordenadas(int &x, int &y, int maxFilas, int maxColumnas){
 }
 
 void Menu::restarMateriales(DiccionarioDeEdificios* diccionario, Jugador *jugador, string nombreEdificio, double porcentajeRestable) {
-    int piedraRestable = diccionario->extraerDato(diccionario->obtenerNodoRaiz(), "piedra", nombreEdificio);
-    int maderaRestable = diccionario->extraerDato(diccionario->obtenerNodoRaiz(), "madera", nombreEdificio);
-    int metalRestable = diccionario->extraerDato(diccionario->obtenerNodoRaiz(), "metal", nombreEdificio);
+    int piedraRestable = diccionario->extraerDato(diccionario -> obtenerNodoRaiz(), "piedra", nombreEdificio);
+    int maderaRestable = diccionario->extraerDato(diccionario -> obtenerNodoRaiz(), "madera", nombreEdificio);
+    int metalRestable = diccionario->extraerDato(diccionario -> obtenerNodoRaiz(), "metal", nombreEdificio);
     jugador->obtenerListaMateriales()->modificarNodo("piedra", piedraRestable*porcentajeRestable, false);
     jugador->obtenerListaMateriales()->modificarNodo("madera", maderaRestable*porcentajeRestable, false);
     jugador->obtenerListaMateriales()->modificarNodo("metal", metalRestable*porcentajeRestable, false);
