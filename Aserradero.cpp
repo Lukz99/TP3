@@ -3,6 +3,7 @@
 Aserradero::Aserradero() : Edificio() {
     nombreClave = 'A';
     nombreEdificio = "aserradero";
+    estadoEdificio = 1;
 }
 
 Aserradero::~Aserradero() = default;
