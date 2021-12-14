@@ -3,6 +3,7 @@
 PlantaElectrica::PlantaElectrica() : Edificio(){
     nombreClave = 'P';
     nombreEdificio = "Planta electrica";
+    estadoEdificio = 1;
 }
 PlantaElectrica::~PlantaElectrica() = default;
 
