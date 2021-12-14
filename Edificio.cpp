@@ -13,6 +13,8 @@ Edificio::Edificio(int pie, int mad, int met, int max) {
     maximoPermitido = max;
 }
 
+Edificio::~Edificio() = default;
+
 void Edificio::repararEdificio() {
     if (estadoEdificio == 2)
         cout << "El edificio ingresado se encuentra en perfecto estado, no es necesaria una reparacion." << endl;
@@ -36,14 +38,6 @@ void Edificio::destruirEdificio() {
 
 int Edificio::obtenerEstadoEdificio() {
     return estadoEdificio;
-}
-
-void Edificio::cargarDatos(string nom, int pie, int mad, int met, int max) {
-    nombreEdificio = nom;
-    cantidadPiedra = pie;
-    cantidadMadera = mad;
-    cantidadMetal = met;
-    maximoPermitido = max;
 }
 
 void Edificio::mostrarReceta() {

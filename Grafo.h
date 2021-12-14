@@ -12,19 +12,20 @@ private:
 
     // Metodos
 public:
+    // Constructor
     Grafo();
 
     // Precondiciones:
-    // Postcondiciones:
-    void cargarListaVertices(Casillero*** casilleros, int, int);
+    // Postcondiciones: carga los vertices en la matriz casilleros
+    void cargarListaVertices(Casillero*** casilleros, int filas, int columnas);
 
     // Precondiciones:
-    // Postcondiciones:
-    void ingresarVertice(char, int, int);
+    // Postcondiciones: reserva memoria para un vertice y define sus vertices adyacentes
+    void ingresarVertice(char tipoTerreno, int x, int y);
 
     // Precondiciones:
-    // Postcondiciones:
-    void ingresarVerticeSuperior(Vertice*, int, int);
+    // Postcondiciones: define el vertice superior un vertice por caso excepcional
+    void ingresarVerticeSuperior(Vertice* verticeActual, int x , int y);
 
     // Precondiciones:
     // Postcondiciones:
@@ -35,7 +36,7 @@ public:
     void mostrarVertices();
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve la lista de vertices
     Vertice* obtenerListaVertices();
 
     // Precondiciones:
@@ -55,11 +56,11 @@ public:
     void liberarMatrizDeCostos();
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: define el costo de un movimiento en una matriz
     void cargarMatrizDeCostos(int cantidadFilas, int cantidadColumnas, string nombreJugador);
 
     // Precondiciones:
-    // Postcondiciones:
+    // Postcondiciones: devuelve el costo de moverse a verticeActual
     int consultarCostoDeVertice(Vertice* verticeActual, string nombreJugador);
 
 };

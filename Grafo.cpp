@@ -11,7 +11,7 @@ Grafo::Grafo() {
     cantidadVertices = 0;
 }
 
-void Grafo::cargarListaVertices(Casillero*** casilleros, int filas, int columnas){
+void Grafo::cargarListaVertices(Casillero*** casilleros, int filas, int columnas) {
     for (int i = 0; i < filas; i++)
         for (int j = 0; j < columnas; j++) {
             ingresarVertice(casilleros[i][j] -> obtenerTerreno(), i, j);
@@ -67,7 +67,7 @@ void Grafo::cargarMatrizDeCostos(int cantidadFilas, int cantidadColumnas, string
     int costoMovilizacion;
     for (int i = 0; i < cantidadFilas; i++) {
         for (int j = 0; j < cantidadColumnas; j++) {
-            verticeActual = vertices->buscarVerticePorPosicion(vertices, i, j);
+            verticeActual = vertices -> buscarVerticePorPosicion(vertices, i, j);
             costoMovilizacion = consultarCostoDeVertice(verticeActual, nombreJugador);
             matrizDeCostos[i][j] = costoMovilizacion;
         }
@@ -83,7 +83,7 @@ void Grafo::cargarMatrizDeCostos(int cantidadFilas, int cantidadColumnas, string
 int Grafo::consultarCostoDeVertice(Vertice* actual, string nombreJugador) {
     char tipoTerrenoDestino = actual -> obtenerCasilla();
     int costoCamino;
-    switch (tipoTerrenoDestino){
+    switch (tipoTerrenoDestino) {
         case 'B':
             costoCamino = 0;
             break;

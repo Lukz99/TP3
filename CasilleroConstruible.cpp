@@ -16,7 +16,7 @@ CasilleroConstruible::CasilleroConstruible(char terreno) : Casillero(terreno) {
 
 CasilleroConstruible::~CasilleroConstruible() {
     if(edificiacion != nullptr)
-        delete [] edificiacion;
+        delete edificiacion;
 }
 
 void CasilleroConstruible::modificar(char nuevoNombre) {
