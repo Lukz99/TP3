@@ -19,7 +19,7 @@ public:
     // Constructor con parametros
     Edificio(int cantidadPiedra, int cantidadMadera, int cantidadMetal, int maximoPermitido);
 
-    virtual ~Edificio() = 0;
+    virtual ~Edificio();
 
     // Precondiciones:
     // Postcondiciones: de ser posible, se repara el edificio
