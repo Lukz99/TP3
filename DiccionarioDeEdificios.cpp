@@ -55,13 +55,13 @@ int DiccionarioDeEdificios::extraerDato(NodoArbol* arbol, string nombreEdificio,
         if (nombreDato == "piedra")
             datoBuscado = arbol -> recetaEdificio -> obtenerPiedra();
         else if (nombreDato == "madera")
-            arbol -> recetaEdificio -> obtenerMadera();
+            datoBuscado = arbol -> recetaEdificio -> obtenerMadera();
         else if (nombreDato == "metal")
-            arbol -> recetaEdificio -> obtenerMetal();
+            datoBuscado = arbol -> recetaEdificio -> obtenerMetal();
         else if (nombreDato == "maximo permitido")
-            arbol->recetaEdificio -> obtenerMaximaCantidad();
+            datoBuscado = arbol->recetaEdificio -> obtenerMaximaCantidad();
         else if(nombreDato == "construidos Jugador 1")
-            arbol->recetaEdificio -> obtenerConstruidosJugador1();
+            datoBuscado = arbol->recetaEdificio -> obtenerConstruidosJugador1();
         else
             datoBuscado = arbol->recetaEdificio->obtenerConstruidosJugador2();
         return datoBuscado;

@@ -138,7 +138,7 @@ void Menu::comenzarPartida(Vertice* listaVertices,DiccionarioDeEdificios* diccio
     eleccionJugador(primerJugador, segundoJugador);
     designarTurnos(primerJugador, segundoJugador);
     //lluviaRecursos(listaVertices, baseDeDatos);
-    if(primerJugador->obtenerTurno() == 0) {
+    if(primerJugador->obtenerTurno() == 1) {
         jugadorDeTurno = primerJugador;
         siguienteJugador = segundoJugador;
     }
@@ -175,7 +175,7 @@ void Menu::eleccionJugador(Jugador *primerJugador,Jugador *segundoJugador){
 }
 
 void Menu::designarTurnos(Jugador *primerJugador,Jugador *segundoJugador){
-    int sorteoDeTurno = rand() % (1);
+    int sorteoDeTurno = rand() % 2;
     cout << "\nDesignacion de turnos." << endl;
     if (sorteoDeTurno == 0) {
         primerJugador->asignarTurno(1);
@@ -193,7 +193,7 @@ void Menu::designarTurnos(Jugador *primerJugador,Jugador *segundoJugador){
 
 void Menu::gestionDeTurnos(Vertice* vertices, DiccionarioDeEdificios* diccionarioDeEdificios, Jugador *jugadorActual, DatosLeidos baseDeDatos){
     bool finalizarTurno = false;
-    cout << "| TURNO DE: " << jugadorActual -> obtenerNombreJugador() << " |" << endl;
+    cout << "\n| TURNO DE: " << jugadorActual -> obtenerNombreJugador() << " |" << endl;
     while(!jugadorActual -> jugadorSinEnergias() || !finalizarTurno) {
         mostrarMenuJugador();
         definirOpcion();
@@ -203,10 +203,10 @@ void Menu::gestionDeTurnos(Vertice* vertices, DiccionarioDeEdificios* diccionari
 }
 
 void Menu::lluviaRecursos(Vertice* listaVertices,DatosLeidos baseDeDatos) {
-    int generacionPiedra = 1 + rand() % (2 - 1);
-    int generacionMadera = rand() % (3);
-    int generacionMetal = 2 + rand() % (4 - 2);
-    int generacionAndycoins = rand() % (1);
+    int generacionPiedra = 1 + rand() % (3 - 1);
+    int generacionMadera = rand() % 4;
+    int generacionMetal = 2 + rand() % (5 - 2);
+    int generacionAndycoins = rand() % 2;
     int totalGenerado = generacionPiedra + generacionMadera + generacionMetal + generacionAndycoins;
     seleccionarCoordenadasAleatoriamente(listaVertices,"piedra",generacionPiedra,100,baseDeDatos);
     seleccionarCoordenadasAleatoriamente(listaVertices,"madera",generacionMadera,50,baseDeDatos);
@@ -292,15 +292,12 @@ void Menu::procesarOpcionMenuJugador(Vertice* vertices, DiccionarioDeEdificios* 
             jugador->mostrarMateriales();
             break;
         case 9:
-            jugador->mostrarMateriales();
-            break;
-        case 10:
             recolectarRecursos(vertices,jugador,baseDeDatos);
             break;
-        case 11:
+        case 10:
             finalizarTurno = true;
             break;
-        case 12:
+        case 11:
             guardarMapa(baseDeDatos);
             break;
     }

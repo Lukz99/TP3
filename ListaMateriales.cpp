@@ -48,4 +48,10 @@ void ListaMateriales::modificarNodo(string nombreMaterial,int cantidadOperativa,
     }
 }
 
-ListaMateriales::~ListaMateriales(){}
+void ListaMateriales::liberarNodo() {
+    NodoLista* auxiliar;
+
+
+}
+
+ListaMateriales::~ListaMateriales() {}
