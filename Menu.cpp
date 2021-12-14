@@ -180,13 +180,13 @@ void Menu::designarTurnos(Jugador *primerJugador,Jugador *segundoJugador){
     if (sorteoDeTurno == 0){
         primerJugador->asignarTurno(1);
         segundoJugador->asignarTurno(2);
-        cout << "->" << primerJugador->obtenerNombreJugador() << " inicia turno \2\n->Lo sigue "
+        cout << "->" << primerJugador->obtenerNombreJugador() << " inicia turno. \2\n->Lo sigue "
         << segundoJugador->obtenerNombreJugador() << endl;
     }
     else{
         segundoJugador->asignarTurno(1);
         primerJugador->asignarTurno(2);
-        cout << "->" << segundoJugador->obtenerNombreJugador() << " inicia turno \2\n->Lo sigue "
+        cout << "->" << segundoJugador->obtenerNombreJugador() << " inicia turno. \2\n->Lo sigue "
         << primerJugador->obtenerNombreJugador() <<  endl;
     }
 }

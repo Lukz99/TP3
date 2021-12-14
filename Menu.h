@@ -15,7 +15,7 @@ public:
     Menu();
     ~Menu();
 
-    //interfaces
+    //interfaces.
     void mostrarMenuPrincipal();
     void mostrarMenuJugador();
 
